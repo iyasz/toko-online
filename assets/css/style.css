@@ -1,0 +1,67 @@
+@font-face {
+    font-family: poppins-semibold;
+    src: url('../font/Poppins-semibold.ttf');
+}
+
+@font-face{
+    font-family: numito-regular;
+    src: url('../font/Nunito-Regular.ttf');
+}
+
+@font-face{
+    font-family: numito-semibold;
+    src: url('../font/Nunito-bold.ttf');
+}
+
+@font-face{
+    font-family: numito-medium;
+    src: url('../font/Nunito-Medium.ttf');
+}
+
+body {
+    background-color: #f7f7f7;
+    font-family: numito-regular;
+}
+
+.hero-text-content h1 {
+    font-family: poppins-semibold;
+    font-size: 3rem;
+}
+
+.badge-primary {
+    width: max-content;
+    background-color: #58d758;
+    font-size: 14px;
+}
+
+.badge-danger {
+    width: max-content;
+    background-color: #d75858;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 767px) {
+    .hero-text-content h1 {
+        font-size: 1.9rem;
+    }
+}
+
+.n-semibold {
+    font-family: numito-semibold;
+}
+
+.n-medium {
+    font-family: numito-medium;
+}
+
+.color-org {
+    color: #FC4C02;
+}
+
+.btn.btn-primary{
+    background: #FC4C02;
+}
+
+.btn.btn-primary:active{
+    background: #ee4802 !important;
+}
