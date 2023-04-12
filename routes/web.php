@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\admin\barangController;
+use App\Http\Controllers\admin\buktiController;
 use App\Http\Controllers\admin\categoryController;
+use App\Http\Controllers\admin\pesananController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\transaksiController;
 use App\Models\category;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +26,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
     
-    Route::view('/app', 'admin.index');
+    
 
-    Route::resource('/cart', cartController::class);
-    Route::resource('/category', categoryController::class);
-    Route::resource('/produk', barangController::class);
+    
+    Route::middleware(['onlyAdmin'])->group(function () {
+        Route::view('/app', 'admin.index');
+        Route::resource('/category', categoryController::class);
+        Route::resource('/produk', barangController::class);
+        Route::resource('/pesanan', pesananController::class);
+        Route::resource('/bukti', buktiController::class);
+        Route::get('/status/{id}/{inv}', [orderController::class, 'status']);
+        Route::get('/status/{id}', [orderController::class, 'selesai']);
+    });
 
     Route::get('/logout', [authController::class, 'logout']);
-    Route::get('/payment', [orderController::class, 'index']);
-    Route::post('/payment', [orderController::class, 'store']);
+
+    Route::middleware(['onlyUser'])->group(function () {
+        Route::post('/confirmation', [orderController::class, 'bukti']);
+        Route::resource('/cart', cartController::class);
+        Route::get('/payment', [orderController::class, 'index']);
+        Route::get('/transaksi', [transaksiController::class, 'index']);
+        Route::get('/transaksi/{id}', [transaksiController::class, 'view']);
+        Route::get('/riwayat', [transaksiController::class, 'riwayat']);
+    });
+
 });
 
 

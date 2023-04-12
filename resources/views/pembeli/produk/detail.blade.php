@@ -14,9 +14,11 @@
                     <p class="mt-2 opacity-50">By {{$produk->produser}}</p>
                     <hr>
                     <h4 class="n-semibold color-org">IDR {{number_format($produk->harga)}}</h4>
-                 <form action="/cart" method="post">
+                 <form action="/cart" method="post"> 
                     @csrf
+                    @if(Auth::user())
                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                    @endif
                     <input type="hidden" name="barang_id" value="{{$produk->id}}">
                     <div class="qty d-flex mt-3">
                         <a class="btn btn-primary border-0 rounded-1 me-1" onclick="document.getElementById('qtyProduct').value--">-</a>

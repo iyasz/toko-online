@@ -20,9 +20,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item mx-3 ">
-                        <a href="/pengguna" class="nav-link">Pengguna</a>
-                    </li>
-                    <li class="nav-item mx-3 ">
                         <a href="/bukti" class="nav-link">Bukti Bayar</a>
                     </li>
                     <li class="nav-item mx-3 ">

@@ -74,18 +74,18 @@
             <div class="row mt-5">
                 <div class="col-lg-12">
                     <div class="">
-                        <h4 class="n-semibold">Ready Stock</h4>
+                        <h4 class="n-semibold">Newest Items</h4>
                         <hr style="color: #d4d4d4">
                     </div>
                     <div class="card mt-3 shadow-sm border-0">
                         <div class="card-body">
-                            <div class="row">
+                            <div class="row ">
                                 @foreach ($produk as $data)
                                 <div class="col-lg-2 col-md-4 col-6 ">
                                     <a href="/items/{{$data->id}}" class="text-decoration-none text-black">
                                         <img src="/storage/gambar/{{$data->image}}" width="100%" class="rounded-3" alt="">
                                         <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
-                                        <p class="mt-2 n-medium mb-0">{{$data->name}}</p>
+                                        <p style="line-height: 1.2" class="mt-2 n-medium mb-0">{{$data->name}}</p>
                                         <p class="mt-2 text-danger n-semibold">IDR {{number_format($data->harga)}}</p>
                                     </a>
                                 </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row my-5">
                 <div class="col-lg-12">
                     <div class="">
                         <h4 class="n-semibold">All Product</h4>
