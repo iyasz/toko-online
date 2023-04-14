@@ -1,19 +1,67 @@
 @extends('layout.mainlayout')
 
 @section('content')
-    {{-- <div class="container">
-        <button onclick="document.getElementById('inpQty').value--"><i class="bi bi-dash"></i></button>
-        <input type="number" min="1" value="1" name="" id="inpQty">
-        <button onclick="document.getElementById('inpQty').value++"><i class="bi bi-plus"></i></button>
-    </div> --}}
-    <div id="carouselHero" class="carousel slide mt-5">
+    <div id="carouselHero" class="carousel slide mt-5" data-bs-ride="carousel">
+        {{-- <ol class="carousel-indicators">
+            <li data-bs-target="#carouselHero" data-bs-slide-to="0" class="active" aria-current="true" ></li>
+            <li data-bs-target="#carouselHero" data-bs-slide-to="1" ></li>
+            <li data-bs-target="#carouselHero" data-bs-slide-to="2" ></li>
+            <li data-bs-target="#carouselHero" data-bs-slide-to="3" ></li>
+            <li data-bs-target="#carouselHero" data-bs-slide-to="4" ></li>
+        </ol> --}}
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="{{asset('assets/img/banner/banner4.webp')}}" class="w-100 d-block" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('assets/img/banner/banner5.webp')}}" class="w-100 d-block" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('assets/img/banner/banner1.webp')}}" class="w-100 d-block" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('assets/img/banner/banner2.webp')}}" class="w-100 d-block" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{asset('assets/img/banner/banner3.webp')}}" class="w-100 d-block" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    {{-- <div id="carouselHero" class="carousel slide mt-5"> --}}
         {{-- <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="0" class="active" aria-current="true"></button>
           <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="1"></button>
           <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="2"></button>
           <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="3"></button>
         </div> --}}
-        <div class="carousel-inner">
+        {{-- <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="/assets/img/banner/banner5.webp" class="d-block w-100" alt="">
                 <div class="carousel-caption d-none d-md-block">
@@ -40,7 +88,7 @@
         <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
             <span class="carousel-control-next-icon"></span>
         </button>
-    </div>
+    </div> --}}
 
     <section id="category">
         <div class="container mt-5">
@@ -55,7 +103,7 @@
                             <div class="row">
                                 @foreach ($category as $data)
                                 <div class="col-lg-2 col-md-4 col-4 text-center">
-                                    <a href="" class="text-decoration-none text-black">
+                                    <a href="/c/{{$data->id}}" class="text-decoration-none text-black">
                                         <img src="{{asset('/storage/gambar/'.$data->icon)}}" width="100%" alt="">
                                         <p class="mt-2">{{$data->name}}</p>
                                     </a>

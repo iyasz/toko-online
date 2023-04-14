@@ -65,3 +65,4 @@ Route::middleware(['guest'])->group(function(){
 Route::get('/payment/confirmation', [indexController::class, 'confirm']);
 Route::get('/store', [indexController::class, 'index']);
 Route::get('items/{id}', [indexController::class, 'product']);
+Route::get('/c/{id}', [indexController::class, 'category']);

@@ -21,6 +21,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <form class="d-flex input-group" method="get" action="/store?q=" role="search">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                            <button class="input-group-text" id="basic-addon2"><i class="bi bi-search"></i></button>
+                        </form>
+                    </li>
+                </ul>
+                {{-- <ul class="navbar-nav mx-auto">
                     <li class="nav-item mx-3 ">
                         <a href="/store" class="nav-link">Home</a>
                     </li>
@@ -30,7 +38,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             @foreach (categories() as $data)
-                                <li><a class="dropdown-item" href="/app/c/{{ $data->id }}">{{ $data->name }}</a>
+                                <li><a class="dropdown-item" href="/c/{{ $data->id }}">{{ $data->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -38,18 +46,16 @@
                     <li class="nav-item mx-3 ">
                         <a href="/payment/confirmation" class="nav-link">Pembayaran</a>
                     </li>
-                </ul>
+                </ul> --}}
                 <ul class="navbar-nav ">
-                    <li class="nav-item mx-1 dropdown">
-                        <a href="" data-bs-toggle="dropdown" class="nav-link dropdown-toggle"><i
-                                class="bi bi-box2"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/transaksi" class="dropdown-item">Transaksi</a></li>
-                            <li><a href="/riwayat" class="dropdown-item">Riwayat Transaksi</a></li>
-                        </ul>
+                    <li class="nav-item mx-1">
+                        <a href="/transaksi" class="nav-link"><i class="bi bi-box2"></i></a>
                     </li>
                     <li class="nav-item mx-1  ">
                         <a href="/cart" class="nav-link"><i class="bi bi-cart"></i></a>
+                    </li>
+                    <li class="nav-item mx-1  ">
+                        <a href="/wishlist" class="nav-link"><i class="bi bi-heart"></i></a>
                     </li>
                     <li class="nav-item mx-1 ">
                         <a href="/logout" class="nav-link"><i class="bi bi-box-arrow-right"></i></a>

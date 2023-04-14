@@ -34,7 +34,7 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <h4 class="n-semibold opacity-75">Add Address</h4>
-                            <form action="/payment" method="post">
+                            <form action="/payment/store" method="post">
                                 <input name="total_price" type="hidden" value="{{$totalAll}}">
                                 @csrf
                                 <div class="mt-3">

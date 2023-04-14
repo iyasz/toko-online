@@ -27,4 +27,11 @@ class indexController extends Controller
         $pro = produk::find($id);
         return view('pembeli.produk.detail', ['produk' => $pro]);
     }
+
+    public function category($id)
+    {
+        $cat = category::find($id);
+        $pro = produk::where('category_id', $id)->get();
+        return view('category', compact('pro','cat'));
+    }
 }
