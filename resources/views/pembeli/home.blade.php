@@ -133,7 +133,8 @@
                                     <a href="/items/{{$data->id}}" class="text-decoration-none text-black">
                                         <img src="/storage/gambar/{{$data->image}}" width="100%" class="rounded-3" alt="">
                                         <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
-                                        <p style="line-height: 1.2" class="mt-2 n-medium mb-0">{{$data->name}}</p>
+                                        <p class="text-release my-2">Releases {{date('F Y'), strtotime($data->created_at)}}</p>
+                                        <p class="mt-2 text-header-product n-medium mb-0">{{$data->name}}</p>
                                         <p class="mt-2 text-danger n-semibold">IDR {{number_format($data->harga)}}</p>
                                     </a>
                                 </div>
@@ -157,7 +158,8 @@
                                     <a href="/items/{{$data->id}}" class="text-decoration-none text-black">
                                         <img src="/storage/gambar/{{$data->image}}" width="100%" class="rounded-3" alt="">
                                         <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
-                                        <p class="mt-2 n-medium mb-0">{{$data->name}}</p>
+                                        <p class="text-release my-2">Releases {{date('F Y'), strtotime($data->created_at)}}</p>
+                                        <p class="mt-2 text-header-product n-medium mb-0">{{$data->name}}</p>
                                         <p class="mt-2 text-danger n-semibold">IDR {{number_format($data->harga)}}</p>
                                     </a>
                                 </div>

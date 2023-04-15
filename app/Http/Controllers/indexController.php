@@ -34,4 +34,11 @@ class indexController extends Controller
         $pro = produk::where('category_id', $id)->get();
         return view('category', compact('pro','cat'));
     }
+
+    public function search()
+    {
+        $produk = produk::where('name', 'like', '%'.$_GET['q'].'%')->get();
+        $count = $produk->count();
+        return view('search', compact('produk', 'count'));
+    }
 }

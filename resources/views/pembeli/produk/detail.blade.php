@@ -28,9 +28,9 @@
                     <div class="row mt-5">
                         <div class="col-6">
                             @if(Auth::user())
-                            <button @if($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 bg-transparent py-2" style="border: #FC4C02 1px solid; color:#FC4C02;">Beli Sekarang</button>
+                            <button @if($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 bg-transparent whishlist py-2" style="border: #FC4C02 1px solid; color:#FC4C02;"><i class="bi bi-heart me-1"></i> Wishlist</button>
                             @else
-                            <a href="/auth/login" @if($produk->stok < 1) disabled  @endif class="btn btn-primary w-100 rounded-1 bg-transparent py-2" style="border: #FC4C02 1px solid; color:#FC4C02;">Beli Sekarang</a>
+                            <a href="/auth/login" @if($produk->stok < 1) disabled  @endif class="btn btn-primary w-100 rounded-1 bg-transparent whishlist py-2" style="border: #FC4C02 1px solid; color:#FC4C02;"><i class="bi bi-heart me-1"></i> Wishlist</a>
                             @endif
                         </div>
                         <div class="col-6">

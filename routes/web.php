@@ -26,8 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
     
-    
-
+    Route::get('/logout', [authController::class, 'logout']);
     
     Route::middleware(['onlyAdmin'])->group(function () {
         Route::view('/app', 'admin.index');
@@ -39,8 +38,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/status/{id}', [orderController::class, 'selesai']);
     });
 
-    Route::get('/logout', [authController::class, 'logout']);
-
+    
     Route::middleware(['onlyUser'])->group(function () {
         Route::post('/confirmation', [orderController::class, 'bukti']);
         Route::resource('/cart', cartController::class);
@@ -62,6 +60,7 @@ Route::middleware(['guest'])->group(function(){
     Route::view('/auth/register', 'auth.register');
 });
 
+Route::get('/search', [indexController::class, 'search']);
 Route::get('/payment/confirmation', [indexController::class, 'confirm']);
 Route::get('/store', [indexController::class, 'index']);
 Route::get('items/{id}', [indexController::class, 'product']);
