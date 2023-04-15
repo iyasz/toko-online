@@ -57,6 +57,17 @@ body {
 .color-org {
     color: #FC4C02;
 }
+.color-org:hover {
+    color: #FC4C02;
+}
+
+.color-gray {
+    color: #dee2e6;
+}
+
+.bg-org {
+    background-color: #FC4C02;
+}
 
 .btn.btn-primary{
     background: #FC4C02;
@@ -64,4 +75,17 @@ body {
 
 .btn.btn-primary:active{
     background: #ee4802 !important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.dropdown-menu {
+    min-width: 19rem !important;
+}
+
+.dropdown-item:active {
+    background: #FC4C02;
 }
