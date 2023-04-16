@@ -12,7 +12,7 @@
                         <form action="/produk" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="mt-3">
-                                <label class="mb-2 opacity-75">Produk</label>
+                                <label class="mb-2 opacity-75">Category</label>
                                 <select autocomplete="off" required type="text" name="category_id" value="{{old('category_id')}}" class="form-select rounded-1">
                                     <option selected disabled>Select An Option</option>
                                     @foreach ($category as $data)

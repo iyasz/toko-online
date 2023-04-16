@@ -130,7 +130,7 @@
                             <div class="row ">
                                 @foreach ($produk as $data)
                                 <div class="col-lg-2 col-md-4 col-6 ">
-                                    <a href="/items/{{$data->id}}" class="text-decoration-none text-black">
+                                    <a href="/items/{{$data->id}}/{{$data->slug}}" class="text-decoration-none text-black">
                                         <img src="/storage/gambar/{{$data->image}}" width="100%" class="rounded-3" alt="">
                                         <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
                                         <p class="text-release my-2">Releases {{date('F Y'), strtotime($data->created_at)}}</p>
@@ -155,7 +155,7 @@
                             <div class="row">
                                 @foreach ($AllProduct as $data)
                                 <div class="col-lg-2 col-md-4 col-6 ">
-                                    <a href="/items/{{$data->id}}" class="text-decoration-none text-black">
+                                    <a href="/items/{{$data->id}}/{{$data->slug}}" class="text-decoration-none text-black">
                                         <img src="/storage/gambar/{{$data->image}}" width="100%" class="rounded-3" alt="">
                                         <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
                                         <p class="text-release my-2">Releases {{date('F Y'), strtotime($data->created_at)}}</p>

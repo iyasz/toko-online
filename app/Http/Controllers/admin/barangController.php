@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\category;
 use App\Models\produk;
+use App\Models\category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class barangController extends Controller
 {
@@ -49,6 +50,8 @@ class barangController extends Controller
         $request->file('img')->storeAs('gambar', $name);
 
         $request['image']= $name;
+        $validateSlug = preg_replace('/\[[^\]]*\]/', '', $request->name); 
+        $request['slug'] = Str::slug($validateSlug); 
         produk::create($request->except('_token', 'img'));
 
         return redirect('/produk')->with('success', 'Data Berhasil Disimpan!');
@@ -67,7 +70,9 @@ class barangController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.pesanan');
+        $produk = produk::find($id);
+        $category = category::all();
+        return view('admin.produk.edit', compact('produk','category'));
     }
 
     /**
@@ -75,7 +80,30 @@ class barangController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $produk = produk::find($id);
+        $validate = $request->validate([
+            'category_id' => 'required',
+            'harga' => 'required',
+            'produser' => 'required',
+            'stok' => 'required',
+            'deskripsi' => 'required',
+            'name' => 'required',
+        ]);
+
+        if($request->img){
+            $original = $request->file('img')->getClientOriginalExtension();
+            $name = $request->stok .'-'. random_int(100000, 999999).'.'.$original;
+            
+            $request->file('img')->storeAs('gambar', $name);
+            $request['image']= $name;
+        }
+
+        $validateSlug = preg_replace('/\[[^\]]*\]/', '', $request->name); 
+        $request['slug'] = Str::slug($validateSlug); 
+
+        $produk->update($request->except('_token', 'img'));
+
+        return redirect('/produk')->with('success', 'Data Berhasil Diubah!');
     }
 
     /**

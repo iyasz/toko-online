@@ -14,6 +14,7 @@ class category extends Model
     protected $fillable = [
         'icon',
         'name',
+        'slug',
     ];
     
 }

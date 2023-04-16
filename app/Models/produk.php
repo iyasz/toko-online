@@ -16,6 +16,7 @@ class produk extends Model
         'image',
         'name',
         'harga',
+        'slug',
         'produser',
         'stok',
         'deskripsi',

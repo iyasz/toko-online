@@ -69,7 +69,7 @@
                                         <td>{{ $data->qty }}</td>
                                         <td>Rp. {{ number_format($data->produk->harga) }}</td>
                                         <td>
-                                            <a href="/items/{{ $data->produk->id }}"
+                                            <a href="/items/{{ $data->produk->id }}/{{$data->slug}}"
                                                 class="btn btn-primary border-0 btn-sm"><i class="bi bi-eye"></i></a>
                                         </td>
                                         
