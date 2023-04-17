@@ -10,31 +10,43 @@
                             <div class="py-2">
                                 <h4 class="mb-0">My Wishlist</h4>
                             </div>
-                            <hr>
-                            @foreach ($wishlist as $data)
-                                <hr>
-                                <div class="row">
-                                    <div class="col-3">
-                                        <td><img width="100%" height="100%" class="rounded-2" src="{{asset('storage/gambar/'.$data->produk->image)}}" alt=""></td>
+                            <hr class="">
+                            <input type="hidden" value="{{ $totalAll = 0 }}">
+                            <div class="row">
+                                @foreach ($wishlist as $data)
+                                    <div class="col-12 col-md-6 col-lg-3 px-2 gy-3">
+                                        <div class="card">
+                                            <div class="card-body p-0 mx-0">
+                                                <img width="100%" src="{{ asset('storage/gambar/' . $data->produk->image) }}">
+                                                <div class="mx-2">
+                                                    <div class="py-1 @if ($data->produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">
+                                                        @if ($data->produk->stok < 1)
+                                                            Tidak Tersedia
+                                                        @else
+                                                            Ready Stock
+                                                        @endif
+                                                    </div>
+                                                    <h6 class="n-semibold text-header-product mt-2 mb-1">{{ $data->produk->name }}</h6>
+                                                    <p class="color-org n-semibold">IDR
+                                                        {{ number_format($data->produk->harga) }}</p>
+                                                    <div class="row mb-3">
+                                                        <div class="col-lg-9 col-md-9 col-10 pe-0">
+                                                            <button class="btn btn-primary border-0 n-semibold py-2 rounded-1 btn-sm w-100">ADD TO CART</button>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3 col-2">
+                                                            <form action="/wishlist/{{$data->id}}" method="post">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button onclick="return confirm('Apakah Anda Ingin Menghapus Produk ini dari Wishlist Anda?')" class="btn btn-primary py-2 rounded-1 btn-sm text-black w-100 wishlist bg-transparent"><i class="bi bi-trash opacity-75"></i></button>
+                                                        </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-9">
-                                         <a class="text-decoration-none text-dark n-semibold">{{$data->produk->name}}</a>
-                                         <br>
-                                         <p class="mb-0">Jumlah : {{$data->qty}}</p>
-                                         <a class="text-decoration-none n-semibold " style="color: #FC4C02;">IDR {{number_format($data->produk->harga)}}</a>
-                                         <p class="n-semibold">Total : <span style="color: #FC4C02">{{number_format($data->produk->harga * $data->qty)}}</span></p>
-                                         <div class="text-end">
-                                            <form action="/cart/{{$data->id}}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="text-dark opacity-50 bg-transparent border-0" onclick="return confirm('Apakah anda yakin ingin menghapus item ini?')" ><i class="bi bi-trash"></i></button>
-                                            </form>
-                                         </div>
-                                         <input id="totalPerProduct" type="hidden" value="{{$total = $data->produk->harga * $data->qty}}">
-                                         <input id="totalPerProduct" type="hidden" value="{{$totalAll += $total}}">
-                                    </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

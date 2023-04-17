@@ -10,8 +10,7 @@
                             <img width="100%" class="rounded-3" src="{{ asset('storage/gambar/' . $produk->image) }}" alt="">
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 ">
-                            <div
-                                class="py-1 @if ($produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">
+                            <div class="py-1 @if ($produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">
                                 @if ($produk->stok < 1)
                                     Tidak Tersedia
                                 @else
@@ -41,8 +40,7 @@
                                     @csrf
                                     <input type="hidden" name="barang_id" value="{{$produk->id}}">
                                     <input type="text" name="qty" min="1" value="1" id="qtyBarang"> --}}
-                                        <button @if ($produk->stok < 1) disabled @endif
-                                            class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</button>
+                                        <button @if ($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</button>
                                         {{-- </form> --}}
                                     @else
                                         <a href="/auth/login" @if ($produk->stok < 1) disabled @endif

@@ -14,7 +14,7 @@ class wishlistController extends Controller
      */
     public function index()
     {
-        $wishlist = wishlist::where('user_id', Auth::user()->id);
+        $wishlist = wishlist::where('user_id', Auth::user()->id)->get();
         return view('pembeli.wishlist.index', compact('wishlist'));
     }
 
@@ -63,7 +63,9 @@ class wishlistController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $wishlist = wishlist::find($id);
+        $wishlist->delete();
+        return redirect('/wishlist');
     }
 
     public function storeAjax(Request $request)
