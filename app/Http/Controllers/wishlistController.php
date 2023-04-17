@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cart;
-use App\Models\category;
-use App\Models\produk;
+use App\Models\wishlist;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class cartController extends Controller
+class wishlistController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $cart = cart::with(['produk','user'])->where('user_id', Auth::user()->id)->get();
-        $cat = category::all();
-        $pro = produk::all();
-        return view('pembeli.cart.index', ['category' => $cat, 'produk' => $pro, 'cart' => $cart, 'total' => 0]);
+        $wishlist = wishlist::where('user_id', Auth::user()->id);
+        return view('pembeli.wishlist.index', compact('wishlist'));
     }
 
     /**
@@ -26,7 +23,7 @@ class cartController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,10 +31,7 @@ class cartController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id'] = Auth::user()->id;
-        cart::create($request->except('_token'));
-
-        return redirect('/cart');
+        
     }
 
     /**
@@ -69,10 +63,18 @@ class cartController extends Controller
      */
     public function destroy(string $id)
     {
-        $cart = cart::find($id);
+        //
+    }
 
-        $cart->delete();
+    public function storeAjax(Request $request)
+    {
+        wishlist::create([
+            'user_id' => Auth::user()->id,
+            'barang_id' => $request->input('id_barang'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
-        return redirect('/cart');
+        return "Berhasil Ditambahkan";
     }
 }

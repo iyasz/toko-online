@@ -9,6 +9,7 @@ use App\Http\Controllers\cartController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\transaksiController;
+use App\Http\Controllers\wishlistController;
 use App\Models\category;
 use Illuminate\Support\Facades\Route;
 
@@ -42,10 +43,12 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['onlyUser'])->group(function () {
         Route::post('/confirmation', [orderController::class, 'bukti']);
         Route::resource('/cart', cartController::class);
+        Route::resource('/wishlist', wishlistController::class);
         Route::get('/payment', [orderController::class, 'index']);
         Route::get('/transaksi', [transaksiController::class, 'index']);
         Route::get('/transaksi/{id}', [transaksiController::class, 'view']);
         Route::get('/riwayat', [transaksiController::class, 'riwayat']);
+        Route::post('/wishlist/store', [wishlistController::class, 'storeAjax']);
     });
 
 });

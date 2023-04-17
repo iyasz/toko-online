@@ -1,18 +1,17 @@
 @extends('layout.mainlayout')
 
 @section('content')
-
     <section id="category">
         <div class="container mt-5">
             <div class="row mt-5">
-                <div class="col-lg-8 col-md-6 col-12 mt-5">
+                <div class="col-12 mt-5">
                     <div class="card border-0 shadow-sm mb-5">
                         <div class="card-body">
                             <div class="py-2">
-                                <h4 class="mb-0">Shopping Card</h4>
+                                <h4 class="mb-0">My Wishlist</h4>
                             </div>
-                            <input type="hidden" name="" value="{{$totalAll = 0}}">
-                            @foreach ($cart as $data)
+                            <hr>
+                            @foreach ($wishlist as $data)
                                 <hr>
                                 <div class="row">
                                     <div class="col-3">
@@ -39,20 +38,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mt-5">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h4>Total Price</h4>
-                                <h3 class="color-org n-semibold">IDR {{ number_format($totalAll) }}</h3>
-                                <input type="hidden" name="" value="{{$totalAll}}" id="">
-                                <a href="/payment" class="btn btn-primary w-100 border-0 py-2 n-semibold">CHECKOUT</a>
-                                <hr>
-                            </div>
-                        </div>
-                    </div>
             </div>
-        </div>
     </section>
-
 @endsection

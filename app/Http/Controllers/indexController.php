@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\produk;
+use App\Models\wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class indexController extends Controller
 {
@@ -18,14 +20,15 @@ class indexController extends Controller
 
     public function confirm()
     {
-        $cat = category::all();
-        return view('pembeli.confirm.index', ['category' => $cat]);
+        return view('pembeli.confirm.index');
     }
 
     public function product($id)
     {
-        $pro = produk::find($id);
-        return view('pembeli.produk.detail', ['produk' => $pro]);
+        $produk = produk::find($id);
+        $wishlist = wishlist::where('barang_id', $id)->where('user_id', Auth::user()->id)->count();
+        // dd($wishlist);
+        return view('pembeli.produk.detail', compact('produk', 'wishlist'));
     }
 
     public function category($id)
