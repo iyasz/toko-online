@@ -37,24 +37,26 @@ $('#wishlistBtn').on('click', function(){
 })
 
 $('#cartAdd').on('click', function(){
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        type: "POST",
-        url: "/cart",
+    axios({
+        method: 'post',
+        url: '/cart',
         data: {
             id_barang: location.pathname.split("/")[2],
             qtyProduct: $('#qtyProduct').val(),
-        },
-        success: function(e){
-            window.location.href="/cart"
-        },
-    })
+        }
+      })
+      .then(function (response) {
+          console.log(response);
+          window.location.href="/cart"
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 })
 
 $('#wishlistRemove').on('click', function(){
     console.log("ini remove")
+    location.reload()
 })
 
 $(document).ready(function() {
@@ -62,3 +64,5 @@ $(document).ready(function() {
       $('#qtyBarang').val($(this).val());
     });
   });
+
+

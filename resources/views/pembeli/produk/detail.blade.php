@@ -21,7 +21,7 @@
                             <p class="mt-2 opacity-50">By {{ $produk->produser }}</p>
                             <hr>
                             <h4 class="n-semibold color-org">IDR {{ number_format($produk->harga) }}</h4>
-                            <div class="qty d-flex mt-3">
+                            <div class="qty d-flex mt-3" id="wishlistQty">
                                 <a class="btn btn-primary border-0 rounded-1 me-1" onclick="decrementQtyProduct()">-</a>
                                 <input style="width: 60px" class="form-control" type="number" min="1" value="1" id="qtyProduct">
                                 <a class="btn btn-primary border-0 rounded-1 ms-1" onclick="incrementQtyProduct()">+</a>

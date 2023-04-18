@@ -88,6 +88,8 @@
     @yield('content')
 
     <script src="/assets/js/jquery-3.6.4.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/main.js"></script>
 </body>
