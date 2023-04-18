@@ -17,7 +17,9 @@
                                     <div class="col-12 col-md-6 col-lg-3 px-2 gy-3">
                                         <div class="card">
                                             <div class="card-body p-0 mx-0">
-                                                <img width="100%" src="{{ asset('storage/gambar/' . $data->produk->image) }}">
+                                                <a href="/items/{{$data->produk->id}}/{{$data->produk->slug}}" class="text-decoration-none">
+                                                    <img width="100%" src="{{ asset('storage/gambar/' . $data->produk->image) }}">
+                                                </a>
                                                 <div class="mx-2">
                                                     <div class="py-1 @if ($data->produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">
                                                         @if ($data->produk->stok < 1)

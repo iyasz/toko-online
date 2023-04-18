@@ -92,7 +92,7 @@ body {
 .wishlist {
     border-color: var(--bs-color-gray) !important;
 }
-.wishlist:hover {
+.wishlist:hover, .btn.btn-primary:active {
     background: var(--bs-color-dark-red) !important;
     border-color: var(--bs-color-dark-red) !important;
     color: white !important;

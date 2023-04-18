@@ -26,7 +26,10 @@ class indexController extends Controller
     public function product($id)
     {
         $produk = produk::find($id);
-        $wishlist = wishlist::where('barang_id', $id)->where('user_id', Auth::user()->id)->count();
+        $wishlist = 0;
+        if(Auth::user()){
+            $wishlist = wishlist::where('barang_id', $id)->where('user_id', Auth::user()->id)->count();
+        }
         // dd($wishlist);
         return view('pembeli.produk.detail', compact('produk', 'wishlist'));
     }

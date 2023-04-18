@@ -23,25 +23,19 @@
                             <h4 class="n-semibold color-org">IDR {{ number_format($produk->harga) }}</h4>
                             <div class="qty d-flex mt-3">
                                 <a class="btn btn-primary border-0 rounded-1 me-1" onclick="decrementQtyProduct()">-</a>
-                                <input style="width: 60px" class="form-control" type="number" min="1" value="1"
-                                    id="qtyProduct">
+                                <input style="width: 60px" class="form-control" type="number" min="1" value="1" id="qtyProduct">
                                 <a class="btn btn-primary border-0 rounded-1 ms-1" onclick="incrementQtyProduct()">+</a>
                             </div>
                             <div class="row mt-5">
-                                <div class="col-4 px-2">
+                                <div class="col-4 px-2" id="containerWishlist">
                                     @if (Auth::user())
-                                        <button @if ($produk->stok < 1) disabled @endif id="{{ $wishlist > 0 ? 'wishlistRemove' : 'wishlistBtn' }}" class="btn btn-primary text-black w-100 rounded-1 bg-transparent wishlist @if($wishlist > 0)active @endif py-2"><img src="{{ asset('assets/img/maskot/'.($wishlist > 0 ? 'wishlist_active.svg' : 'wishlist.svg')) }}" width="25px" class="me-1 " alt=""> Wishlist</>
-                                        @else <a href="/auth/login" @if ($produk->stok < 1) disabled @endif class="btn btn-primary text-black w-100 rounded-1 bg-transparent wishlist py-2"><img src="{{ asset('assets/img/maskot/wishlist.svg') }}" width="25px" class="me-1 " alt=""> Wishlist</a>
+                                        <button @if($produk->stok < 1) disabled @endif id="{{ $wishlist > 0 ? 'wishlistRemove' : 'wishlistBtn' }}" class="btn btn-primary text-black w-100 rounded-1 bg-transparent py-2 wishlist @if($wishlist > 0)active @endif "><img src="{{ asset('assets/img/maskot/'.($wishlist > 0 ? 'wishlist_active.svg' : 'wishlist.svg')) }}" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>
+                                    @else <a href="/auth/login" @if ($produk->stok < 1) disabled @endif class="btn btn-primary text-black w-100 rounded-1 bg-transparent wishlist py-2"><img src="{{ asset('assets/img/maskot/wishlist.svg') }}" width="25px" class="me-1 " alt=""> Wishlist</a>
                                     @endif
                                 </div>
                                 <div class="col-8">
                                     @if (Auth::user())
-                                        {{-- <form action="/cart" method="post"> 
-                                    @csrf
-                                    <input type="hidden" name="barang_id" value="{{$produk->id}}">
-                                    <input type="text" name="qty" min="1" value="1" id="qtyBarang"> --}}
-                                        <button @if ($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</button>
-                                        {{-- </form> --}}
+                                        <button @if ($produk->stok < 1) disabled @endif class="btn btn-primary n-semibold w-100 rounded-1 border-0 py-2" id="cartAdd">Add to Cart</button>
                                     @else
                                         <a href="/auth/login" @if ($produk->stok < 1) disabled @endif
                                             class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</a>

@@ -9,7 +9,7 @@
                     <div class="card border-0 shadow-sm mb-5">
                         <div class="card-body">
                             <div class="py-2">
-                                <h4 class="mb-0">Shopping Card</h4>
+                                <h4 class="mb-0">Shopping Cart</h4>
                             </div>
                             <input type="hidden" name="" value="{{$totalAll = 0}}">
                             @foreach ($cart as $data)

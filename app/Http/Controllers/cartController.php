@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cart;
 use App\Models\category;
 use App\Models\produk;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,8 +35,13 @@ class cartController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id'] = Auth::user()->id;
-        cart::create($request->except('_token'));
+        cart::create([
+            'user_id' => Auth::user()->id,
+            'barang_id' => $request->input('id_barang'),
+            'qty' => $request->input('qtyProduct'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
         return redirect('/cart');
     }

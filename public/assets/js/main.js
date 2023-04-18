@@ -29,8 +29,32 @@ $('#wishlistBtn').on('click', function(){
         },
         success: function(e){
             console.log(e)
+            $('#wishlistBtn').addClass('active');
+            $('#imgWishlist').attr('src', `/assets/img/maskot/wishlist_active.svg`);
+            $('#wishlistBtn').attr('id', 'wishlistRemove');
         },
     })
+})
+
+$('#cartAdd').on('click', function(){
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        type: "POST",
+        url: "/cart",
+        data: {
+            id_barang: location.pathname.split("/")[2],
+            qtyProduct: $('#qtyProduct').val(),
+        },
+        success: function(e){
+            window.location.href="/cart"
+        },
+    })
+})
+
+$('#wishlistRemove').on('click', function(){
+    console.log("ini remove")
 })
 
 $(document).ready(function() {
@@ -38,7 +62,3 @@ $(document).ready(function() {
       $('#qtyBarang').val($(this).val());
     });
   });
-
-
-
-// console.log(anime); 
