@@ -25,7 +25,7 @@ body {
 
 :root{
     --bs-color-primary: #FC4c02;
-    --bs-color-gray: #a4a4a4;
+    --bs-color-gray: #6f6f6f;
     --bs-color-dark-red: #b72009;
 }
 
@@ -85,17 +85,16 @@ body {
 }
 
 .btn.btn-primary:disabled{
-    background: #696969;
-    border: #696969;
+    background: #363636;
+    border: #363636;
     cursor: not-allowed !important;
     pointer-events: visible;
 }
 .btn.btn-primary:disabled:active{
-    background: #696969 !important;
-    border: #696969 !important;
+    background: #363636 !important;
+    border: #363636 !important;
     cursor: not-allowed !important;
 }
-
 
 .form-control:focus {
     box-shadow: none;
@@ -103,7 +102,7 @@ body {
 }
 
 .wishlist {
-    border-color: var(--bs-color-gray) !important;
+    border-color: #cacaca !important;
 }
 .wishlist:hover, .btn.btn-primary:active {
     background: var(--bs-color-dark-red) !important;
@@ -134,6 +133,10 @@ body {
 
 .navbar-toggler:focus {
     box-shadow: none !important;
+}
+
+.productDesc {
+    font-size: 12px;
 }
 
 .navbar-toggler {

@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\admin\barangController;
+use App\Http\Controllers\admin\brandController;
 use App\Http\Controllers\admin\buktiController;
 use App\Http\Controllers\admin\categoryController;
+use App\Http\Controllers\admin\characterController;
 use App\Http\Controllers\admin\pesananController;
+use App\Http\Controllers\admin\seriesController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\indexController;
@@ -35,6 +38,9 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/produk', barangController::class);
         Route::resource('/pesanan', pesananController::class);
         Route::resource('/bukti', buktiController::class);
+        Route::resource('/series', seriesController::class);
+        Route::resource('/character', characterController::class);
+        Route::resource('/brand', brandController::class);
         Route::get('/status/{id}/{inv}', [orderController::class, 'status']);
         Route::get('/status/{id}', [orderController::class, 'selesai']);
     });

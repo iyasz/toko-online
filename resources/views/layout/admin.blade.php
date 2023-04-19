@@ -26,10 +26,19 @@
                         <a href="/pesanan" class="nav-link">Pesanan</a>
                     </li>
                     <li class="nav-item mx-3 ">
-                        <a href="/category" class="nav-link">Kategori</a>
+                        <a href="/category" class="nav-link">Category</a>
                     </li>
                     <li class="nav-item mx-3 ">
                         <a href="/produk" class="nav-link">Produk</a>
+                    </li>
+                    <li class="nav-item mx-3 ">
+                        <a href="/character" class="nav-link">Character</a>
+                    </li>
+                    <li class="nav-item mx-3 ">
+                        <a href="/series" class="nav-link">Series</a>
+                    </li>
+                    <li class="nav-item mx-3 ">
+                        <a href="/brand" class="nav-link">Brand</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ">

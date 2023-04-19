@@ -1,23 +1,23 @@
 function decrementQtyProduct() {
     var currentVal = $('#qtyProduct').val();
-    var currentVal = $('#qtyBarang').val();
 
     if (currentVal > 1) {
         $('#qtyProduct').val(currentVal - 1);
-        $('#qtyBarang').val(currentVal - 1);
     }
 }
 
 function incrementQtyProduct() {
-    var currentVal = $('#qtyBarang').val();
     var currentVal = $('#qtyProduct').val();
     $('#qtyProduct').val(parseInt(currentVal) + 1);
-    $('#qtyBarang').val(parseInt(currentVal) + 1);
     
 }
 
 $('#cartPayment').click(function(){
     window.location.href="/payment"
+})
+
+$('#productAuth').click(function(){
+    window.location.href="/auth/login"
 })
 
 function reloadWishlist(){
@@ -61,7 +61,6 @@ $('#cartAdd').on('click', function(){
 
 $('#wishlistRemove').on('click', function(){
     console.log("ini remove")
-    // location.reload()
 })
 
 $(document).ready(function() {

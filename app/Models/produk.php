@@ -13,6 +13,9 @@ class produk extends Model
 
     protected $fillable = [
         'category_id',
+        'series_id',
+        'brand_id',
+        'character_id',
         'image',
         'name',
         'harga',

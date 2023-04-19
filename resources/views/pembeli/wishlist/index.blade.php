@@ -27,7 +27,7 @@
                                                     <p class="color-org n-semibold">IDR {{ number_format($data->produk->harga) }}</p>
                                                     <div class="row mb-3">
                                                         <div class="col-lg-9 col-md-9 col-10 pe-0">
-                                                            <button class="btn btn-primary border-0 n-semibold py-2 rounded-1 btn-sm w-100">ADD TO CART</button>
+                                                            <button @if($data->produk->stok < 1) disabled @endif id="{{$data->produk->stok > 0 ? 'addCartFromWishlist' : ''}}" class="btn btn-primary border-0 n-semibold py-2 rounded-1 btn-sm w-100">ADD TO CART</button>
                                                         </div>
                                                         <div class="col-lg-3 col-md-3 col-2">
                                                             <form action="/wishlist/{{$data->id}}" method="post">

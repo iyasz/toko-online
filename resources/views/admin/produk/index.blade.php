@@ -12,6 +12,8 @@
                     {{SESSION('success')}}
                 </div>
                 @endif
+                <div class="card mt-3 shadow-sm border-0">
+                    <div class="card-body">
                 <div class="table-responsive mt-2">
                     <table class="table">
                         <thead>
@@ -45,6 +47,8 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
             </div>
         </div>
     </div>
