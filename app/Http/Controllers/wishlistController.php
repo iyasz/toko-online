@@ -78,6 +78,6 @@ class wishlistController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-        return "Berhasil Ditambahkan";
+        return "wishlist Berhasil";
     }
 }

@@ -30,14 +30,14 @@
                                 <div class="col-4 px-2" id="containerWishlist">
                                     @if (Auth::user())
                                         <button @if($produk->stok < 1) disabled @endif id="{{ $wishlist > 0 ? 'wishlistRemove' : 'wishlistBtn' }}" class="btn btn-primary text-black w-100 rounded-1 bg-transparent py-2 wishlist @if($wishlist > 0)active @endif "><img src="{{ asset('assets/img/maskot/'.($wishlist > 0 ? 'wishlist_active.svg' : 'wishlist.svg')) }}" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>
-                                    @else <a href="/auth/login" @if ($produk->stok < 1) disabled @endif class="btn btn-primary text-black w-100 rounded-1 bg-transparent wishlist py-2"><img src="{{ asset('assets/img/maskot/wishlist.svg') }}" width="25px" class="me-1 " alt=""> Wishlist</a>
+                                    @else <a href="/auth/login" @if($produk->stok < 1) disabled @endif class="btn btn-primary text-black w-100 rounded-1 bg-transparent wishlist py-2"><img src="{{ asset('assets/img/maskot/wishlist.svg') }}" width="25px" class="me-1 " alt=""> Wishlist</a>
                                     @endif
                                 </div>
                                 <div class="col-8">
                                     @if (Auth::user())
-                                        <button @if ($produk->stok < 1) disabled @endif class="btn btn-primary n-semibold w-100 rounded-1 border-0 py-2" id="cartAdd">Add to Cart</button>
+                                        <button @if($produk->stok < 1) disabled @endif class="btn btn-primary n-semibold w-100 rounded-1 border-0 py-2" id="cartAdd">Add to Cart</button>
                                     @else
-                                        <a href="/auth/login" @if ($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</a>
+                                        <a href="/auth/login" @if($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</a>
                                     @endif
                                 </div>
                             </div>

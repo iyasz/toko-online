@@ -20,6 +20,9 @@ $('#cartPayment').click(function(){
     window.location.href="/payment"
 })
 
+function reloadWishlist(){
+    return `<button id="wishlistRemove" class="btn btn-primary active text-black w-100 rounded-1 bg-transparent py-2 wishlist "><img src="/assets/img/maskot/wishlist_active.svg" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>`;
+}
 
 $('#wishlistBtn').on('click', function(){
     $.ajax({
@@ -33,9 +36,7 @@ $('#wishlistBtn').on('click', function(){
         },
         success: function(e){
             console.log(e)
-            $('#wishlistBtn').addClass('active');
-            $('#imgWishlist').attr('src', `/assets/img/maskot/wishlist_active.svg`);
-            $('#wishlistBtn').attr('id', 'wishlistRemove');
+            $('#containerWishlist').html(reloadWishlist());
         },
     })
 })
@@ -60,7 +61,7 @@ $('#cartAdd').on('click', function(){
 
 $('#wishlistRemove').on('click', function(){
     console.log("ini remove")
-    location.reload()
+    // location.reload()
 })
 
 $(document).ready(function() {
