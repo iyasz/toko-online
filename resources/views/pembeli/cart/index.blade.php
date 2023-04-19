@@ -11,6 +11,7 @@
                             <div class="py-2">
                                 <h4 class="mb-0">Shopping Cart</h4>
                             </div>
+                            @if($count > 0)
                             <input type="hidden" name="" value="{{$totalAll = 0}}">
                             @foreach ($cart as $data)
                                 <hr>
@@ -36,6 +37,13 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @else 
+                            <hr>
+                            <div class="text-center py-3">
+                                <h5 class="mb-1">Kamu belum belanja apapun</h4>
+                                <a class="text-decoration-none color-org" href="/store">Ayo Mulai Belanja!</a>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -43,10 +51,10 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <div class="text-center">
-                                <h4>Total Price</h4>
-                                <h3 class="color-org n-semibold">IDR {{ number_format($totalAll) }}</h3>
-                                <input type="hidden" name="" value="{{$totalAll}}" id="">
-                                <a href="/payment" class="btn btn-primary w-100 border-0 py-2 n-semibold">CHECKOUT</a>
+                                <p class="mb-2 opacity-75">Total Price</p>
+                                <h3 class="color-org n-semibold">IDR {{$count > 0 ? number_format($totalAll) : '' }}</h3>
+                                <input type="hidden" name="" value="{{$count > 0 ? $totalAll : ''}}" id="">
+                                <button id="cartPayment" class="btn btn-primary w-100 border-0 py-2 n-semibold" {{$count > 0 ? '' : 'disabled'}}>CHECKOUT</button>
                                 <hr>
                             </div>
                         </div>

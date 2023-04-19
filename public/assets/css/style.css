@@ -84,6 +84,19 @@ body {
     background: #ee4802 !important;
 }
 
+.btn.btn-primary:disabled{
+    background: #696969;
+    border: #696969;
+    cursor: not-allowed !important;
+    pointer-events: visible;
+}
+.btn.btn-primary:disabled:active{
+    background: #696969 !important;
+    border: #696969 !important;
+    cursor: not-allowed !important;
+}
+
+
 .form-control:focus {
     box-shadow: none;
     border-color: #dee2e6;

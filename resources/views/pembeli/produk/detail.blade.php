@@ -37,8 +37,7 @@
                                     @if (Auth::user())
                                         <button @if ($produk->stok < 1) disabled @endif class="btn btn-primary n-semibold w-100 rounded-1 border-0 py-2" id="cartAdd">Add to Cart</button>
                                     @else
-                                        <a href="/auth/login" @if ($produk->stok < 1) disabled @endif
-                                            class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</a>
+                                        <a href="/auth/login" @if ($produk->stok < 1) disabled @endif class="btn btn-primary w-100 rounded-1 border-0 py-2">Add to Cart</a>
                                     @endif
                                 </div>
                             </div>

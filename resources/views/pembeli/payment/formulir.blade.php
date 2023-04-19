@@ -33,6 +33,11 @@
                 <div class="col-lg-4 col-md-4 col-12 mt-5">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
+                            <div class="text-center">
+                                <p class="mb-2">Total </p>
+                                <h2 class="n-semibold" style="color: #FC4C02;">IDR {{number_format($totalAll)}}</h2>
+                            </div>
+                            <hr>
                             <h4 class="n-semibold opacity-75">Add Address</h4>
                             <form action="/payment/store" method="post">
                                 <input name="total_price" type="hidden" value="{{$totalAll}}">
@@ -61,11 +66,7 @@
                                 <button class="btn btn-primary rounded-1 w-100 mb-3 border-0">Bayar Sekarang</button>
                             </div>
                         </form>
-                        <div class="text-center">
-                            <hr>
-                            <p class="mb-2">Total </p>
-                            <h2 class="n-semibold" style="color: #FC4C02;">IDR {{number_format($totalAll)}}</h2>
-                        </div>
+                      
                         </div>
                     </div>
                 </div>

@@ -17,9 +17,10 @@ class cartController extends Controller
     public function index()
     {
         $cart = cart::with(['produk','user'])->where('user_id', Auth::user()->id)->get();
+        $cartCount = $cart->count();
         $cat = category::all();
         $pro = produk::all();
-        return view('pembeli.cart.index', ['category' => $cat, 'produk' => $pro, 'cart' => $cart, 'total' => 0]);
+        return view('pembeli.cart.index', ['category' => $cat, 'produk' => $pro, 'cart' => $cart, 'count' => $cartCount]);
     }
 
     /**

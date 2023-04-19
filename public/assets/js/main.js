@@ -16,6 +16,10 @@ function incrementQtyProduct() {
     
 }
 
+$('#cartPayment').click(function(){
+    window.location.href="/payment"
+})
+
 
 $('#wishlistBtn').on('click', function(){
     $.ajax({

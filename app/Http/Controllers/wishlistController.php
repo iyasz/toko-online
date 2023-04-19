@@ -15,7 +15,8 @@ class wishlistController extends Controller
     public function index()
     {
         $wishlist = wishlist::where('user_id', Auth::user()->id)->get();
-        return view('pembeli.wishlist.index', compact('wishlist'));
+        $count = $wishlist->count();
+        return view('pembeli.wishlist.index', compact('wishlist', 'count'));
     }
 
     /**
