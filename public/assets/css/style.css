@@ -36,7 +36,7 @@ body {
 
 .badge-primary {
     width: max-content;
-    background-color: #58d758;
+    background-color: #41B774;
     font-size: 14px;
 }
 
@@ -144,6 +144,7 @@ body {
 }
 
 .text-header-product {
+    font-size: 13.4px;
     line-height: 1.2;
     overflow: hidden;
   display: -webkit-box;

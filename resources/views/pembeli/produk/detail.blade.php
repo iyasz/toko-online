@@ -84,7 +84,7 @@
             </div>
         </div>
         <h5 class="n-semibold">More Stuff Like This!</h5>
-        <div class="card mt-2 shadow-sm border-0">
+        <div class="card mt-2 shadow-sm border-0 mb-5">
             <div class="card-body">
                 <div class="row">
                     @foreach ($items as $data)
@@ -92,8 +92,7 @@
                         <a href="/items/{{$data->id}}/{{$data->slug}}" class="text-decoration-none text-black">
                             <img src="{{asset('/storage/gambar/'. $data->image)}}" width="100%" class="rounded-3" alt="">
                             <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
-                            <p class="text-release my-2">Releases {{date('F Y'), strtotime($data->created_at)}}</p>
-                            <p class="mt-2 text-header-product n-medium mb-0">{{$data->name}}</p>
+                            <p class="mt-2 text-header-product n-semibold mb-0">{{$data->name}}</p>
                             <p class="mt-2 text-danger n-semibold">IDR {{number_format($data->harga)}}</p>
                         </a>
                     </div>
