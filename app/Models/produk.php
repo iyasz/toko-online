@@ -25,5 +25,24 @@ class produk extends Model
         'deskripsi',
     ];
 
+ 
+    public function series()
+    {
+        return $this->belongsTo(series::class);
+    }
+    
+    public function brand()
+    {
+        return $this->belongsTo(brand::class);
+    }
+    
+    public function character()
+    {
+        return $this->belongsTo(character::class);
+    }
 
+    public function category()
+    {
+        return $this->belongsTo(category::class);
+    }
 }

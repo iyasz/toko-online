@@ -31,6 +31,36 @@
                                 <input autocomplete="off" type="file" name="img" value="{{$produk->image}}" class="form-control rounded-1">
                             </div>
                             <div class="mt-3">
+                                <label class="mb-2 opacity-75">Brand</label>
+                                <select name="brand_id" value="{{old('brand_id')}}" class="form-select rounded-1">
+                                    <option selected disabled>Select An Option</option>
+                                    @foreach ($brand as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('brand_id') <p class="text-danger">{{$message}}</p> @enderror
+                            </div>
+                            <div class="mt-3">
+                                <label class="mb-2 opacity-75">Series</label>
+                                <select name="series_id" value="{{old('series_id')}}" class="form-select rounded-1">
+                                    <option selected disabled>Select An Option</option>
+                                    @foreach ($series as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('series_id') <p class="text-danger">{{$message}}</p> @enderror
+                            </div>
+                            <div class="mt-3">
+                                <label class="mb-2 opacity-75">Character</label>
+                                <select name="character_id" value="{{old('character_id')}}" class="form-select rounded-1">
+                                    <option selected disabled>Select An Option</option>
+                                    @foreach ($character as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('character_id') <p class="text-danger">{{$message}}</p> @enderror
+                            </div>
+                            <div class="mt-3">
                                 <label class="mb-2 opacity-75">Nama</label>
                                 <input autocomplete="off" required type="text" name="name" value="{{$produk->name}}" class="form-control rounded-1">
                                 @error('name') <p class="text-danger">{{$message}}</p> @enderror

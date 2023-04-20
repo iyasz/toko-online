@@ -39,7 +39,42 @@
                             <hr class="mb-0">
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <p class="productDesc color-gray">{{ $produk->deskripsi }}</p>
+                                    <p class="productDesc color-gray">{!! nl2br(e(str_replace('\n', '
+                                    ', $produk->deskripsi))) !!}</p>
+                                    <ul class="ps-0 product-view-details ">  
+                                        @if(!empty($produk->character))
+                                        <li class="d-flex mb-2">
+                                            <p class="mb-0 color-gray">Character</p>
+                                            <div class="info">
+                                                <a href="/search?character={{$produk->character->name}}" class="d-inline-block text-decoration-none rounded-4">{{$produk->character->name}}</a>
+                                            </div>
+                                        </li>
+                                        @endif
+                                        @if(!empty($produk->series))
+                                        <li class="d-flex mb-2">
+                                            <p class="mb-0 color-gray">Series</p>
+                                            <div class="info">
+                                                <a href="/search?series={{$produk->series->name}}" class="d-inline-block text-decoration-none rounded-4 color-gray">{{$produk->series->name}}</a>
+                                            </div>
+                                        </li>
+                                        @endif
+                                        @if(!empty($produk->category))
+                                        <li class="d-flex mb-2">
+                                            <p class="mb-0 color-gray">Category</p>
+                                            <div class="info">
+                                                <a href="/c/{{$produk->category->id}}" class="d-inline-block text-decoration-none rounded-4 color-gray">{{$produk->category->name}}</a>
+                                            </div>
+                                        </li>
+                                        @endif
+                                        @if(!empty($produk->brand))
+                                        <li class="d-flex mb-2">
+                                            <p class="mb-0 color-gray">Manufacturer</p>
+                                            <div class="info">
+                                                <a href="/search?brand={{$produk->brand->name}}" class="d-inline-block text-decoration-none rounded-4 color-gray">{{$produk->brand->name}}</a>
+                                            </div>
+                                        </li>
+                                        @endif
+                                    </ul>
                                 </div>
                             </div>
                         </div>

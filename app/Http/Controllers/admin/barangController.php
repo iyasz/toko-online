@@ -7,6 +7,9 @@ use App\Models\category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\brand;
+use App\Models\character;
+use App\Models\series;
 
 class barangController extends Controller
 {
@@ -16,7 +19,10 @@ class barangController extends Controller
     public function index()
     {
         $produk = produk::all();
-        return view('admin.produk.index', ['produk' => $produk]);
+        $brand = brand::all();
+        $series = series::all();
+        $character = character::all();
+        return view('admin.produk.index', compact('produk','brand','series','character'));
     }
 
     /**
@@ -24,8 +30,11 @@ class barangController extends Controller
      */
     public function create()
     {
-        $cat = category::all();
-        return view('admin.produk.create', ['category' => $cat]);
+        $category = category::all();
+        $brand = brand::all();
+        $series = series::all();
+        $character = character::all();
+        return view('admin.produk.create', compact('category','brand','series','character'));
     }
 
     /**
@@ -72,7 +81,10 @@ class barangController extends Controller
     {
         $produk = produk::find($id);
         $category = category::all();
-        return view('admin.produk.edit', compact('produk','category'));
+        $brand = brand::all();
+        $series = series::all();
+        $character = character::all();
+        return view('admin.produk.create', compact('category','brand','series','character', 'produk'));
     }
 
     /**

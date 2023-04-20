@@ -25,7 +25,7 @@ class indexController extends Controller
 
     public function product($id)
     {
-        $produk = produk::find($id);
+        $produk = produk::findOrFail($id);
         $wishlist = 0;
         if(Auth::user()){
             $wishlist = wishlist::where('barang_id', $id)->where('user_id', Auth::user()->id)->count();
