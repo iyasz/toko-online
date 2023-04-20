@@ -35,7 +35,7 @@
                                 <select name="brand_id" value="{{old('brand_id')}}" class="form-select rounded-1">
                                     <option selected disabled>Select An Option</option>
                                     @foreach ($brand as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    <option @if($produk->brand_id == $data->id) selected @endif value="{{$data->id}}">{{$data->name}}</option>
                                     @endforeach
                                 </select>
                                 @error('brand_id') <p class="text-danger">{{$message}}</p> @enderror
@@ -45,7 +45,7 @@
                                 <select name="series_id" value="{{old('series_id')}}" class="form-select rounded-1">
                                     <option selected disabled>Select An Option</option>
                                     @foreach ($series as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    <option @if($produk->series_id == $data->id) selected @endif value="{{$data->id}}">{{$data->name}}</option>
                                     @endforeach
                                 </select>
                                 @error('series_id') <p class="text-danger">{{$message}}</p> @enderror
@@ -55,7 +55,7 @@
                                 <select name="character_id" value="{{old('character_id')}}" class="form-select rounded-1">
                                     <option selected disabled>Select An Option</option>
                                     @foreach ($character as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    <option @if($produk->character_id == $data->id) selected @endif value="{{$data->id}}">{{$data->name}}</option>
                                     @endforeach
                                 </select>
                                 @error('character_id') <p class="text-danger">{{$message}}</p> @enderror

@@ -30,8 +30,15 @@ class indexController extends Controller
         if(Auth::user()){
             $wishlist = wishlist::where('barang_id', $id)->where('user_id', Auth::user()->id)->count();
         }
-        // dd($wishlist);
-        return view('pembeli.produk.detail', compact('produk', 'wishlist'));
+
+        $items = produk::where('category_id', $produk->category->category_id)
+            ->where('character_id', $produk->character->id)
+            ->where('series_id', $produk->series->id)
+            ->inRandomOrder()
+            ->take(20)
+            ->get();
+
+        return view('pembeli.produk.detail', compact('produk', 'wishlist', 'items'));
     }
 
     public function category($id)

@@ -79,12 +79,12 @@ class barangController extends Controller
      */
     public function edit(string $id)
     {
-        $produk = produk::find($id);
+        $produk = produk::findOrFail($id);
         $category = category::all();
         $brand = brand::all();
         $series = series::all();
         $character = character::all();
-        return view('admin.produk.create', compact('category','brand','series','character', 'produk'));
+        return view('admin.produk.edit', compact('category','brand','series','character', 'produk'));
     }
 
     /**

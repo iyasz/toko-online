@@ -2,8 +2,10 @@
 
 @section('content')
     <section id="category">
-        <div class="container mt-5">
-            <div class="card border-0 shadow-sm mt-10">
+        <div class="container ">
+            <div class="row">
+                <div class="col-12">
+            <div class="card border-0 shadow-sm mt-10 mb-5">
                 <div class="card-body">
                     <div class="row py-1">
                         <div class="col-lg-6 col-md-6 col-12 ">
@@ -13,7 +15,7 @@
                             <div class="py-1 @if ($produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">{{$produk->stok < 1 ? 'Tidak Tersedia' : 'Stock Ready'}}
                             </div>
                             <h3 class="mt-2 n-semibold">{{ $produk->name }}</h3>
-                            <p class="mt-2 opacity-50">By {{ $produk->produser }}</p>
+                            <p class="mt-2 opacity-50">By {{$produk->brand->name}}</p>
                             <hr>
                             <h4 class="n-semibold color-org">IDR {{ number_format($produk->harga) }}</h4>
                             <div class="qty d-flex mt-3" id="wishlistQty">
@@ -39,8 +41,7 @@
                             <hr class="mb-0">
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <p class="productDesc color-gray">{!! nl2br(e(str_replace('\n', '
-                                    ', $produk->deskripsi))) !!}</p>
+                                    <p class="productDesc color-gray">{!! nl2br($produk->deskripsi) !!}</p>
                                     <ul class="ps-0 product-view-details ">  
                                         @if(!empty($produk->character))
                                         <li class="d-flex mb-2">
@@ -82,6 +83,26 @@
                 </div>
             </div>
         </div>
+        <h5 class="n-semibold">More Stuff Like This!</h5>
+        <div class="card mt-2 shadow-sm border-0">
+            <div class="card-body">
+                <div class="row">
+                    @foreach ($items as $data)
+                    <div class="col-lg-2 col-md-4 col-6 ">
+                        <a href="/items/{{$data->id}}/{{$data->slug}}" class="text-decoration-none text-black">
+                            <img src="{{asset('/storage/gambar/'. $data->image)}}" width="100%" class="rounded-3" alt="">
+                            <div class="@if($data->stok < 1) badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">@if($data->stok < 1) Stok Habis @else Ready Stock @endif</div>
+                            <p class="text-release my-2">Releases {{date('F Y'), strtotime($data->created_at)}}</p>
+                            <p class="mt-2 text-header-product n-medium mb-0">{{$data->name}}</p>
+                            <p class="mt-2 text-danger n-semibold">IDR {{number_format($data->harga)}}</p>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 @endsection
