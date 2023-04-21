@@ -197,6 +197,15 @@ body {
     background: var(--bs-color-primary);
 }
 
+.btnQtyCart {
+    background: none;
+    border: none;
+}
+
+.qty_product input {
+    width: 22px;
+}
+
 /* Transaksi  */
 .nav-tabs {
     border-bottom: none;

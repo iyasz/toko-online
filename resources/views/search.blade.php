@@ -14,7 +14,7 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
                         <div class="row">
-                            @if($count != 0)
+                            @if($count != 0 )
                                 @foreach ($produk as $data)
                                 <div class="col-lg-3 col-md-4 col-6 ">
                                     <a href="/items/{{$data->id}}/{{$data->slug}}" class="text-decoration-none text-black">

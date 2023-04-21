@@ -11,6 +11,13 @@ function incrementQtyProduct() {
     $('#qtyProduct').val(parseInt(currentVal) + 1);
 }
 
+function showFlashAlert(message, type) {
+    $('#alertWishlist').removeClass('d-none')
+    $('#alertWishlist').addClass(type)
+    $('#alertWishlist').text(message);
+    $('#alertWishlist').slideDown();
+}
+
 $('#cartPayment').click(function(){
     window.location.href="/payment"
 })
@@ -19,7 +26,7 @@ $('#productAuth').click(function(){
     window.location.href="/auth/login"
 })
 
-$('#searchURL').on('click', function(e) {
+$('.product-view-details li .info a').on('click', function(e) {
     e.preventDefault(); 
     window.location.href = this.href + '&category=makanan'; 
 });
@@ -55,20 +62,12 @@ $('#cartAdd').on('click', function(){
         }
       })
       .then(function (response) {
-          console.log(response);
           window.location.href="/cart"
       })
       .catch(function (error) {
         console.log(error);
       });
 })
-
-function showFlashAlert(message, type) {
-    $('#alertWishlist').removeClass('d-none')
-    $('#alertWishlist').addClass(type)
-    $('#alertWishlist').text(message);
-    $('#alertWishlist').slideDown();
-}
 
 
 

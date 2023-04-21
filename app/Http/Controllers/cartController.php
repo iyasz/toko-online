@@ -36,6 +36,11 @@ class cartController extends Controller
      */
     public function store(Request $request)
     {
+        // $validate = cart::where('user_id', Auth::user()->id)
+        // ->where('barang_id', $request->input('id_barang'))
+        // ->first();
+
+        
         cart::create([
             'user_id' => Auth::user()->id,
             'barang_id' => $request->input('id_barang'),
@@ -44,7 +49,6 @@ class cartController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-        return redirect('/cart');
     }
 
     /**
