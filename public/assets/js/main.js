@@ -9,7 +9,6 @@ function decrementQtyProduct() {
 function incrementQtyProduct() {
     var currentVal = $('#qtyProduct').val();
     $('#qtyProduct').val(parseInt(currentVal) + 1);
-    
 }
 
 $('#cartPayment').click(function(){
@@ -19,6 +18,11 @@ $('#cartPayment').click(function(){
 $('#productAuth').click(function(){
     window.location.href="/auth/login"
 })
+
+$('#searchURL').on('click', function(e) {
+    e.preventDefault(); 
+    window.location.href = this.href + '&category=makanan'; 
+});
 
 function reloadWishlist(){
     return `<button id="wishlistRemove" class="btn btn-primary active text-black w-100 rounded-1 bg-transparent py-2 wishlist "><img src="/assets/img/maskot/wishlist_active.svg" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>`;

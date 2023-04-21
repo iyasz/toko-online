@@ -153,6 +153,10 @@ body {
   text-overflow: ellipsis;
 }
 
+.text-header-product:hover {
+    text-decoration: underline;
+}
+
 .text-release {
     font-size: 12px;
     color: #989898;
@@ -191,3 +195,51 @@ body {
     color: white;
     background: var(--bs-color-primary);
 }
+
+/* Transaksi  */
+.nav-tabs {
+    border-bottom: none;
+ }
+
+ .tab-content {
+    border: none !important;
+ }
+ 
+ .nav-tabs .nav-link {
+    border: none;
+    color: #333;
+    padding: 10px;
+    margin-right: 5px;
+    background-color: #fff;
+    border-radius: 0;
+    transition: color 0.4s;
+
+ }
+
+ .nav-tabs .nav-link:hover {
+    color: var(--bs-color-primary);
+ }
+ 
+ .nav-tabs .nav-link.active {
+    border: none;
+    color: var(--bs-color-primary);
+    background-color: #fff;
+    border-bottom: 2px solid var(--bs-color-primary);
+ }
+ 
+ .tab-content {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-top: none;
+ }
+ 
+ @keyframes slide {
+    from {
+       transform: translateX(0%);
+    }
+    to {
+       transform: translateX(100%);
+    }
+ }
+
+ /* end transaksi  */

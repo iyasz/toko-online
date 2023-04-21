@@ -8,7 +8,7 @@
                     <div class="card border-0 shadow-sm mb-5">
                         <div class="card-body">
                             <div class="py-2">
-                                <h4 class="mb-0">My Wishlist</h4>
+                                <h4 class="mb-0 n-semibold">My Wishlist</h4>
                             </div>
                             <hr class="">
                             <input type="hidden" value="{{ $totalAll = 0 }}">
@@ -44,7 +44,7 @@
                                 @endforeach
                                 @else
                                 <div class="text-center py-3">
-                                    <h3 class="mb-1">Waduh Wishlistmu Kosong!</h4>
+                                    <h3 class="mb-1 n-semibold">Waduh Wishlistmu Kosong!</h4>
                                     <a class="text-decoration-none color-org" href="/store">Yuk cari item yang kamu mau!</a>
                                 </div>
                                 @endif

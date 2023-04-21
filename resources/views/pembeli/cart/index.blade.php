@@ -9,7 +9,7 @@
                     <div class="card border-0 shadow-sm mb-5">
                         <div class="card-body">
                             <div class="py-2">
-                                <h4 class="mb-0">Shopping Cart</h4>
+                                <h4 class="mb-0 n-semibold">Shopping Cart</h4>
                             </div>
                             @if($count > 0)
                             <input type="hidden" name="" value="{{$totalAll = 0}}">
@@ -40,7 +40,7 @@
                             @else 
                             <hr>
                             <div class="text-center py-3">
-                                <h5 class="mb-1">Kamu belum belanja apapun</h4>
+                                <h4 class="mb-1 n-semibold">Kamu belum belanja apapun</h4>
                                 <a class="text-decoration-none color-org" href="/store">Ayo Mulai Belanja!</a>
                             </div>
                             @endif

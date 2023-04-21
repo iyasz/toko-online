@@ -80,10 +80,10 @@ class barangController extends Controller
     public function edit(string $id)
     {
         $produk = produk::findOrFail($id);
-        $category = category::all();
-        $brand = brand::all();
-        $series = series::all();
-        $character = character::all();
+        $category = category::orderBy('name', 'asc')->get(  );
+        $brand = brand::orderBy('name', 'asc')->get();
+        $series = series::orderBy('name', 'asc')->get();
+        $character = character::orderBy('name', 'asc')->get();
         return view('admin.produk.edit', compact('category','brand','series','character', 'produk'));
     }
 
