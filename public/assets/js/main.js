@@ -63,6 +63,37 @@ $('#cartAdd').on('click', function(){
       });
 })
 
+function showFlashAlert(message, type) {
+    $('#alertWishlist').removeClass('d-none')
+    $('#alertWishlist').addClass(type)
+    $('#alertWishlist').text(message);
+    $('#alertWishlist').slideDown();
+}
+
+
+
+$('#addCartFromWishlist').on('click', function(){
+    axios({
+        method: 'post',
+        url: '/cart/store',
+        data: {
+            id_barang: $('#id_product_wishlist').val(),
+        }
+      })
+      .then(function (response) {
+          console.log(response.data);
+          if(response.data.length == 0){
+              showFlashAlert('Item Berhasil Ditambahkan Ke Cart!', 'alert-success')
+        }else{
+            showFlashAlert('Item Ini Sudah Ada di Keranjangmu', 'alert-danger')
+          }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+})
+
+
 $('#wishlistRemove').on('click', function(){
     console.log("ini remove")
 })

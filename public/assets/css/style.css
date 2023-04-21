@@ -151,6 +151,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
+  text-decoration: none;
 }
 
 .text-header-product:hover {
@@ -233,13 +234,5 @@ body {
     border-top: none;
  }
  
- @keyframes slide {
-    from {
-       transform: translateX(0%);
-    }
-    to {
-       transform: translateX(100%);
-    }
- }
 
  /* end transaksi  */

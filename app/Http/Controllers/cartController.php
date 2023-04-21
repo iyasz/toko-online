@@ -82,4 +82,26 @@ class cartController extends Controller
 
         return redirect('/cart');
     }
+
+    public function storeAjax(Request $request)
+    {
+
+        $validate = cart::where('user_id', Auth::user()->id)
+                    ->where('barang_id', $request->input('id_barang'))
+                    ->get();
+
+
+        if($validate->count() == 0){   
+            cart::create([
+                'user_id' => Auth::user()->id,
+                'barang_id' => $request->input('id_barang'),
+                'qty' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        return response()->json($validate);
+
+    }
 }

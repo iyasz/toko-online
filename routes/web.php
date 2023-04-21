@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/transaksi/{id}', [transaksiController::class, 'view']);
         Route::get('/riwayat', [transaksiController::class, 'riwayat']);
         Route::post('/wishlist/store', [wishlistController::class, 'storeAjax']);
+        Route::post('/cart/store', [cartController::class, 'storeAjax']);
+
     });
 
 });
