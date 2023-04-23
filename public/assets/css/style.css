@@ -202,6 +202,21 @@ body {
     border: none;
 }
 
+.select2-results__option:hover {
+    color: black !important;
+    background-color: rgb(204, 241, 238) !important;
+}
+
+.select2-container--open .select2-dropdown--below{
+    border-top: 1px solid #aaa;
+}
+
+.select2 {
+    position: absolute;
+    top: 45px;
+    z-index: -1;
+}
+
 .qty_product input {
     width: 22px;
 }

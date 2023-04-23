@@ -5,7 +5,7 @@
     <section id="category">
         <div class="container mt-5">
             <div class="row mt-5">
-                <div class="col-lg-8 mt-5">
+                <div class="col-lg-8 col-md-12 col-12 mt-5">
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body">
                             <h4 class="n-semibold opacity-75">Your Order</h4>
@@ -13,10 +13,10 @@
                             @foreach ($cart as $data)
                                 <hr>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-lg-3 col-md-3 col-12">
                                         <td><img width="100%" height="100%" class="rounded-2" src="{{asset('storage/gambar/'.$data->produk->image)}}" alt=""></td>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-lg-9 col-md-9 col-12 mt-lg=0 mt-3">
                                          <a class="text-decoration-none text-dark n-semibold">{{$data->produk->name}}</a>
                                          <br>
                                          <p class="mb-0">Jumlah : {{$data->qty}}</p>
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                         </div>
-                <div class="col-lg-4 col-md-4 col-12 mt-5">
+                <div class="col-lg-4 col-md-12 col-12 mt-5">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <div class="text-center">
@@ -44,8 +44,30 @@
                                 @csrf
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Nama</label>
-                                    <input autocomplete="off" required type="text" name="name" value="{{old('name')}}" class="form-control rounded-1">
+                                    <input autocomplete="off" required type="text" name="name" value="{{Auth::user()->name}}" class="form-control rounded-1">
                                     @error('name') <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                                <div class="mt-3 position-relative">
+                                    <label class="mb-1 opacity-75">Province</label>
+                                    <input type="text" name="" id="select2-data-input" value="" class="form-control select2-data-input">
+                                    <select class="form-select select2-data" name="state">
+                                        @foreach ($province['rajaongkir']['results'] as $data)
+                                        <option value="{{$data['province_id']}}">{{$data['province']}}</option>
+                                        @endforeach
+                                      </select>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="mb-1 opacity-75">City</label>
+                                    <input autocomplete="off" required type="text" name="city_id" value="{{old('city_id')}}" class="form-control rounded-1">
+                                    @error('city_id') <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                                <div class="mt-3">
+                                    <label class="mb-1 opacity-75">City</label>
+                                    <select name="" id="" class="form-select">
+                                        @foreach ($province['rajaongkir']['results'] as $data)
+                                        <option value="{{$data['province_id']}}">{{$data['province']}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Alamat</label>

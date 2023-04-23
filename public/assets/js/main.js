@@ -18,6 +18,28 @@ function showFlashAlert(message, type) {
     $("#alertWishlist").slideDown();
 }
 
+// select 2
+$(document).ready(function () {
+    // Initialize Select2
+    $(".select2-data").select2({
+        minimumResultsForSearch: -1, 
+    });
+
+    $(".select2-data-input").on("focus", function () {
+        $(this).siblings("select").select2("open");
+    });
+});
+
+$(document).ready(function() {
+    $('.select2-data-input').on('keyup', function() {
+      var inputVal = $(this).val(); // Get input value
+      $(this).attr("value", inputVal);
+      console.log($(this).val())
+    });
+  });
+
+//end select 2
+
 $("#cartPayment").click(function () {
     window.location.href = "/payment";
 });

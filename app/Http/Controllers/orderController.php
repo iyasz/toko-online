@@ -10,14 +10,16 @@ use App\Models\produk;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class orderController extends Controller
 {
     public function index()
     {
         $cart = cart::with(['produk','user'])->where('user_id', Auth::user()->id)->get();
-        $cat = category::all();
-        return view('pembeli.payment.formulir', ['category' => $cat, 'cart' => $cart]);
+        $province = Http::get('https://api.rajaongkir.com/starter/province?key=179ae16b7b1883dc77ab80d40c52d141')->json();
+        // dd($province);
+        return view('pembeli.payment.formulir', compact('cart', 'province'));
     }
 
     public function store(Request $request)

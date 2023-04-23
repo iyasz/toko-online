@@ -6,11 +6,13 @@
             <div class="col-lg-4 col-md-4 col-12 mt-5">
                 <div class="card shadow-sm border-0">
                     <div class="card-body text-center">
-                        @if(isset($_GET['q']))
-                        <h4>Result For {{ucfirst($_GET['q'] ?? '')}}</h4>
-                        @else
-                        <h4>All Items</h4>
-                        @endif
+                        <h5 class="n-semibold">
+                            @if(isset($_GET['q']))
+                            {{ !empty($_GET['q']) ? 'Search Result for '.ucfirst($_GET['q']) : 'All Items' }}
+                            @else
+                            All Items
+                            @endif
+                        </h5>
                     </div>
                 </div>
             </div>

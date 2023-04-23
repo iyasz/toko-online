@@ -5,7 +5,7 @@
     <section id="category">
         <div class="container mt-5">
             <div class="row mt-5">
-                <div class="col-lg-8 col-md-6 col-12 mt-5">
+                <div class="col-lg-8 col-md-12 col-12 mt-5">
                     <div class="card border-0 shadow-sm mb-5">
                         <div class="card-body">
                             <div class="py-2">
@@ -15,11 +15,11 @@
                             <input type="hidden" name="" value="{{$totalAll = 0}}">
                             @foreach ($cart as $data)
                                 <hr>
-                                <div class="row">
-                                    <div class="col-3">
+                                <div class="row ">
+                                    <div class="col-12 col-md-3 col-lg-3">
                                         <td><img width="100%" height="100%" class="rounded-2" src="{{asset('storage/gambar/'.$data->produk->image)}}" alt=""></td>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-12 col-md-9 col-lg-9 mt-3 mt-lg-0">
                                          <a class="text-decoration-none text-dark n-semibold">{{$data->produk->name}}</a>
                                          <br>
                                          <div class="d-flex qty_product">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12 mt-5">
+                <div class="col-lg-4 col-md-12 col-12 mt-5">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <div class="text-center">
