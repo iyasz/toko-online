@@ -24,30 +24,11 @@
                 <ul class="navbar-nav mx-lg-5 mx-md-0 mx-0 w-100 mt-2 mt-lg-0">
                     <li class="nav-item w-100">
                         <form class="d-flex input-group w-100" action="/search" method="get" role="search">
-                            <input class="form-control" name="q" autocomplete="off" type="search" placeholder="Lagi khilaf apa hari ini?" >
-                            <button class="input-group-text bg-org text-white border-0" id="basic-addon2"><i class="bi bi-search"></i></button>
+                            <input class="form-control " name="q" autocomplete="off" type="search" placeholder="Lagi khilaf apa hari ini?" >
+                            <button class="input-group-text bg-org text-white border-0 " id="basic-addon2"><i class="bi bi-search"></i></button>
                         </form>
                     </li>
                 </ul>
-                {{-- <ul class="navbar-nav mx-auto">
-                    <li class="nav-item mx-3 ">
-                        <a href="/store" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item mx-3 dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            Category
-                        </a>
-                        <ul class="dropdown-menu">
-                            @foreach (categories() as $data)
-                                <li><a class="dropdown-item" href="/c/{{ $data->id }}">{{ $data->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li class="nav-item mx-3 ">
-                        <a href="/payment/confirmation" class="nav-link">Pembayaran</a>
-                    </li>
-                </ul> --}}
                 <ul class="navbar-nav d-flex">
                     <li class="nav-item mx-1 d-inline-block ">
                         <a href="/transaksi" class="nav-link color-org"><i class="bi bi-box2"></i> <span class="d-inline d-md-inline d-lg-none ms-2">Transaksi</span></a>

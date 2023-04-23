@@ -18,7 +18,7 @@
                             </div>
                             <div class="mt-3">
                                 <label class="mb-2 opacity-75">Icon</label>
-                                <input autocomplete="off" required type="file" name="img" value="{{$category->icon}}" class="form-control rounded-1">
+                                <input autocomplete="off" type="file" name="img" value="{{$category->icon}}" class="form-control rounded-1">
                                 @error('img') <p class="text-danger">{{$message}}</p> @enderror
                             </div>
                             <div class="mt-3">

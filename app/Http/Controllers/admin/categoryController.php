@@ -72,15 +72,17 @@ class categoryController extends Controller
         $category = category::find($id);
 
         $validate = $request->validate([
-            'img' => 'required',
             'name' => 'required',
         ]);
 
-        $name = $request->name .'-'. random_int(100000, 999999);
+        if($request->file('img')){
 
-        $request->file('img')->storeAs('gambar', $name);
-
-        $request['icon']= $name;
+            $name = $request->name .'-'. random_int(100000, 999999);
+            
+            $request->file('img')->storeAs('gambar', $name);
+            
+            $request['icon']= $name;
+        }
         $category->update($request->except('_token', 'img'));
 
         return redirect('/category')->with('success', 'Data Berhasil Diubah!');

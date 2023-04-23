@@ -55,7 +55,7 @@
                                         <li class="d-flex mb-2">
                                             <p class="mb-0 color-gray">Series</p>
                                             <div class="info">
-                                                <a href="/search?series={{$produk->series->name}}" class="d-inline-block text-decoration-none rounded-4 color-gray">{{$produk->series->name}}</a>
+                                                <a href="/search?series={{$produk->series->name}}" class="d-inline-block text-decoration-none rounded-4">{{$produk->series->name}}</a>
                                             </div>
                                         </li>
                                         @endif
@@ -63,7 +63,7 @@
                                         <li class="d-flex mb-2">
                                             <p class="mb-0 color-gray">Category</p>
                                             <div class="info">
-                                                <a href="/c/{{$produk->category->id}}" class="d-inline-block text-decoration-none rounded-4 color-gray">{{$produk->category->name}}</a>
+                                                <a href="/c/{{$produk->category->id}}" class="d-inline-block text-decoration-none rounded-4">{{$produk->category->name}}</a>
                                             </div>
                                         </li>
                                         @endif
@@ -71,7 +71,7 @@
                                         <li class="d-flex mb-2">
                                             <p class="mb-0 color-gray">Manufacturer</p>
                                             <div class="info">
-                                                <a href="/search?brand={{$produk->brand->name}}" class="d-inline-block text-decoration-none rounded-4 color-gray">{{$produk->brand->name}}</a>
+                                                <a href="/search?brand={{$produk->brand->name}}" class="d-inline-block text-decoration-none rounded-4">{{$produk->brand->name}}</a>
                                             </div>
                                         </li>
                                         @endif

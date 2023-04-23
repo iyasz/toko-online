@@ -21,7 +21,6 @@
                             <th>Gambar</th>
                             <th>Nama</th>
                             <th>Harga</th>
-                            <th>Produser</th>
                             <th>Stok</th>
                             <th>Action</th>
                         </thead>
@@ -32,14 +31,13 @@
                                 <td><img width="130px" src="{{ asset('storage/gambar/'.$data->image) }}" alt=""></td>
                                 <td>{{$data->name}}</td>
                                 <td>{{number_format($data->harga)}}</td>
-                                <td>{{$data->produser}}</td>
                                 <td>{{$data->stok}}</td>
                                 <td>
-                                    <a href="/produk/{{$data->id}}/edit" class="btn btn-primary border-0">Edit</a>
+                                    <a href="/produk/{{$data->id}}/edit" class="btn btn-primary border-0 btn-sm">Edit</a>
                                     <form action="/produk/{{$data->id}}" method="post" class="d-inline">
                                     @csrf
                                     @method('delete')
-                                        <button onclick="return confirm('Apakah Kamu Ingin Menghapus {{$data->name}}?')" class="btn btn-danger">Delete</button>
+                                        <button onclick="return confirm('Apakah Kamu Ingin Menghapus {{$data->name}}?')" class="btn btn-danger btn-sm">Delete</button>
                                     </form>
                                 </td>
                             </tr>

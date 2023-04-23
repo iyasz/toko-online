@@ -31,8 +31,7 @@ class indexController extends Controller
             $wishlist = wishlist::where('barang_id', $id)->where('user_id', Auth::user()->id)->count();
         }
 
-        $items = produk::orWhere('character_id', $produk->character->id)
-            ->orWhere('series_id', $produk->series->id)
+        $items = produk::orWhere('series_id', $produk->series->id)
             ->inRandomOrder()
             ->take(20)
             ->get();
