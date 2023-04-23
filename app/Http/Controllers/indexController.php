@@ -50,11 +50,19 @@ class indexController extends Controller
     public function search()
     {
         $produk = 0;
-        $character = 0;
         $count = 0;
-        $countCharacter = 0;
         if(isset($_GET['q'])){
-            $produk = produk::where('name', 'like', '%'.$_GET['q'].'%')->get();
+            $produk = produk::where('name', 'like', '%'.$_GET['q'].'%')
+            ->orWhereHas('character', function($query) {
+                $query->where('name', 'like', '%'.$_GET['q'].'%');
+            })
+            ->orWhereHas('brand', function($query) {
+                $query->where('name', 'like', '%'.$_GET['q'].'%');
+            })
+            ->orWhereHas('series', function($query) {
+                $query->where('name', 'like', '%'.$_GET['q'].'%');
+            })
+            ->get();
             $count = $produk->count();
         }
 
@@ -62,7 +70,6 @@ class indexController extends Controller
             $produk = produk::whereHas('character', function($query) {
                 $query->where('name', 'like', '%'.$_GET['character'].'%');
             })->get();
-            
             $count = $produk->count();
         }
 
@@ -83,6 +90,6 @@ class indexController extends Controller
         }
 
 
-        return view('search', compact('produk', 'count', 'countCharacter', 'character'));
+        return view('search', compact('produk', 'count'));
     }
 }
