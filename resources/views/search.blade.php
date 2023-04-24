@@ -34,6 +34,7 @@
                                 @endforeach
                             @else
                             <div class="col-12 text-center">
+                                <img src="{{asset('/assets/img/maskot/SearchNotFound.gif')}}" width="250" alt="">
                                 <h3 class="n-semibold color-org">Upss.. Produk Tidak Ada</h3>
                             </div>
                             @endif
