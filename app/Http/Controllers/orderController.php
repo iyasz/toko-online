@@ -29,6 +29,8 @@ class orderController extends Controller
         $validate = $request->validate([
             'telp' => 'required',
             'zipcode' => 'required',
+            'province_id' => 'required',
+            'city_id' => 'required',
             'alamat' => 'required',
             'name' => 'required',
         ]);
@@ -39,7 +41,7 @@ class orderController extends Controller
         $inVCode = random_int(00000, 100000);
         $request['invoice_code'] = $inVCode;
 
-        $inv = invoice::create($request->except('_token'));
+        $inv = invoice::create($request->except('_token','province_city'));
         $invID = $inv->id;
 
         foreach($cart as $data){

@@ -202,17 +202,17 @@ body {
     border: none;
 }
 
+.select2-results__option:nth-child(1) {
+    margin-top: 6px;
+}
 .select2-results__option:hover {
     color: black !important;
-    background-color: rgb(204, 241, 238) !important;
-}
-.select2-results__option::selection {
-    color: black !important;
-    background-color: rgb(204, 241, 238) !important;
+    background-color: #ccf1ee !important;
 }
 
 .select2-container--open .select2-dropdown--below{
     border-top: 1px solid #aaa;
+    border-radius: 5px;
 }
 
 .select2 {

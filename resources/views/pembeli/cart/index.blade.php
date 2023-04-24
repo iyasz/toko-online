@@ -25,8 +25,8 @@
                                          <div class="d-flex qty_product">
                                              <p class="mb-0">Jumlah : <button onclick="decrementQtyProduct()" class="btnQtyCart"><i class="bi bi-dash"></i></button> <input class="bg-transparent border-0" type="text" id="qtyProduct" disabled value="{{$data->qty}}"> <button onclick="incrementQtyProduct()" class="btnQtyCart"><i class="bi bi-plus"></i></button></p>
                                             </div>
-                                         <a class="text-decoration-none n-semibold " style="color: #FC4C02;">IDR {{number_format($data->produk->harga)}}</a>
-                                         <p class="n-semibold">Total : <span style="color: #FC4C02">{{number_format($data->produk->harga * $data->qty)}}</span></p>
+                                         <a class="text-decoration-none n-semibold color-org">IDR {{number_format($data->produk->harga)}}</a>
+                                         <p class="n-semibold">Total : <span class="color-org">{{number_format($data->produk->harga * $data->qty)}}</span></p>
                                          <div class="text-end">
                                             <form action="/cart/{{$data->id}}" method="post">
                                                 @csrf

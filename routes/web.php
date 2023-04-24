@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/riwayat', [transaksiController::class, 'riwayat']);
         Route::post('/wishlist/store', [wishlistController::class, 'storeAjax']);
         Route::post('/cart/store', [cartController::class, 'storeAjax']);
+        Route::post('/payment/store', [orderController::class, 'store']);
         Route::get('/payment/city', [orderController::class, 'searchCityPayment']);
 
     });

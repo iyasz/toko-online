@@ -20,9 +20,8 @@ function showFlashAlert(message, type) {
 
 // select 2
 $(document).ready(function () {
-    // Initialize Select2
     $(".select2-data").select2({
-        minimumResultsForSearch: 1,
+        minimumResultsForSearch: -1,
     });
 
     $(".select2-data-input").on("focus", function () {
@@ -31,22 +30,9 @@ $(document).ready(function () {
 });
 
 $(".select2-data-input").on("keyup", function () {
-    var inputVal = $(this).val(); // Get input value
+    var inputVal = $(this).val(); 
     $(this).attr("value", inputVal);
-    // console.log($(this).val());
-
-        // Get the number of options in the select
-        var numOptions = $('#select2-data option').length;
-        var minimumResultsForSearch = 5;
     
-        // If the number of options is less than the minimumResultsForSearch value
-        if (numOptions <= minimumResultsForSearch) {
-          // Hide the search input
-          $('#select2-data-input').attr('readonly', 'readonly').css('pointer-events', 'none');
-        } else {
-          // Show the search input
-          $('#select2-data-input').removeAttr('readonly').css('pointer-events', 'auto');
-        }
 
     // $.ajax({
 
@@ -54,6 +40,7 @@ $(".select2-data-input").on("keyup", function () {
 });
 
 $('.select2-data').on('select2:select', function(e) {
+    // $('#select2-data-input').html('')
     var value = e.params.data.id;
     var selectedText = $(this).find('option:selected').text();
     $('#select2-data-input').val(selectedText);
@@ -73,11 +60,10 @@ $('.select2-data').on('select2:select', function(e) {
                 var select = $('#select2-city');
                 $.each(value.results, function(i, result) {
                     var option = $('<option>', {
-                        'class': '',
                         'value': result.city_id,
                         'text': result.city_name
                     }).on('click', function(){
-                        
+                        console.log('anime')
                     });
                     select.append(option);
                 });

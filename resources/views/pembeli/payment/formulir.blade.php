@@ -40,8 +40,8 @@
                             <hr>
                             <h4 class="n-semibold opacity-75">Add Address</h4>
                             <form action="/payment/store" method="post">
-                                <input name="total_price" type="hidden" value="{{$totalAll}}">
                                 @csrf
+                                <input name="total_price" type="hidden" value="{{$totalAll}}">
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Nama</label>
                                     <input autocomplete="off" required type="text" name="name" value="{{Auth::user()->name}}" class="form-control rounded-1">
@@ -51,7 +51,7 @@
                                     <label class="mb-1 opacity-75">Province</label>
                                     <input type="text" name="" id="select2-data-input" value="" class="form-control select2-data-input">
                                     <input type="hidden" name="" id="select2-data-input-value" value="" class="form-control select2-data-input">
-                                    <select class="form-select select2-data" id="select2-data" name="state">
+                                    <select class="form-select select2-data data-province" id="select2-data" name="state">
                                         @foreach ($province['rajaongkir']['results'] as $data)
                                         <option value="{{$data['province_id']}}">{{$data['province']}}</option>
                                         @endforeach
@@ -62,12 +62,7 @@
                                     <select name="" disabled id="select2-city" class="form-select select"></select>
                                 </div>
                                 <div class="mt-3">
-                                    <label class="mb-1 opacity-75">City</label>
-                                    <input autocomplete="off" required type="text" name="city_id" value="{{old('city_id')}}" class="form-control rounded-1">
-                                    @error('city_id') <p class="text-danger">{{$message}}</p> @enderror
-                                </div>
-                                <div class="mt-3">
-                                    <label class="mb-1 opacity-75">Alamat</label>
+                                    <label class="mb-1 opacity-75">Street Address</label>
                                     <textarea required name="alamat" class="form-control rounded-1"></textarea>
                                     @error('alamat') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
