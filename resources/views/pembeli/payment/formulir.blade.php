@@ -50,7 +50,8 @@
                                 <div class="mt-3 position-relative">
                                     <label class="mb-1 opacity-75">Province</label>
                                     <input type="text" name="" id="select2-data-input" value="" class="form-control select2-data-input">
-                                    <select class="form-select select2-data" name="state">
+                                    <input type="hidden" name="" id="select2-data-input-value" value="" class="form-control select2-data-input">
+                                    <select class="form-select select2-data" id="select2-data" name="state">
                                         @foreach ($province['rajaongkir']['results'] as $data)
                                         <option value="{{$data['province_id']}}">{{$data['province']}}</option>
                                         @endforeach
@@ -58,16 +59,12 @@
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">City</label>
-                                    <input autocomplete="off" required type="text" name="city_id" value="{{old('city_id')}}" class="form-control rounded-1">
-                                    @error('city_id') <p class="text-danger">{{$message}}</p> @enderror
+                                    <select name="" disabled id="select2-city" class="form-select select"></select>
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">City</label>
-                                    <select name="" id="" class="form-select">
-                                        @foreach ($province['rajaongkir']['results'] as $data)
-                                        <option value="{{$data['province_id']}}">{{$data['province']}}</option>
-                                        @endforeach
-                                    </select>
+                                    <input autocomplete="off" required type="text" name="city_id" value="{{old('city_id')}}" class="form-control rounded-1">
+                                    @error('city_id') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Alamat</label>

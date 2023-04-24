@@ -102,4 +102,11 @@ class orderController extends Controller
 
         return redirect('/bukti');
     }
+
+    public function searchCityPayment(Request $request)
+    {
+        $province_id = $request->input('province_id');
+        $apiCity = Http::get('https://api.rajaongkir.com/starter/city?key=179ae16b7b1883dc77ab80d40c52d141&province='.$province_id)->json();
+        return $apiCity;
+    }
 }

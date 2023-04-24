@@ -206,6 +206,10 @@ body {
     color: black !important;
     background-color: rgb(204, 241, 238) !important;
 }
+.select2-results__option::selection {
+    color: black !important;
+    background-color: rgb(204, 241, 238) !important;
+}
 
 .select2-container--open .select2-dropdown--below{
     border-top: 1px solid #aaa;
