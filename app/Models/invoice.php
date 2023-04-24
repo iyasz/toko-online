@@ -17,6 +17,7 @@ class invoice extends Model
         'user_id',
         'total_price',
         'zipcode',
+        'city_id',
         'status',
         'invoice_code',
         'telp',

@@ -49,8 +49,8 @@
                                 </div>
                                 <div class="mt-3 position-relative">
                                     <label class="mb-1 opacity-75">Province</label>
-                                    <input type="text" name="" id="select2-data-input" value="" class="form-control select2-data-input">
-                                    <input type="hidden" name="" id="select2-data-input-value" value="" class="form-control select2-data-input">
+                                    <input type="text" id="select2-data-input" value="" class="form-control select2-data-input">
+                                    <input type="hidden" name="province_id" id="select2-data-input-value" value="" class="form-control select2-data-input">
                                     <select class="form-select select2-data data-province" id="select2-data" name="state">
                                         @foreach ($province['rajaongkir']['results'] as $data)
                                         <option value="{{$data['province_id']}}">{{$data['province']}}</option>
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">City</label>
-                                    <select name="" disabled id="select2-city" class="form-select select"></select>
+                                    <select name="city_id" disabled id="select2-city" class="form-select select"></select>
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Street Address</label>
