@@ -29,11 +29,19 @@
                                          
                                          <div class="tab-content pt-0">
                                             <div class="tab-pane fade show active" id="tab1" data-bs-animation="true">
+                                                @if($trxActiveStatus)
+                                                @foreach ($trxActiveStatus as $data)
+                                                <div class="">
+                                                    <h1>animem</h1>
+                                                </div>
+                                                @endforeach
+                                                @else
                                                 <div class="text-center py-3">
                                                     <img src="{{asset('/assets/img/maskot/SearchNotFound.gif')}}" width="250" alt="">
                                                     <h4 class="mb-1 n-semibold">Nggak ada yang harus dibayar nih</h4>
                                                     <a class="text-decoration-none color-org" href="/store">Yuk belanja!</a>
                                                 </div>
+                                                @endif
                                             </div>
                                             <div class="tab-pane fade" id="tab2" data-bs-animation="true">
                                                 <div class="text-center py-3">

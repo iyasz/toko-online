@@ -18,7 +18,9 @@ class invoice extends Model
         'total_price',
         'zipcode',
         'city_id',
-        'status',
+        'payment_status',
+        'address_id',
+        'order_status',
         'invoice_code',
         'telp',
     ];

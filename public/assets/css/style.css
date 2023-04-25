@@ -261,6 +261,17 @@ body {
     padding: 20px;
     border-top: none;
  }
- 
+
+ .address-page-main, .address-page-all {
+    border: solid 1.7px #d1d1d1;
+ }
+
+ .address-page-main h5, .address-page-all h5 {
+    font-size: 14px;
+ }
+ .address-page-main p, .address-page-all p, .address-page-detail a {
+    font-size: 12px;
+ }
+
 
  /* end transaksi  */

@@ -8,40 +8,45 @@
                 <div class="col-lg-8 col-md-12 col-12 mt-5">
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body">
-                            <h4 class="n-semibold opacity-75">Your Order</h4>
-                            <input type="hidden" name="" value="{{$totalAll = 0}}">
-                            @foreach ($cart as $data)
-                                <hr>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-3 col-12">
-                                        <td><img width="100%" height="100%" class="rounded-2" src="{{asset('storage/gambar/'.$data->produk->image)}}" alt=""></td>
-                                    </div>
-                                    <div class="col-lg-9 col-md-9 col-12 mt-lg=0 mt-3">
-                                         <a class="text-decoration-none text-dark n-semibold">{{$data->produk->name}}</a>
-                                         <br>
-                                         <p class="mb-0">Jumlah : {{$data->qty}}</p>
-                                         <a class="text-decoration-none n-semibold " style="color: #FC4C02;">IDR {{number_format($data->produk->harga)}}</a>
-                                         <p class="n-semibold">Total : <span style="color: #FC4C02">{{number_format($data->produk->harga * $data->qty)}}</span></p>
-                                         <input id="" type="hidden" value="{{$total = $data->produk->harga * $data->qty}}">
-                                         <input name="" type="hidden" value="{{$totalAll += $total}}">
+                            <h4 class="n-semibold opacity-75">Your Address</h4>
+                            @if($addressMain)
+                            <div class="address-page-main px-3 pt-3 pb-2 rounded-2">
+                                <h6 class="mb-1">Main Address</h6>
+                                <h5 class="n-semibold opacity-75 mb-0">{{$addressMain->name}}</h5>
+                                <p class="mb-0">{{$addressMain->street}}, {{strtoupper($addressMain->city_id)}}, {{strtoupper($addressMain->province_id)}} {{$addressMain->zipcode}}</p>
+                                <p class="">{{$addressMain->telp}}</p>
+                                <div class="d-flex address-page-detail">
+                                    <p class="mb-0">Main Address</p>
+                                    <a href="" class="color-org ms-auto text-decoration-none">Edit</a>
+                                </div>
+                            </div>
+                            @endif
+                            <div class="row">
+                                    @foreach ($addressAll as $data)
+                                    <div class="col-lg-6 col-md-12 col-12 mt-3">
+                                        <div class="address-page-all px-3 pt-3 pb-2 rounded-2">
+                                            <h6 class="mb-1">Address {{$loop->iteration}}</h6>
+                                            <h5 class="n-semibold opacity-75 mb-0">{{$data->name}}</h5>
+                                            <p class="mb-0">{{$data->street}}, {{strtoupper($data->city_id)}}, {{strtoupper($data->province_id)}} {{$data->zipcode}}</p>
+                                            <p class="">{{$data->telp}}</p>
+                                            <div class="d-flex address-page-detail">
+                                                <a href="" class="color-org text-decoration-none">Set as Main Address</a>
+                                                <a href="" class="color-org ms-auto text-decoration-none">Edit</a>
+                                                <a href="" class="color-org ms-3 text-decoration-none">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
-                                 @endforeach
+                                    @endforeach
+                                </div>
                                 </div>
                             </div>
                         </div>
                 <div class="col-lg-4 col-md-12 col-12 mt-5">
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
-                            <div class="text-center">
-                                <p class="mb-2">Total </p>
-                                <h2 class="n-semibold" style="color: #FC4C02;">IDR {{number_format($totalAll)}}</h2>
-                            </div>
-                            <hr>
                             <h4 class="n-semibold opacity-75">Add Address</h4>
-                            <form action="/payment/store" method="post">
+                            <form action="/payment/address" method="post">
                                 @csrf
-                                <input name="total_price" type="hidden" value="{{$totalAll}}">
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Nama</label>
                                     <input autocomplete="off" required type="text" name="name" value="{{Auth::user()->name}}" class="form-control rounded-1">
@@ -63,7 +68,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Street Address</label>
-                                    <textarea required name="alamat" class="form-control rounded-1"></textarea>
+                                    <textarea required name="street" class="form-control rounded-1"></textarea>
                                     @error('alamat') <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
                             <div class="mt-3">
@@ -77,7 +82,7 @@
                                 @error('telp') <p class="text-danger">{{$message}}</p> @enderror
                             </div>
                             <div class="mt-4 mb-3 text-center">
-                                <button class="btn btn-primary rounded-1 w-100 mb-3 border-0">Bayar Sekarang</button>
+                                <button class="btn btn-primary rounded-1 w-100 mb-3 border-0">ADD</button>
                             </div>
                         </form>
                       

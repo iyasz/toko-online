@@ -44,7 +44,7 @@ $('.select2-data').on('select2:select', function(e) {
     var value = e.params.data.id;
     var selectedText = $(this).find('option:selected').text();
     $('#select2-data-input').val(selectedText);
-    $('#select2-data-input-value').attr("value", value);
+    $('#select2-data-input-value').attr("value", selectedText);
 
     $.ajax({
         type : 'GET',
@@ -60,7 +60,7 @@ $('.select2-data').on('select2:select', function(e) {
                 var select = $('#select2-city');
                 $.each(value.results, function(i, result) {
                     var option = $('<option>', {
-                        'value': result.city_id,
+                        'value': result.city_name,
                         'text': result.city_name
                     }).on('click', function(){
                         console.log('anime')

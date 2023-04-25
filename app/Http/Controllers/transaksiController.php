@@ -12,22 +12,21 @@ class transaksiController extends Controller
 {
     public function index()
     {
-        $cat = category::all();
-        $trx = invoice::where('user_id', Auth::user()->id)->get();
-        return view('pembeli.transaksi.transaksi', ['category' => $cat, 'trx' => $trx]);
+        $trxActiveStatus = invoice::where('user_id', Auth::user()->id)->where('payment_status', 1)->get();
+        $trxPaidStatus = invoice::where('user_id', Auth::user()->id)->where('payment_status', 2)->get();
+        $trxExpiredStatus = invoice::where('user_id', Auth::user()->id)->where('payment_status', 3)->get();
+        return view('pembeli.transaksi.transaksi', compact('trxActiveStatus','trxPaidStatus', 'trxExpiredStatus'));
     }
 
     public function riwayat()
     {
-        $cat = category::all();
         $trx = invoice::where('user_id', Auth::user()->id)->where('status', 5)->get();
-        return view('pembeli.transaksi.riwayat', ['category' => $cat, 'trx' => $trx]);
+        return view('pembeli.transaksi.riwayat', compact('trx'));
     }
 
     public function view($id)
     {
-        $cat = category::all();
         $detail = transaksi::where('invoice_id', $id)->get();
-        return view('pembeli.transaksi.detail', ['detail' => $detail, 'category' => $cat])  ;
+        return view('pembeli.transaksi.detail', compact('detail'))  ;
     }
 }

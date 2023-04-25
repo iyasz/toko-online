@@ -8,19 +8,13 @@ use App\Models\category;
 use App\Models\invoice;
 use App\Models\produk;
 use App\Models\transaksi;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class orderController extends Controller
 {
-    public function index()
-    {
-        $cart = cart::with(['produk','user'])->where('user_id', Auth::user()->id)->get();
-        $province = Http::get('https://api.rajaongkir.com/starter/province?key=179ae16b7b1883dc77ab80d40c52d141')->json();
-        // dd($province);
-        return view('pembeli.payment.formulir', compact('cart', 'province'));
-    }
 
     public function store(Request $request)
     {
@@ -38,7 +32,7 @@ class orderController extends Controller
         $request['user_id'] = Auth::user()->id;
 
         $request['status'] = 1;
-        $inVCode = random_int(00000, 100000);
+        $inVCode = 'INV/'.Carbon::now()->format('dmY').'-'.random_int(000000, 1000000);
         $request['invoice_code'] = $inVCode;
 
         $inv = invoice::create($request->except('_token','province_city'));

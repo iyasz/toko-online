@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\addressController;
 use App\Http\Controllers\admin\barangController;
 use App\Http\Controllers\admin\brandController;
 use App\Http\Controllers\admin\buktiController;
@@ -50,14 +51,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/confirmation', [orderController::class, 'bukti']);
         Route::resource('/cart', cartController::class);
         Route::resource('/wishlist', wishlistController::class);
-        Route::get('/payment', [orderController::class, 'index']);
         Route::get('/transaksi', [transaksiController::class, 'index']);
         Route::get('/transaksi/{id}', [transaksiController::class, 'view']);
         Route::get('/riwayat', [transaksiController::class, 'riwayat']);
         Route::post('/wishlist/store', [wishlistController::class, 'storeAjax']);
         Route::post('/cart/store', [cartController::class, 'storeAjax']);
-        Route::post('/payment/store', [orderController::class, 'store']);
+        Route::get('/payment', [addressController::class, 'index']);
+        Route::post('/payment/address', [addressController::class, 'store']);
         Route::get('/payment/city', [orderController::class, 'searchCityPayment']);
+        // Route::get('/payment/address', [addressController::class, 'store']);
 
     });
 
