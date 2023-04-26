@@ -96,7 +96,7 @@ body {
     cursor: not-allowed !important;
 }
 
-.form-control:focus {
+.form-control:focus, .form-select:focus {
     box-shadow: none;
     border-color: #dee2e6;
 }
@@ -266,10 +266,10 @@ body {
     border: solid 1.7px #d1d1d1;
  }
 
- .address-page-main h5, .address-page-all h5 {
+ .address-page-main h5, .address-page-all h5, .metode-payment-page p, .header-detail-pesanan p, .pesanan-produk-detail p {
     font-size: 14px;
  }
- .address-page-main p, .address-page-all p, .address-page-detail button {
+ .address-page-main p, .address-page-all p, .address-page-detail button, .address-page-content p {
     font-size: 12px;
  }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\address;
 use App\Models\bukti;
 use App\Models\cart;
 use App\Models\category;
@@ -18,7 +19,11 @@ class orderController extends Controller
 
     public function index()
     {
-        return view('pembeli.payment.checkout');
+        // $costOngkir = Http::get('https://api.rajaongkir.com/starter/cost?key=179ae16b7b1883dc77ab80d40c52d141');
+        $address = address::where('user_id', Auth::user()->id)->get();
+        $addressMain = address::where('user_id', Auth::user()->id)->where('is_main', 2)->first();
+        $userCart = cart::where('user_id', Auth::user()->id)->get();
+        return view('pembeli.payment.checkout', compact('address', 'addressMain', 'userCart'));
     }
 
     public function store(Request $request)

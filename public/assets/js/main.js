@@ -87,6 +87,10 @@ $('.select2-data').on('select2:select', function(e) {
     })
   });
 
+  $(".select2-data").select2({
+    minimumResultsForSearch: -1,
+});
+
 //end select 2
 
 
