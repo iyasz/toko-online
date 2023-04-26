@@ -17,7 +17,7 @@
                                 <p class="">{{$addressMain->telp}}</p>
                                 <div class="d-flex address-page-detail">
                                     <p class="mb-0">Main Address</p>
-                                    <a href="" class="color-org ms-auto text-decoration-none">Edit</a>
+                                    <button data-address="{{$addressMain->id}}" id="editUserAddressMain" class="color-org ms-auto text-decoration-none bg-transparent border-0 ">Edit</button>
                                 </div>
                             </div>
                             @endif
@@ -30,9 +30,9 @@
                                             <p class="mb-0">{{$data->street}}, {{strtoupper($data->city_id)}}, {{strtoupper($data->province_id)}} {{$data->zipcode}}</p>
                                             <p class="">{{$data->telp}}</p>
                                             <div class="d-flex address-page-detail">
-                                                <a href="" class="color-org text-decoration-none">Set as Main Address</a>
-                                                <a href="" class="color-org ms-auto text-decoration-none">Edit</a>
-                                                <a href="" class="color-org ms-3 text-decoration-none">Delete</a>
+                                                <button data-address="{{$data->id}}" class="color-org bg-transparent border-0">Set as Main Address</button>
+                                                <button data-address="{{$data->id}}" class="color-org ms-auto bg-transparent border-0 editUserAddress">Edit</button>
+                                                <button data-address="{{$data->id}}" class="color-org ms-3 bg-transparent border-0 deleteUserAddress">Delete</button>
                                             </div>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <h4 class="n-semibold opacity-75">Add Address</h4>
-                            <form action="/payment/address" method="post">
+                            <form action="/user/address" method="post">
                                 @csrf
                                 <div class="mt-3">
                                     <label class="mb-1 opacity-75">Nama</label>

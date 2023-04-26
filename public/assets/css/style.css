@@ -269,7 +269,7 @@ body {
  .address-page-main h5, .address-page-all h5 {
     font-size: 14px;
  }
- .address-page-main p, .address-page-all p, .address-page-detail a {
+ .address-page-main p, .address-page-all p, .address-page-detail button {
     font-size: 12px;
  }
 

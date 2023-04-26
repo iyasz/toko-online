@@ -48,7 +48,7 @@ $('.select2-data').on('select2:select', function(e) {
 
     $.ajax({
         type : 'GET',
-        url : '/payment/city',
+        url : '/user/city/search',
         data : {
             province_id : value,
         },
@@ -75,7 +75,7 @@ $('.select2-data').on('select2:select', function(e) {
 //end select 2
 
 $("#cartPayment").click(function () {
-    window.location.href = "/payment";
+    window.location.href = "/user/address";
 });
 
 $("#productAuth").click(function () {
@@ -124,6 +124,71 @@ $("#cartAdd").on("click", function () {
             console.log(error);
         });
 });
+
+$('.deleteUserAddress').on('click', function(){
+    var idAddress = $('.deleteUserAddress').data('address');
+    axios({
+        method: "delete",
+        url: "/user/address/"+idAddress,
+    })
+        .then(function (response) {
+            window.location.href='/user/address';
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+})
+
+$('#editUserAddressMain').on('click', function(){
+    var idAddress = $('#editUserAddressMain').data('address');
+    axios({
+        method: "get",
+        url: "/user/address/"+idAddress+"/data",
+        // data: {
+        //     province_id: 1
+        // },
+    })
+        .then(function (response) {
+            var res = response.data;
+            $('#select2-city').removeAttr('disabled');
+            $('#select2-city').html('')
+          
+            $('input[name="name"]').val(res.name)
+            $('#select2-data-input').val(res.province_id)
+            $('input[name="province_id"]').attr('value', res.province_id)
+            $('textarea[name="street"]').val(res.street)
+            $('input[name="zipcode"]').val(res.zipcode)
+            $('input[name="telp"]').val(res.telp)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+})
+
+$('.editUserAddress').on('click', function(){
+    var idAddress = $(this).data('address');
+    axios({
+        method: "get",
+        url: "/user/address/"+idAddress+"/data",
+    })
+        .then(function (response) {
+            var res = response.data;
+            $('#select2-city').removeAttr('disabled');
+            $('#select2-city').html('')
+          
+            $('input[name="name"]').val(res.name)
+            $('#select2-data-input').val(res.province_id)
+            $('input[name="province_id"]').attr('value', res.province_id)
+            $('textarea[name="street"]').val(res.street)
+            $('input[name="zipcode"]').val(res.zipcode)
+            $('input[name="telp"]').val(res.telp)
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+})
 
 $(".addCartFromWishlist").on("click", function () {
     axios({

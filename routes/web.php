@@ -56,10 +56,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/riwayat', [transaksiController::class, 'riwayat']);
         Route::post('/wishlist/store', [wishlistController::class, 'storeAjax']);
         Route::post('/cart/store', [cartController::class, 'storeAjax']);
-        Route::get('/payment', [addressController::class, 'index']);
-        Route::post('/payment/address', [addressController::class, 'store']);
-        Route::get('/payment/city', [orderController::class, 'searchCityPayment']);
-        // Route::get('/payment/address', [addressController::class, 'store']);
+        Route::resource('/user/address', addressController::class);
+        Route::get('/user/address/{id}/data', [addressController::class, 'dataEdit']);
+        Route::get('/user/city/search', [addressController::class, 'searchCity']);
 
     });
 
