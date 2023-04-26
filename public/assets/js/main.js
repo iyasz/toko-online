@@ -18,6 +18,25 @@ function showFlashAlert(message, type) {
     $("#alertWishlist").slideDown();
 }
 
+$("#cartPayment").on('click', function () {
+
+    axios({
+        method: "GET",
+        url: "/cart/checkAddress",
+    })
+        .then(function (response) {
+            if(response.data != 0 ){
+                 window.location.href="/checkout/review"
+                }else{
+                window.location.href="/user/address"
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+
 // select 2
 $(document).ready(function () {
     $(".select2-data").select2({
@@ -33,10 +52,6 @@ $(".select2-data-input").on("keyup", function () {
     var inputVal = $(this).val(); 
     $(this).attr("value", inputVal);
     
-
-    // $.ajax({
-
-    // })
 });
 
 $('.select2-data').on('select2:select', function(e) {
@@ -74,9 +89,6 @@ $('.select2-data').on('select2:select', function(e) {
 
 //end select 2
 
-$("#cartPayment").click(function () {
-    window.location.href = "/user/address";
-});
 
 $("#productAuth").click(function () {
     window.location.href = "/auth/login";
@@ -145,9 +157,6 @@ $('#editUserAddressMain').on('click', function(){
     axios({
         method: "get",
         url: "/user/address/"+idAddress+"/data",
-        // data: {
-        //     province_id: 1
-        // },
     })
         .then(function (response) {
             var res = response.data;
@@ -160,6 +169,20 @@ $('#editUserAddressMain').on('click', function(){
             $('textarea[name="street"]').val(res.street)
             $('input[name="zipcode"]').val(res.zipcode)
             $('input[name="telp"]').val(res.telp)
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+})
+
+$('.setMainAddress').on('click', function(){
+    var idAddress = $(this).data('address');
+    axios({
+        method: "put",
+        url: "/user/address/"+idAddress,
+    })
+        .then(function (response) {
+            window.location.href='/user/address'
         })
         .catch(function (error) {
             console.log(error);

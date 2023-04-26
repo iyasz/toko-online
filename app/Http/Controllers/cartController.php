@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\address;
 use App\Models\cart;
 use App\Models\category;
 use App\Models\produk;
@@ -36,10 +37,6 @@ class cartController extends Controller
      */
     public function store(Request $request)
     {
-        // $validate = cart::where('user_id', Auth::user()->id)
-        // ->where('barang_id', $request->input('id_barang'))
-        // ->first();
-
         
         cart::create([
             'user_id' => Auth::user()->id,
@@ -106,6 +103,12 @@ class cartController extends Controller
         }
 
         return response()->json($validate);
+    }
 
+    public function cartSearchValueAddress()
+    {
+        $address = address::where('user_id', Auth::user()->id)->get()->count();
+        
+        return $address;
     }
 }

@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     
     Route::middleware(['onlyUser'])->group(function () {
         Route::post('/confirmation', [orderController::class, 'bukti']);
-        Route::resource('/cart', cartController::class);
+        Route::resource('/cart', cartController::class)->except('show');
         Route::resource('/wishlist', wishlistController::class);
         Route::get('/transaksi', [transaksiController::class, 'index']);
         Route::get('/transaksi/{id}', [transaksiController::class, 'view']);
@@ -59,6 +59,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/user/address', addressController::class);
         Route::get('/user/address/{id}/data', [addressController::class, 'dataEdit']);
         Route::get('/user/city/search', [addressController::class, 'searchCity']);
+        Route::get('/cart/checkAddress', [cartController::class, 'cartSearchValueAddress']);
+        Route::get('/checkout/review', [orderController::class, 'index']);
 
     });
 

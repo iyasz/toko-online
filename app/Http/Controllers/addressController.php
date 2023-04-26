@@ -67,7 +67,17 @@ class addressController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $addressMain = address::where('user_id', Auth::user()->id)->where('is_main', 2)->first();
+        $addressMain->update([
+            'is_main' => 1
+        ]);
+
+        $address = address::findOrFail($id);
+        $address->update([
+            'is_main' => 2
+        ]);
+
+        return "berhasil";
     }
 
     /**

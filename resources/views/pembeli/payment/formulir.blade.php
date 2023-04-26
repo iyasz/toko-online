@@ -30,7 +30,7 @@
                                             <p class="mb-0">{{$data->street}}, {{strtoupper($data->city_id)}}, {{strtoupper($data->province_id)}} {{$data->zipcode}}</p>
                                             <p class="">{{$data->telp}}</p>
                                             <div class="d-flex address-page-detail">
-                                                <button data-address="{{$data->id}}" class="color-org bg-transparent border-0">Set as Main Address</button>
+                                                <button data-address="{{$data->id}}" class="color-org bg-transparent border-0 setMainAddress">Set as Main Address</button>
                                                 <button data-address="{{$data->id}}" class="color-org ms-auto bg-transparent border-0 editUserAddress">Edit</button>
                                                 <button data-address="{{$data->id}}" class="color-org ms-3 bg-transparent border-0 deleteUserAddress">Delete</button>
                                             </div>

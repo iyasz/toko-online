@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Http;
 class orderController extends Controller
 {
 
+    public function index()
+    {
+        return view('pembeli.payment.checkout');
+    }
+
     public function store(Request $request)
     {
         $cart = cart::with(['produk','user'])->where('user_id', Auth::user()->id)->get();
