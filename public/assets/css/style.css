@@ -168,6 +168,14 @@ body {
     margin-top: 90px;
 }
 
+.select-courier optgroup {
+    font-family: numito-semibold;
+}
+
+.select-courier optgroup option {
+    font-family: numito-medium;
+}
+
 .product-view-details li p {
     font-size: 14px;
     margin-right: 15px;
@@ -266,10 +274,10 @@ body {
     border: solid 1.7px #d1d1d1;
  }
 
- .address-page-main h5, .address-page-all h5, .metode-payment-page p, .header-detail-pesanan p, .pesanan-produk-detail p {
+ .address-page-main h5, .address-page-all h5, .metode-payment-page p, .header-detail-pesanan p, .pesanan-produk-detail p, .content-page-payment-details .detail p, .content-page-payment-details .detail span {
     font-size: 14px;
  }
- .address-page-main p, .address-page-all p, .address-page-detail button, .address-page-content p {
+ .address-page-main p, .address-page-all p, .address-page-detail button, .address-page-content p, .select-courier {
     font-size: 12px;
  }
 

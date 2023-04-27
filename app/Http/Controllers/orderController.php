@@ -20,10 +20,25 @@ class orderController extends Controller
     public function index()
     {
         // $costOngkir = Http::get('https://api.rajaongkir.com/starter/cost?key=179ae16b7b1883dc77ab80d40c52d141');
+     
         $address = address::where('user_id', Auth::user()->id)->get();
         $addressMain = address::where('user_id', Auth::user()->id)->where('is_main', 2)->first();
         $userCart = cart::where('user_id', Auth::user()->id)->get();
         return view('pembeli.payment.checkout', compact('address', 'addressMain', 'userCart'));
+    }
+
+    public function getOngkirValue(Request $request)
+    {
+        $response = Http::withHeaders([
+            'key' => '179ae16b7b1883dc77ab80d40c52d141'
+        ])->post('https://api.rajaongkir.com/starter/cost', [
+            'origin' => '501',
+            'destination' => '114',
+            'weight' => '1700',
+            'courier' => 'jne',
+        ]);
+
+        return $response->json();
     }
 
     public function store(Request $request)

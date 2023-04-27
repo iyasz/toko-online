@@ -244,30 +244,16 @@ $(".addCartFromWishlist").on("click", function () {
         });
 });
 
-// $('.wishlist-add-cart button').on('click', function(){
-//     axios({
-//         method: 'post',
-//         url: '/cart/store',
-//         data: {
-//             id_barang: $('#id_product_wishlist').val(),
-//         }
-//       })
-//       .then(function (response) {
-//           console.log(response.data);
-//           response.data.forEach(function(item) {
-//               console.log(item); // log each item in the array
-//           });
-
-//           if(response.data.length == 0){
-//               showFlashAlert('Item Berhasil Ditambahkan Ke Cart!', 'alert-success')
-//         }else{
-//             showFlashAlert('Item Ini Sudah Ada di Keranjangmu', 'alert-danger')
-//           }
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-// })
+$('#select-courier').on('change', function(){
+    console.log($(this).val())
+    $.ajax({
+        type : 'get',
+        url : '/checkout/courier/ongkir',
+        success: function(e){
+            console.log(e.rajaongkir.results)
+        }
+    })
+})
 
 $("#wishlistRemove").on("click", function () {
     console.log("ini remove");

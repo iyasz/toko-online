@@ -26,10 +26,24 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-12 col-12">
-                                    <div class="metode-payment-page ms-auto">
+                                    <div class="metode-payment-page ms-auto mt-lg-0 mt-3 ">
                                         <p class="mb-0">Metode Pengiriman</p>
-                                        <select name="" id="" class="form-select ">
-                                            <option value=""></option>
+                                        <select name="" id="select-courier" class="form-select select-courier">
+                                            <option disabled selected>Pilih Metode</option>
+                                            <optgroup label="Regular" class="">
+                                                <option value="">JNE REG</option>
+                                                <option value="">SiCepat REG</option>
+                                                <option value="">Ninja Xpress Standard</option>
+                                                <option value="">POS Indonesia Reguler</option>
+                                            </optgroup>
+                                            <optgroup class="" label="Next Day">
+                                                <option value="">JNE YES</option>
+                                                <option value="">SiCepat BEST</option>
+                                                <option value="">Ninja Xpress Next Day</option>
+                                            </optgroup>
+                                            <optgroup class="" label="Same Day">
+                                                <option value="">GoSend</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -38,22 +52,6 @@
                             <div class="notes-checkout-page">
                                 <label>Notes</label>
                                 <textarea name="" class="form-control" id="" placeholder="Leave a message" rows="2"></textarea>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom
-                                    offcanvas</button>
-
-                                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
-                                    aria-labelledby="offcanvasBottomLabel">
-                                    <div class="offcanvas-header">
-                                        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="offcanvas-body small">
-                                        <h1></h1>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -67,24 +65,32 @@
                                 <hr>
                             </div>
                             <div class="row">
+                                <input type="hidden" value="{{$totalAll = 0}}" id="">
                                 @foreach ($userCart as $data)
-                                <div class="col-12 mb-3">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <img width="100%" src="{{ asset('/storage/gambar/' . $data->produk->image) }}">
-                                        </div>
-                                        <div class="col-lg-7 col-md-10 col-10 pesanan-produk-detail">
-                                            <h6 class="n-semibold mb-0">{{ $data->produk->name }}</h6>
-                                            <p class="mb-0 d-lg-block d-none">IDR {{number_format($data->produk->harga)}}</p>
-                                            <p class="mb-0">Quantity: <span class="n-semibold">{{$data->qty}} Item(s)</span></p>
-                                            <p class="mb-0 d-lg-none d-block n-semibold color-org">IDR {{number_format($data->produk->harga)}}</p>
-                                        </div>
-                                        <div class="col-lg-3 d-md-none d-lg-block d-none">
-                                            <h6 class="n-semibold color-org">IDR {{number_format($data->produk->harga)}}</h6>
+                                    <div class="col-12 mb-3">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img width="100%"
+                                                    src="{{ asset('/storage/gambar/' . $data->produk->image) }}">
+                                            </div>
+                                            <div class="col-lg-7 col-md-10 col-10 pesanan-produk-detail">
+                                                <h6 class="n-semibold mb-0">{{ $data->produk->name }}</h6>
+                                                <p class="mb-0 d-lg-block d-none">IDR
+                                                    {{ number_format($data->produk->harga) }}</p>
+                                                <p class="mb-0">Quantity: <span class="n-semibold">{{ $data->qty }}
+                                                        Item(s)</span></p>
+                                                <p class="mb-0 d-lg-none d-block n-semibold color-org">IDR
+                                                    {{ number_format($data->produk->harga) }}</p>
+                                            </div>
+                                            <div class="col-lg-3 d-md-none d-lg-block d-none">
+                                                <h6 class="n-semibold color-org">IDR
+                                                    {{ number_format($data->produk->harga) }}</h6>
+                                            </div>
+                                            <input type="hidden" name="" value="{{$total = $data->produk->harga * $data->qty}}" id="">
+                                            <input type="hidden" name="" value="{{$totalAll += $total}}" id="">
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach 
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -96,6 +102,31 @@
                                 <p>Payment Details</p>
                             </div>
                             <hr>
+                            <div class="content-page-payment-details">
+                                <div class="detail d-flex">
+                                    <div class="">
+                                        <p class="mb-0">Subtotal</p>
+                                        <p class="mb-2">Item(s)</p>
+                                    </div>
+                                    <span id="subtotalPayment" class="ms-auto">IDR {{number_format($totalAll)}}</span>
+                                </div>
+                                <div class="detail d-flex">
+                                    <div class="">
+                                        <p class="mb-0">Shipping Fee</p>
+                                    </div>
+                                    <span id="shippingFee" class="ms-auto">IDR {{number_format(0)}}</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="total-price-all-page">
+                                <div class="detail d-flex">
+                                    <div class="">
+                                        <p class="mb-0">Total</p>
+                                    </div>
+                                    <span class="ms-auto">IDR {{number_format(0)}}</span>
+                                </div>
+                                <button class="btn btn-primary w-100 border-0 mt-3">Pay now</button>
+                            </div>
                         </div>
                     </div>
                 </div>
