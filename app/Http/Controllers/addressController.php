@@ -33,6 +33,16 @@ class addressController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'name' => 'required',
+            'province' => 'required',
+            'province_id' => 'required',
+            'city' => 'required',
+            'city_id' => 'required',
+            'street' => 'required',
+            'zipcode' => 'required',
+            'telp' => 'required',
+        ]);
         $FindAddressValue = address::where('user_id', Auth::user()->id)->count();
         $request['user_id']= Auth::user()->id;
         $valueIsMain = 1;

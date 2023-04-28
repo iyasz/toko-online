@@ -12,15 +12,15 @@
                         <div class="card-body">
                             <div class="header-page-content d-flex mt-2">
                                 <h5 class="n-semibold">{{ $addressMain->name }}</h5>
-                                <a href="" class="color-org ms-auto text-decoration-none">Ganti Alamat</a>
+                                <a href="/user/address" class="color-org ms-auto text-decoration-none">Ganti Alamat</a>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-lg-8 col-md-12 col-12">
                                     <div class="address-page-content">
                                         <p class="mb-0">{{ $addressMain->street }}</p>
-                                        <p class="mb-0">{{ strtoupper($addressMain->city_id) }}</p>
-                                        <p class="mb-0">{{ strtoupper($addressMain->province_id) }}
+                                        <p class="mb-0">{{ strtoupper($addressMain->city) }}</p>
+                                        <p class="mb-0">{{ strtoupper($addressMain->province) }}
                                             {{ $addressMain->zipcode }}</p>
                                         <p class="mb-0">{{ $addressMain->telp }}</p>
                                     </div>
@@ -37,7 +37,7 @@
                                                 <option value="">POS Indonesia Reguler</option>
                                             </optgroup>
                                             <optgroup class="" label="Next Day">
-                                                <option value="">JNE YES</option>
+                                                <option value="">JNE OKE</option>
                                                 <option value="">SiCepat BEST</option>
                                                 <option value="">Ninja Xpress Next Day</option>
                                             </optgroup>
@@ -66,6 +66,7 @@
                             </div>
                             <div class="row">
                                 <input type="hidden" value="{{$totalAll = 0}}" id="">
+                                <input type="hidden" value="{{$weightAll = 0}}" id="">
                                 @foreach ($userCart as $data)
                                     <div class="col-12 mb-3">
                                         <div class="row">
@@ -86,6 +87,7 @@
                                                 <h6 class="n-semibold color-org">IDR
                                                     {{ number_format($data->produk->harga) }}</h6>
                                             </div>
+                                            <input type="hidden" name="" value="{{$weightAll += $data->produk->weight}}" id="">
                                             <input type="hidden" name="" value="{{$total = $data->produk->harga * $data->qty}}" id="">
                                             <input type="hidden" name="" value="{{$totalAll += $total}}" id="">
                                         </div>
@@ -107,6 +109,7 @@
                                     <div class="">
                                         <p class="mb-0">Subtotal</p>
                                         <p class="mb-2">Item(s)</p>
+                                        <p>{{$weightAll}}</p>
                                     </div>
                                     <span id="subtotalPayment" class="ms-auto">IDR {{number_format($totalAll)}}</span>
                                 </div>
@@ -125,7 +128,7 @@
                                     </div>
                                     <span class="ms-auto">IDR {{number_format(0)}}</span>
                                 </div>
-                                <button class="btn btn-primary w-100 border-0 mt-3">Pay now</button>
+                                <button class="btn btn-primary w-100 border-0 mt-3 rounded-1" value="{{$totalAll}}" data-courier="" data-destination="" id="paymentButtonCheckout" disabled>Pay now</button>
                             </div>
                         </div>
                     </div>

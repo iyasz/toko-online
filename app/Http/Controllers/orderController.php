@@ -32,10 +32,10 @@ class orderController extends Controller
         $response = Http::withHeaders([
             'key' => '179ae16b7b1883dc77ab80d40c52d141'
         ])->post('https://api.rajaongkir.com/starter/cost', [
-            'origin' => '501',
-            'destination' => '114',
-            'weight' => '1700',
-            'courier' => 'jne',
+            'origin' => $request->input('origin'),
+            'destination' => $request->input('destination'),
+            'weight' => $request->input('weight'),
+            'courier' => $request->input('courier'),
         ]);
 
         return $response->json();

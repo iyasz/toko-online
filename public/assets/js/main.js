@@ -58,8 +58,7 @@ $('.select2-data').on('select2:select', function(e) {
     // $('#select2-data-input').html('')
     var value = e.params.data.id;
     var selectedText = $(this).find('option:selected').text();
-    $('#select2-data-input').val(selectedText);
-    $('#select2-data-input-value').attr("value", selectedText);
+    $('#select2-data-input').val(selectedText).attr('value', selectedText);
 
     $.ajax({
         type : 'GET',
@@ -73,18 +72,26 @@ $('.select2-data').on('select2:select', function(e) {
             console.log(res)
             $.each(res, function(index, value) {
                 var select = $('#select2-city');
+                var opt = $('<option>', {
+                    disabled: true,
+                    selected: true,
+                    'text' : 'Choose One'
+                });
+                select.append(opt)
                 $.each(value.results, function(i, result) {
                     var option = $('<option>', {
-                        'value': result.city_name,
-                        'text': result.city_name
-                    }).on('click', function(){
-                        console.log('anime')
+                        'value': result.city_id,
+                        'text': result.city_name,
                     });
                     select.append(option);
                 });
             });
         }
     })
+  });
+
+  $('#select2-city').on('change', function() {
+    $('#cityTextValue').attr('value', $(this).find('option:selected').text());
   });
 
   $(".select2-data").select2({
@@ -246,11 +253,18 @@ $(".addCartFromWishlist").on("click", function () {
 
 $('#select-courier').on('change', function(){
     console.log($(this).val())
+    $('#paymentButtonCheckout').removeAttr('disabled')
     $.ajax({
         type : 'get',
         url : '/checkout/courier/ongkir',
+        data : {
+            origin: 78,
+            destination: '',
+            weight: '',
+            courier: '',
+        },
         success: function(e){
-            console.log(e.rajaongkir.results)
+            console.log(e.rajaongkir.results[0].costs)
         }
     })
 })

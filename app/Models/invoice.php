@@ -19,6 +19,7 @@ class invoice extends Model
         'zipcode',
         'city_id',
         'payment_status',
+        'note',
         'address_id',
         'order_status',
         'invoice_code',

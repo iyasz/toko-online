@@ -18,6 +18,8 @@ class address extends Model
         'province_id',
         'city_id',
         'is_main',
+        'city',
+        'province',
         'street',
         'zipcode',
     ];

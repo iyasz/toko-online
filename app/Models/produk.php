@@ -18,6 +18,7 @@ class produk extends Model
         'character_id',
         'image',
         'name',
+        'weight',
         'harga',
         'slug',
         'produser',
