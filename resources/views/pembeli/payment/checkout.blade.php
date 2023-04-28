@@ -32,7 +32,7 @@
                                             <option disabled selected>Pilih Metode</option>
                                             <optgroup label="Regular" class="">
                                                 <option value="jne">JNE REG</option>
-                                                <option value="">SiCepat REG</option>
+                                                <option value="tiki">TIKI REG</option>
                                                 <option value="">Ninja Xpress Standard</option>
                                                 <option value="pos">POS Indonesia Reguler</option>
                                             </optgroup>
@@ -110,13 +110,13 @@
                                         <p class="mb-0">Subtotal</p>
                                         <p class="mb-2">Item(s)</p>
                                     </div>
-                                    <span id="subtotalPayment" class="ms-auto">IDR {{number_format($totalAll)}}</span>
+                                    <span id="subtotalPayment" data-value="{{$totalAll}}" class="ms-auto">IDR {{number_format($totalAll)}}</span>
                                 </div>
                                 <div class="detail d-flex">
                                     <div class="">
                                         <p class="mb-0">Shipping Fee</p>
                                     </div>
-                                    <span id="shippingFee" class="ms-auto">IDR {{number_format(0)}}</span>
+                                    <span id="shippingFee" data-value="" class="ms-auto">IDR 0</span>
                                 </div>
                             </div>
                             <hr>
@@ -125,7 +125,7 @@
                                     <div class="">
                                         <p class="mb-0">Total</p>
                                     </div>
-                                    <span class="ms-auto">IDR {{number_format(0)}}</span>
+                                    <span id="resultAllPayment" data-value="{{$totalAll}}" class="ms-auto">IDR {{number_format($totalAll)}}</span>
                                 </div>
                                 <button class="btn btn-primary w-100 border-0 mt-3 rounded-1" value="{{$totalAll}}" data-weight="{{$weightAll}}" data-destination="{{$addressMain->city_id}}" id="paymentButtonCheckout" disabled>Pay now</button>
                             </div>

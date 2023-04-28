@@ -252,7 +252,6 @@ $(".addCartFromWishlist").on("click", function () {
 });
 
 $('#select-courier').on('change', function(){
-    console.log($(this).val())
     $('#paymentButtonCheckout').removeAttr('disabled')
     $.ajax({
         type : 'get',
@@ -264,10 +263,16 @@ $('#select-courier').on('change', function(){
             courier: $(this).val(),
         },
         success: function(e){
+            console.log(e.rajaongkir.results[0].costs)
             number = e.rajaongkir.results[0].costs[0].cost[0].value
-            const formattedNumber = number.toLocaleString();
-            $('#shippingFee').html('IDR '+formattedNumber)
-            console.log(e.rajaongkir.results[0].costs[0].cost[0].value)
+            const formattedNumberFee = number.toLocaleString();
+            $('#shippingFee').html('IDR '+formattedNumberFee)
+            $('#shippingFee').attr('data-value', number)
+
+            result = $('#resultAllPayment').data('value') + number
+            const formattedNumberResult = result.toLocaleString();
+            $('#paymentButtonCheckout').attr('value', result)
+            $('#resultAllPayment').html('IDR '+formattedNumberResult)
         }
     })
 })
