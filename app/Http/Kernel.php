@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'onlyAdmin' => \App\Http\Middleware\onlyAdmin::class,
         'onlyUser' => \App\Http\Middleware\onlyUser::class,
+        'addressRequired' => \App\Http\Middleware\addressRequired::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,

@@ -259,12 +259,15 @@ $('#select-courier').on('change', function(){
         url : '/checkout/courier/ongkir',
         data : {
             origin: 78,
-            destination: '',
-            weight: '',
-            courier: '',
+            destination: $('#paymentButtonCheckout').data('destination'),
+            weight: $('#paymentButtonCheckout').data('weight'),
+            courier: $(this).val(),
         },
         success: function(e){
-            console.log(e.rajaongkir.results[0].costs)
+            number = e.rajaongkir.results[0].costs[0].cost[0].value
+            const formattedNumber = number.toLocaleString();
+            $('#shippingFee').html('IDR '+formattedNumber)
+            console.log(e.rajaongkir.results[0].costs[0].cost[0].value)
         }
     })
 })

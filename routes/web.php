@@ -60,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/address/{id}/data', [addressController::class, 'dataEdit']);
         Route::get('/user/city/search', [addressController::class, 'searchCity']);
         Route::get('/cart/checkAddress', [cartController::class, 'cartSearchValueAddress']);
-        Route::get('/checkout/review', [orderController::class, 'index']);
+        Route::get('/checkout/review', [orderController::class, 'index'])->middleware('addressRequired');
         Route::get('/checkout/courier/ongkir', [orderController::class, 'getOngkirValue']);
 
     });
