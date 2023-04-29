@@ -12,18 +12,17 @@ class invoice extends Model
     protected $table = "invoice";
 
     protected $fillable = [
-        'name',
-        'alamat',
         'user_id',
+        'weight',
+        'destination_id',
+        'courier_id',
+        'layanan',
         'total_price',
-        'zipcode',
-        'city_id',
         'payment_status',
         'note',
         'address_id',
         'order_status',
         'invoice_code',
-        'telp',
     ];
     
 

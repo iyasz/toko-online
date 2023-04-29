@@ -252,7 +252,9 @@ $(".addCartFromWishlist").on("click", function () {
 });
 
 $('#select-courier').on('change', function(){
-    $('#paymentButtonCheckout').removeAttr('disabled')
+    $('#shippingFee').html('')
+    $('#shippingFee').addClass('skeleton-loader')
+    $('#paymentButtonCheckout').attr('disabled', 'disabled')
     $.ajax({
         type : 'get',
         url : '/checkout/courier/ongkir',
@@ -263,16 +265,18 @@ $('#select-courier').on('change', function(){
             courier: $(this).val(),
         },
         success: function(e){
+            $('#shippingFee').removeClass('skeleton-loader')
             console.log(e.rajaongkir.results[0].costs)
             number = e.rajaongkir.results[0].costs[0].cost[0].value
             const formattedNumberFee = number.toLocaleString();
             $('#shippingFee').html('IDR '+formattedNumberFee)
             $('#shippingFee').attr('data-value', number)
-
+            
             result = $('#resultAllPayment').data('value') + number
             const formattedNumberResult = result.toLocaleString();
             $('#paymentButtonCheckout').attr('value', result)
             $('#resultAllPayment').html('IDR '+formattedNumberResult)
+            $('#paymentButtonCheckout').removeAttr('disabled')
         }
     })
 })
