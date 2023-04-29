@@ -18,24 +18,22 @@ function showFlashAlert(message, type) {
     $("#alertWishlist").slideDown();
 }
 
-$("#cartPayment").on('click', function () {
-
+$("#cartPayment").on("click", function () {
     axios({
         method: "GET",
         url: "/cart/checkAddress",
     })
         .then(function (response) {
-            if(response.data != 0 ){
-                 window.location.href="/checkout/review"
-                }else{
-                window.location.href="/user/address"
+            if (response.data != 0) {
+                window.location.href = "/checkout/review";
+            } else {
+                window.location.href = "/user/address";
             }
         })
         .catch(function (error) {
             console.log(error);
         });
 });
-
 
 // select 2
 $(document).ready(function () {
@@ -49,57 +47,55 @@ $(document).ready(function () {
 });
 
 $(".select2-data-input").on("keyup", function () {
-    var inputVal = $(this).val(); 
+    var inputVal = $(this).val();
     $(this).attr("value", inputVal);
-    
 });
 
-$('.select2-data').on('select2:select', function(e) {
+$(".select2-data").on("select2:select", function (e) {
     // $('#select2-data-input').html('')
     var value = e.params.data.id;
-    var selectedText = $(this).find('option:selected').text();
-    $('#select2-data-input').val(selectedText).attr('value', selectedText);
+    var selectedText = $(this).find("option:selected").text();
+    $("#select2-data-input").val(selectedText).attr("value", selectedText);
 
     $.ajax({
-        type : 'GET',
-        url : '/user/city/search',
-        data : {
-            province_id : value,
+        type: "GET",
+        url: "/user/city/search",
+        data: {
+            province_id: value,
         },
-        success: function(res){
-            $('#select2-city').removeAttr('disabled');
-            $('#select2-city').html('')
-            console.log(res)
-            $.each(res, function(index, value) {
-                var select = $('#select2-city');
-                var opt = $('<option>', {
+        success: function (res) {
+            $("#select2-city").removeAttr("disabled");
+            $("#select2-city").html("");
+            console.log(res);
+            $.each(res, function (index, value) {
+                var select = $("#select2-city");
+                var opt = $("<option>", {
                     disabled: true,
                     selected: true,
-                    'text' : 'Choose One'
+                    text: "Choose One",
                 });
-                select.append(opt)
-                $.each(value.results, function(i, result) {
-                    var option = $('<option>', {
-                        'value': result.city_id,
-                        'text': result.city_name,
+                select.append(opt);
+                $.each(value.results, function (i, result) {
+                    var option = $("<option>", {
+                        value: result.city_id,
+                        text: result.city_name,
                     });
                     select.append(option);
                 });
             });
-        }
-    })
-  });
+        },
+    });
+});
 
-  $('#select2-city').on('change', function() {
-    $('#cityTextValue').attr('value', $(this).find('option:selected').text());
-  });
+$("#select2-city").on("change", function () {
+    $("#cityTextValue").attr("value", $(this).find("option:selected").text());
+});
 
-  $(".select2-data").select2({
+$(".select2-data").select2({
     minimumResultsForSearch: -1,
 });
 
 //end select 2
-
 
 $("#productAuth").click(function () {
     window.location.href = "/auth/login";
@@ -148,81 +144,79 @@ $("#cartAdd").on("click", function () {
         });
 });
 
-$('.deleteUserAddress').on('click', function(){
-    var idAddress = $('.deleteUserAddress').data('address');
+$(".deleteUserAddress").on("click", function () {
+    var idAddress = $(".deleteUserAddress").data("address");
     axios({
         method: "delete",
-        url: "/user/address/"+idAddress,
+        url: "/user/address/" + idAddress,
     })
         .then(function (response) {
-            window.location.href='/user/address';
-            
+            window.location.href = "/user/address";
         })
         .catch(function (error) {
             console.log(error);
         });
-})
+});
 
-$('#editUserAddressMain').on('click', function(){
-    var idAddress = $('#editUserAddressMain').data('address');
+$("#editUserAddressMain").on("click", function () {
+    var idAddress = $("#editUserAddressMain").data("address");
     axios({
         method: "get",
-        url: "/user/address/"+idAddress+"/data",
+        url: "/user/address/" + idAddress + "/data",
     })
         .then(function (response) {
             var res = response.data;
-            $('#select2-city').removeAttr('disabled');
-            $('#select2-city').html('')
-          
-            $('input[name="name"]').val(res.name)
-            $('#select2-data-input').val(res.province_id)
-            $('input[name="province_id"]').attr('value', res.province_id)
-            $('textarea[name="street"]').val(res.street)
-            $('input[name="zipcode"]').val(res.zipcode)
-            $('input[name="telp"]').val(res.telp)
+            $("#select2-city").removeAttr("disabled");
+            $("#select2-city").html("");
+
+            $('input[name="name"]').val(res.name);
+            $("#select2-data-input").val(res.province_id);
+            $('input[name="province_id"]').attr("value", res.province_id);
+            $('textarea[name="street"]').val(res.street);
+            $('input[name="zipcode"]').val(res.zipcode);
+            $('input[name="telp"]').val(res.telp);
         })
         .catch(function (error) {
             console.log(error);
         });
-})
+});
 
-$('.setMainAddress').on('click', function(){
-    var idAddress = $(this).data('address');
+$(".setMainAddress").on("click", function () {
+    var idAddress = $(this).data("address");
     axios({
         method: "put",
-        url: "/user/address/"+idAddress,
+        url: "/user/address/" + idAddress,
     })
         .then(function (response) {
-            window.location.href='/user/address'
+            window.location.href = "/user/address";
         })
         .catch(function (error) {
             console.log(error);
         });
-})
+});
 
-$('.editUserAddress').on('click', function(){
-    var idAddress = $(this).data('address');
+$(".editUserAddress").on("click", function () {
+    var idAddress = $(this).data("address");
     axios({
         method: "get",
-        url: "/user/address/"+idAddress+"/data",
+        url: "/user/address/" + idAddress + "/data",
     })
         .then(function (response) {
             var res = response.data;
-            $('#select2-city').removeAttr('disabled');
-            $('#select2-city').html('')
-          
-            $('input[name="name"]').val(res.name)
-            $('#select2-data-input').val(res.province_id)
-            $('input[name="province_id"]').attr('value', res.province_id)
-            $('textarea[name="street"]').val(res.street)
-            $('input[name="zipcode"]').val(res.zipcode)
-            $('input[name="telp"]').val(res.telp)
-            
+            $("#select2-city").removeAttr("disabled");
+            $("#select2-city").html("");
+
+            $('input[name="name"]').val(res.name);
+            $("#select2-data-input").val(res.province_id);
+            $('input[name="province_id"]').attr("value", res.province_id);
+            $('textarea[name="street"]').val(res.street);
+            $('input[name="zipcode"]').val(res.zipcode);
+            $('input[name="telp"]').val(res.telp);
         })
         .catch(function (error) {
             console.log(error);
         });
-})
+});
 
 $(".addCartFromWishlist").on("click", function () {
     axios({
@@ -251,35 +245,57 @@ $(".addCartFromWishlist").on("click", function () {
         });
 });
 
-$('#select-courier').on('change', function(){
-    $('#shippingFee').html('')
-    $('#shippingFee').addClass('skeleton-loader')
-    $('#paymentButtonCheckout').attr('disabled', 'disabled')
+$("#select-courier").on("change", function () {
+    $("#shippingFee").html("");
+    $("#shippingFee").addClass("skeleton-loader");
+    $("#paymentButtonCheckout").attr("disabled", "disabled");
+    $("#select-layanan").attr("disabled", "disabled");
     $.ajax({
-        type : 'get',
-        url : '/checkout/courier/ongkir',
-        data : {
+        type: "get",
+        url: "/checkout/courier/ongkir",
+        data: {
             origin: 78,
-            destination: $('#paymentButtonCheckout').data('destination'),
-            weight: $('#paymentButtonCheckout').data('weight'),
+            destination: $("#paymentButtonCheckout").data("destination"),
+            weight: $("#paymentButtonCheckout").data("weight"),
             courier: $(this).val(),
         },
-        success: function(e){
-            $('#shippingFee').removeClass('skeleton-loader')
-            console.log(e.rajaongkir.results[0].costs)
-            number = e.rajaongkir.results[0].costs[0].cost[0].value
+        success: function (e) {
+            $("#shippingFee").removeClass("skeleton-loader");
+            console.log(e.rajaongkir.results[0].costs);
+            var number = e.rajaongkir.results[0].costs[0].cost[0].value;
             const formattedNumberFee = number.toLocaleString();
-            $('#shippingFee').html('IDR '+formattedNumberFee)
-            $('#shippingFee').attr('data-value', number)
-            
-            result = $('#resultAllPayment').data('value') + number
+            $("#shippingFee").html("IDR " + formattedNumberFee);
+            $("#shippingFee").attr("data-value", number);
+
+            // layanan section 
+            var valueAllService = e.rajaongkir.results[0].costs;
+            var selectService = $("#select-layanan");
+            $(selectService).html('');
+
+            var opt = $("<option>", {
+                disabled: true,
+                selected: true,
+                text: "Pilih Layanan",
+            });
+            selectService.append(opt);
+            $.each(valueAllService, function (i, result) {
+                var option = $("<option>", {
+                    value: result.description,
+                    text: result.description
+                });
+                selectService.append(option);
+            });
+
+
+            result = $("#resultAllPayment").data("value") + number;
             const formattedNumberResult = result.toLocaleString();
-            $('#paymentButtonCheckout').attr('value', result)
-            $('#resultAllPayment').html('IDR '+formattedNumberResult)
-            $('#paymentButtonCheckout').removeAttr('disabled')
-        }
-    })
-})
+            $("#paymentButtonCheckout").attr("value", result);
+            $("#resultAllPayment").html("IDR " + formattedNumberResult);
+            $("#paymentButtonCheckout").removeAttr("disabled");
+            $("#select-layanan").removeAttr("disabled");
+        },
+    });
+});
 
 $("#wishlistRemove").on("click", function () {
     console.log("ini remove");

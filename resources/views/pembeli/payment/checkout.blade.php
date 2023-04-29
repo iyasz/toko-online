@@ -16,7 +16,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-lg-8 col-md-12 col-12">
+                                <div class="col-lg-5 col-md-12 col-12">
                                     <div class="address-page-content">
                                         <p class="mb-0">{{ $addressMain->street }}</p>
                                         <p class="mb-0">{{ strtoupper($addressMain->city) }}</p>
@@ -31,8 +31,8 @@
                                         <select name="" id="select-courier" class="form-select select-courier">
                                             <option disabled selected>Pilih Metode</option>
                                             <optgroup label="Regular" class="">
-                                                <option value="jne">JNE REG</option>
-                                                <option value="tiki">TIKI REG</option>
+                                                <option value="jne">JNE</option>
+                                                <option value="tiki">TIKI</option>
                                                 <option value="">Ninja Xpress Standard</option>
                                                 <option value="pos">POS Indonesia Reguler</option>
                                             </optgroup>
@@ -44,6 +44,14 @@
                                             <optgroup class="" label="Same Day">
                                                 <option value="">GoSend</option>
                                             </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-12">
+                                    <div class="metode-payment-page ms-auto mt-lg-0 mt-3 ">
+                                        <p class="mb-0">Layanan</p>
+                                        <select name="" id="select-layanan" disabled class="form-select select-layanan">
+                                            <option disabled selected>Pilih Layanan</option>
                                         </select>
                                     </div>
                                 </div>
@@ -71,8 +79,7 @@
                                     <div class="col-12 mb-3">
                                         <div class="row">
                                             <div class="col-2">
-                                                <img width="100%"
-                                                    src="{{ asset('/storage/gambar/' . $data->produk->image) }}">
+                                                <img width="100%" src="{{ asset('/storage/gambar/' . $data->produk->image) }}">
                                             </div>
                                             <div class="col-lg-7 col-md-10 col-10 pesanan-produk-detail">
                                                 <h6 class="n-semibold mb-0">{{ $data->produk->name }}</h6>

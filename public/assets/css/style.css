@@ -286,7 +286,7 @@ body {
  .address-page-main h5, .address-page-all h5, .metode-payment-page p, .header-detail-pesanan p, .pesanan-produk-detail p, .content-page-payment-details .detail p, .content-page-payment-details .detail span {
     font-size: 14px;
  }
- .address-page-main p, .address-page-all p, .address-page-detail button, .address-page-content p, .select-courier {
+ .address-page-main p, .address-page-all p, .address-page-detail button, .address-page-content p, #select-courier, #select-layanan {
     font-size: 12px;
  }
 
