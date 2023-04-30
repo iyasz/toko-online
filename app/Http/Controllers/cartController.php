@@ -111,4 +111,11 @@ class cartController extends Controller
         
         return $address;
     }
+
+    public function removeAllProductFromCart()
+    {
+        $cartAll = cart::where('user_id', Auth::user()->id);
+        $cartAll->delete();
+        return 'berhasil';
+    }
 }

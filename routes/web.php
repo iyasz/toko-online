@@ -62,6 +62,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/cart/checkAddress', [cartController::class, 'cartSearchValueAddress']);
         Route::get('/checkout/review', [orderController::class, 'index'])->middleware('addressRequired');
         Route::get('/checkout/courier/ongkir', [orderController::class, 'getOngkirValue']);
+        Route::get('/cart/remove', [cartController::class, 'removeAllProductFromCart']);
 
     });
 

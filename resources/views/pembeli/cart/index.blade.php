@@ -6,7 +6,7 @@
         <div class="container mt-5">
             <div class="row mt-5">
                 <div class="col-lg-8 col-md-12 col-12 mt-5">
-                    <div class="card border-0 shadow-sm mb-5">
+                    <div class="card border-0 shadow-sm mb-2">
                         <div class="card-body">
                             <div class="py-2">
                                 <h4 class="mb-0 n-semibold">Shopping Cart</h4>
@@ -46,6 +46,11 @@
                                 <a class="text-decoration-none color-org" href="/store">Ayo Mulai Belanja!</a>
                             </div>
                             @endif
+                        </div>
+                    </div>
+                    <div class="card border-0 shadow-sm mb-5">
+                        <div class="card-body">
+                            <button id="deleteAllProductFromCart" onclick="return confirm('Apakah kamu ingin menghapus semua produk di Cart?')" class="btn btn-primary border-0 rounded-1 w-100"><i class="bi bi-trash"></i> Kosongkan Troli</button>
                         </div>
                     </div>
                 </div>

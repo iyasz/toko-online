@@ -297,8 +297,18 @@ $("#select-courier").on("change", function () {
     });
 });
 
-$("#wishlistRemove").on("click", function () {
-    console.log("ini remove");
+$('#deleteAllProductFromCart').on('click', function(){
+    axios({
+        method: "delete",
+        url: "/cart/remove",
+    })
+        .then(function (response) {
+            console.log(response);
+            window.location.href='/cart';
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 });
 
 $(document).ready(function () {
