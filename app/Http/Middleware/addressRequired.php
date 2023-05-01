@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\address;
+use App\Models\cart;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,8 @@ class addressRequired
     public function handle(Request $request, Closure $next): Response
     {
         $addressValue = address::where('user_id', Auth::user()->id)->count();
-        if($addressValue == 0){
+        $cartValue = cart::where('user_id', Auth::user()->id)->count();
+        if($addressValue == 0 OR $cartValue == 0){
             abort(404);
         }
         return $next($request);

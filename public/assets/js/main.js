@@ -334,11 +334,18 @@ $('#paymentButtonCheckout').on('click', function(){
         method: "post",
         url: "/checkout/review",
         data: {
-            id_barang: $(this).val(),
+            weight: $(this).data('weight'),
+            destination_id: $(this).data('destination'),
+            courier_id: $('#select-courier').val(),
+            layanan: $('#select-layanan').val(),
+            address_id: $(this).data('address'),
+            total_price: $('#resultAllPayment').data('value'),
+            note: $('#noteCheckout').val(),
         },
     })
         .then(function (response) {
             console.log(response);
+            window.location.href="/cart"
             
         })
         .catch(function (error) {

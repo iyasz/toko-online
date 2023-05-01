@@ -50,7 +50,7 @@
                                 <div class="col-lg-3 col-md-12 col-12">
                                     <div class="metode-payment-page ms-auto mt-lg-0 mt-3 ">
                                         <p class="mb-0">Layanan</p>
-                                        <select name="" id="select-layanan" disabled class="form-select select-layanan">
+                                        <select id="select-layanan" disabled class="form-select select-layanan">
                                             <option disabled selected>Pilih Layanan</option>
                                         </select>
                                     </div>
@@ -59,7 +59,7 @@
                             <hr>
                             <div class="notes-checkout-page">
                                 <label>Notes</label>
-                                <textarea name="" class="form-control" id="" placeholder="Leave a message" rows="2"></textarea>
+                                <textarea name="" class="form-control" id="noteCheckout" placeholder="Leave a message" rows="2"></textarea>
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                                                 <img width="100%" src="{{ asset('/storage/gambar/' . $data->produk->image) }}">
                                             </div>
                                             <div class="col-lg-7 col-md-10 col-10 pesanan-produk-detail">
-                                                <h6 class="n-semibold mb-0">{{ $data->produk->name }}</h6>
+                                                <h6 class="n-semibold mb-0 ">{{ $data->produk->name }}</h6>
                                                 <p class="mb-0 d-lg-block d-none">IDR
                                                     {{ number_format($data->produk->harga) }}</p>
                                                 <p class="mb-0">Quantity: <span class="n-semibold">{{ $data->qty }}
@@ -134,7 +134,7 @@
                                     </div>
                                     <span id="resultAllPayment" data-value="{{$totalAll}}" class="ms-auto">IDR {{number_format($totalAll)}}</span>
                                 </div>
-                                <button class="btn btn-primary w-100 border-0 mt-3 rounded-1" value="{{$totalAll}}" data-weight="{{$weightAll}}" data-destination="{{$addressMain->city_id}}" id="paymentButtonCheckout" disabled>Pay now</button>
+                                <button class="btn btn-primary w-100 border-0 mt-3 rounded-1" value="{{$totalAll}}" data-address="{{ $addressMain->id }}" data-weight="{{$weightAll}}" data-destination="{{$addressMain->city_id}}" id="paymentButtonCheckout" disabled>Pay now</button>
                             </div>
                         </div>
                     </div>
