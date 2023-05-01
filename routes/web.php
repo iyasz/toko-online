@@ -61,8 +61,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/user/city/search', [addressController::class, 'searchCity']);
         Route::get('/cart/checkAddress', [cartController::class, 'cartSearchValueAddress']);
         Route::get('/checkout/review', [orderController::class, 'index'])->middleware('addressRequired');
-        Route::get('/checkout/courier/ongkir', [orderController::class, 'getOngkirValue']);
-        Route::get('/cart/remove', [cartController::class, 'removeAllProductFromCart']);
+        Route::get('/checkout/courier/ongkir', [orderController::class, 'getCourierValue']);
+        Route::get('/checkout/service/ongkir', [orderController::class, 'getServiceValue']);
+        Route::post('/checkout/review', [orderController::class, 'store'])->middleware('addressRequired');
+        Route::delete('/cart/remove/all', [cartController::class, 'removeAllProductFromCart']);
 
     });
 

@@ -50,7 +50,7 @@
                     </div>
                     <div class="card border-0 shadow-sm mb-5">
                         <div class="card-body">
-                            <button id="deleteAllProductFromCart" onclick="return confirm('Apakah kamu ingin menghapus semua produk di Cart?')" class="btn btn-primary border-0 rounded-1 w-100"><i class="bi bi-trash"></i> Kosongkan Troli</button>
+                            <button id="deleteAllProductFromCart" {{$count < 1 ? 'disabled' : ''}} class="btn btn-primary border-0 rounded-1"><i class="bi bi-trash"></i> Kosongkan Troli</button>
                         </div>
                     </div>
                 </div>

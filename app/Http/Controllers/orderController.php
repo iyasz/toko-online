@@ -27,7 +27,21 @@ class orderController extends Controller
         return view('pembeli.payment.checkout', compact('address', 'addressMain', 'userCart'));
     }
 
-    public function getOngkirValue(Request $request)
+    public function getCourierValue(Request $request)
+    {
+        $response = Http::withHeaders([
+            'key' => '179ae16b7b1883dc77ab80d40c52d141'
+        ])->post('https://api.rajaongkir.com/starter/cost', [
+            'origin' => $request->input('origin'),
+            'destination' => $request->input('destination'),
+            'weight' => $request->input('weight'),
+            'courier' => $request->input('courier'),
+        ]);
+
+        return $response->json();
+    }
+
+    public function getServiceValue(Request $request)
     {
         $response = Http::withHeaders([
             'key' => '179ae16b7b1883dc77ab80d40c52d141'
@@ -44,23 +58,21 @@ class orderController extends Controller
     public function store(Request $request)
     {
         $cart = cart::with(['produk','user'])->where('user_id', Auth::user()->id)->get();
-     
-        $validate = $request->validate([
-            'telp' => 'required',
-            'zipcode' => 'required',
-            'province_id' => 'required',
-            'city_id' => 'required',
-            'alamat' => 'required',
-            'name' => 'required',
+        
+        $inv = invoice::create([
+            'user_id' => Auth::user()->id,
+            'invoice_code' => 'INV/'.Carbon::now()->format('dmY').'-'.random_int(000000, 1000000),
+            'status' => 1,
+            'weight' => $request->input('weight'),
+            'destination_id' => $request->input('destination_id'),
+            'courier_id' => $request->input('courier_id'),
+            'layanan' => $request->input('layanan'),
+            'address_id' => $request->input('address_id'),
+            'total_price' => $request->input('total_price'),
+            'payment_status' => 1,
+            'order_status' => 1,
+            'note' => $request->input('note'),
         ]);
-
-        $request['user_id'] = Auth::user()->id;
-
-        $request['status'] = 1;
-        $inVCode = 'INV/'.Carbon::now()->format('dmY').'-'.random_int(000000, 1000000);
-        $request['invoice_code'] = $inVCode;
-
-        $inv = invoice::create($request->except('_token','province_city'));
         $invID = $inv->id;
 
         foreach($cart as $data){
@@ -76,7 +88,7 @@ class orderController extends Controller
         $cartFind = cart::where('user_id', Auth::user()->id);
         $cartFind->delete();
 
-        return redirect('/payment/confirmation');
+        return 'berhasil';
     }
 
     public function status($id, $inv)

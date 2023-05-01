@@ -246,10 +246,11 @@ $(".addCartFromWishlist").on("click", function () {
 });
 
 $("#select-courier").on("change", function () {
-    $("#shippingFee").html("");
-    $("#shippingFee").addClass("skeleton-loader");
-    $("#paymentButtonCheckout").attr("disabled", "disabled");
     $("#select-layanan").attr("disabled", "disabled");
+    $("#paymentButtonCheckout").attr("disabled", "disabled");
+    $("#shippingFee").html('IDR 0');
+    $("#resultAllPayment").html($('#subtotalPayment').text());
+    $("#paymentButtonCheckout").attr("value", '');
     $.ajax({
         type: "get",
         url: "/checkout/courier/ongkir",
@@ -261,16 +262,11 @@ $("#select-courier").on("change", function () {
         },
         success: function (e) {
             $("#shippingFee").removeClass("skeleton-loader");
-            console.log(e.rajaongkir.results[0].costs);
-            var number = e.rajaongkir.results[0].costs[0].cost[0].value;
-            const formattedNumberFee = number.toLocaleString();
-            $("#shippingFee").html("IDR " + formattedNumberFee);
-            $("#shippingFee").attr("data-value", number);
 
-            // layanan section 
+            // layanan section
             var valueAllService = e.rajaongkir.results[0].costs;
             var selectService = $("#select-layanan");
-            $(selectService).html('');
+            $(selectService).html("");
 
             var opt = $("<option>", {
                 disabled: true,
@@ -280,35 +276,90 @@ $("#select-courier").on("change", function () {
             selectService.append(opt);
             $.each(valueAllService, function (i, result) {
                 var option = $("<option>", {
-                    value: result.description,
-                    text: result.description
+                    value: result.service,
+                    text: result.description,
                 });
                 selectService.append(option);
             });
 
-
-            result = $("#resultAllPayment").data("value") + number;
-            const formattedNumberResult = result.toLocaleString();
-            $("#paymentButtonCheckout").attr("value", result);
-            $("#resultAllPayment").html("IDR " + formattedNumberResult);
-            $("#paymentButtonCheckout").removeAttr("disabled");
             $("#select-layanan").removeAttr("disabled");
         },
     });
 });
 
-$('#deleteAllProductFromCart').on('click', function(){
+$("#select-layanan").on("change", function () {
+    $("#shippingFee").html("");
+    $("#shippingFee").addClass("skeleton-loader");
+    $("#paymentButtonCheckout").attr("disabled", "disabled");
+
+    $.ajax({
+        type: "get",
+        url: "/checkout/service/ongkir",
+        data: {
+            origin: 78,
+            destination: $("#paymentButtonCheckout").data("destination"),
+            weight: $("#paymentButtonCheckout").data("weight"),
+            courier: $('#select-courier').val(),
+        },
+        success: function (e) {
+            $("#shippingFee").removeClass("skeleton-loader");
+            console.log($('#select-layanan').val());
+            var serviceValue = $('#select-layanan').val()
+            var valueOFService = e.rajaongkir.results[0].costs
+            console.log(valueOFService);
+
+            $.each(valueOFService, function(index, item) {
+                if (item.service == serviceValue ) {
+                  console.log(item.description);
+
+                  var number = item.cost[0].value;
+                  const formattedNumberFee = number.toLocaleString();
+                  $("#shippingFee").html("IDR " + formattedNumberFee);
+                  $("#shippingFee").attr("data-value", number);
+      
+                  result = $("#resultAllPayment").data("value") + number;
+                  const formattedNumberResult = result.toLocaleString();
+                  $("#paymentButtonCheckout").attr("value", result);
+                  $("#resultAllPayment").html("IDR " + formattedNumberResult);
+                  $("#paymentButtonCheckout").removeAttr("disabled");
+
+                }
+              });
+        },
+    });
+});
+
+$('#paymentButtonCheckout').on('click', function(){
     axios({
-        method: "delete",
-        url: "/cart/remove",
+        method: "post",
+        url: "/checkout/review",
+        data: {
+            id_barang: $(this).val(),
+        },
     })
         .then(function (response) {
             console.log(response);
-            window.location.href='/cart';
+            
         })
         .catch(function (error) {
             console.log(error);
         });
+})
+
+$("#deleteAllProductFromCart").on("click", function () {
+    if(confirm('Apakah kamu ingin menghapus semua produk di Cart?')){
+        axios({
+            method: "delete",
+            url: "/cart/remove/all",
+    })
+        .then(function (response) {
+            console.log(response);
+            window.location.href = "/cart";
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
 });
 
 $(document).ready(function () {
