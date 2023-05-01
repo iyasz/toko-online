@@ -55,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/transaksi/{id}', [transaksiController::class, 'view']);
         Route::get('/riwayat', [transaksiController::class, 'riwayat']);
         Route::post('/wishlist/store', [wishlistController::class, 'storeAjax']);
+        Route::delete('/unwishlist/store', [wishlistController::class, 'unwishlistDetail']);
         Route::post('/cart/store', [cartController::class, 'storeAjax']);
         Route::resource('/user/address', addressController::class);
         Route::get('/user/address/{id}/data', [addressController::class, 'dataEdit']);
@@ -65,6 +66,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/checkout/service/ongkir', [orderController::class, 'getServiceValue']);
         Route::post('/checkout/review', [orderController::class, 'store'])->middleware('addressRequired');
         Route::delete('/cart/remove/all', [cartController::class, 'removeAllProductFromCart']);
+        Route::get('/checkout/thanks', [indexController::class, 'showPaymentProgress']);
 
     });
 

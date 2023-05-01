@@ -75,6 +75,10 @@ body {
     background-color: var(--bs-color-primary);
 }
 
+.fs-sm{
+    font-size: 13px !important;
+}
+
 .btn.btn-primary{
     background: var(--bs-color-primary);
     cursor: pointer;

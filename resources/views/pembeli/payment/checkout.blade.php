@@ -66,7 +66,7 @@
                     <div class="mt-4">
                         <h4>Detail Pesanan</h4>
                     </div>
-                    <div class="card shadow-sm border-0 ">
+                    <div class="card shadow-sm border-0 mb-5">
                         <div class="card-body">
                             <div class="header-detail-pesanan">
                                 <p class="mb-0">Delivery Estimate: <span class="n-semibold">April 2023</span></p>

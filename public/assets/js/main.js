@@ -110,6 +110,10 @@ function reloadWishlist() {
     return `<button id="wishlistRemove" class="btn btn-primary active text-black w-100 rounded-1 bg-transparent py-2 wishlist "><img src="/assets/img/maskot/wishlist_active.svg" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>`;
 }
 
+function reloadUnwishlist() {
+    return `  <button id="wishlistBtn" class="btn btn-danger text-black w-100 rounded-1 bg-transparent py-2 wishlist "><img src="/assets/img/maskot/wishlist.svg" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>`;
+}
+
 $("#wishlistBtn").on("click", function () {
     $.ajax({
         headers: {
@@ -123,6 +127,23 @@ $("#wishlistBtn").on("click", function () {
         success: function (e) {
             console.log(e);
             $("#containerWishlist").html(reloadWishlist());
+        },
+    });
+});
+
+$("#wishlistRemove").on("click", function () {
+    $.ajax({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        type: "delete",                                                                
+        url: "/unwishlist/store",
+        data: {
+            id_barang: location.pathname.split("/")[2],
+        },
+        success: function (e) {
+            console.log(e);
+            $("#containerWishlist").html(reloadUnwishlist());
         },
     });
 });
@@ -345,7 +366,7 @@ $('#paymentButtonCheckout').on('click', function(){
     })
         .then(function (response) {
             console.log(response);
-            window.location.href="/cart"
+            window.location.href="/checkout/thanks"
             
         })
         .catch(function (error) {

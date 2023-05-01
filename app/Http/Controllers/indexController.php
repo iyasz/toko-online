@@ -91,4 +91,9 @@ class indexController extends Controller
 
         return view('search', compact('produk', 'count'));
     }
+
+    public function showPaymentProgress(Request $request)
+    {
+        return view('pembeli.confirm.detailPayment');
+    }
 }

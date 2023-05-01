@@ -80,4 +80,11 @@ class wishlistController extends Controller
 
         return "wishlist Berhasil";
     }
+
+    public function unwishlistDetail(Request $request)
+    {
+        $wishlist = wishlist::where('user_id', Auth::user()->id)->where('barang_id', $request->input('id_barang'));
+        $wishlist->delete();
+        return "Berhasil unwishlist";
+    }
 }
