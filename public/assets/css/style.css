@@ -287,6 +287,12 @@ body {
     border: solid 1.7px #d1d1d1;
  }
 
+ .detail-transaksi.dekstopOnly{
+    border-left: 1px solid #C7C8C9;
+    padding: 10px 40px;
+    height: 100%;
+ }
+
  .address-page-main h5, .address-page-all h5, .metode-payment-page p, .header-detail-pesanan p, .pesanan-produk-detail p, .content-page-payment-details .detail p, .content-page-payment-details .detail span {
     font-size: 14px;
  }
@@ -294,5 +300,16 @@ body {
     font-size: 12px;
  }
 
+ .button-detail-transaction button {
+    background: none;
+    color: var(--bs-color-primary);
+    border: 1px solid var(--bs-color-primary);
+ }
+
+ .button-detail-transaction button:hover {
+    background: var(--bs-color-primary) !important;
+    color: #fff;
+    border: 1px solid var(--bs-color-primary) !important;
+ }
 
  /* end transaksi  */

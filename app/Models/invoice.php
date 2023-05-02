@@ -30,4 +30,9 @@ class invoice extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function transaksi()
+    {
+        return $this->hasMany(transaksi::class);
+    }
+    
 }

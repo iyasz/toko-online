@@ -7,12 +7,13 @@ use App\Models\invoice;
 use App\Models\transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class transaksiController extends Controller
 {
     public function index()
     {
-        $trxActiveStatus = invoice::where('user_id', Auth::user()->id)->where('payment_status', 1)->get();
+        $trxActiveStatus = invoice::with(['transaksi.produk'])->where('user_id', Auth::user()->id)->where('payment_status', 1)->get();
         $trxPaidStatus = invoice::where('user_id', Auth::user()->id)->where('payment_status', 2)->get();
         $trxExpiredStatus = invoice::where('user_id', Auth::user()->id)->where('payment_status', 3)->get();
         return view('pembeli.transaksi.transaksi', compact('trxActiveStatus','trxPaidStatus', 'trxExpiredStatus'));
