@@ -272,6 +272,9 @@ $("#select-courier").on("change", function () {
     $("#shippingFee").html('IDR 0');
     $("#resultAllPayment").html($('#subtotalPayment').text());
     $("#paymentButtonCheckout").attr("value", '');
+    var value = $('#resultPaymentTotalHidden').val()
+    $("#resultAllPayment").attr("data-value", value);
+    $("#resultAllPaymentHidden").attr("value", value);
     $.ajax({
         type: "get",
         url: "/checkout/courier/ongkir",
@@ -342,6 +345,7 @@ $("#select-layanan").on("change", function () {
                   const formattedNumberResult = result.toLocaleString();
                   $("#paymentButtonCheckout").attr("value", result);
                   $("#resultAllPayment").html("IDR " + formattedNumberResult);
+                  $("#resultAllPaymentHidden").attr("value", result);
                   $("#paymentButtonCheckout").removeAttr("disabled");
 
                 }
@@ -351,6 +355,7 @@ $("#select-layanan").on("change", function () {
 });
 
 $('#paymentButtonCheckout').on('click', function(){
+    // console.log($('#resultAllPayment').data('value'))
     axios({
         method: "post",
         url: "/checkout/review",
@@ -360,7 +365,7 @@ $('#paymentButtonCheckout').on('click', function(){
             courier_id: $('#select-courier').val(),
             layanan: $('#select-layanan').val(),
             address_id: $(this).data('address'),
-            total_price: $('#resultAllPayment').data('value'),
+            total_price: $('#resultAllPaymentHidden').val(),
             note: $('#noteCheckout').val(),
         },
     })

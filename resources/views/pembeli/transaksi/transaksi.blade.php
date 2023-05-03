@@ -78,8 +78,7 @@
                                                     <img src="{{ asset('/assets/img/maskot/SearchNotFound.gif') }}"
                                                         width="250" alt="">
                                                     <h4 class="mb-1 n-semibold">Nggak ada yang harus dibayar nih</h4>
-                                                    <a class="text-decoration-none color-org" href="/store">Yuk
-                                                        belanja!</a>
+                                                    <a class="text-decoration-none color-org" href="/store">Yuk belanja!</a>
                                                 </div>
                                             @endif
                                         </div>

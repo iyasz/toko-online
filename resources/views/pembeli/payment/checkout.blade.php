@@ -117,6 +117,7 @@
                                         <p class="mb-0">Subtotal</p>
                                         <p class="mb-2">Item(s)</p>
                                     </div>
+                                    <input type="hidden" value="{{$totalResult = $totalAll}}" id="resultPaymentTotalHidden">
                                     <span id="subtotalPayment" data-value="{{$totalAll}}" class="ms-auto">IDR {{number_format($totalAll)}}</span>
                                 </div>
                                 <div class="detail d-flex">
@@ -132,7 +133,8 @@
                                     <div class="">
                                         <p class="mb-0">Total</p>
                                     </div>
-                                    <span id="resultAllPayment" data-value="{{$totalAll}}" class="ms-auto">IDR {{number_format($totalAll)}}</span>
+                                    <input type="hidden" value="" id="resultAllPaymentHidden">
+                                    <span id="resultAllPayment" data-value="" class="ms-auto">IDR {{number_format($totalAll)}}</span>
                                 </div>
                                 <button class="btn btn-primary w-100 border-0 mt-3 rounded-1" value="{{$totalAll}}" data-address="{{ $addressMain->id }}" data-weight="{{$weightAll}}" data-destination="{{$addressMain->city_id}}" id="paymentButtonCheckout" disabled>Pay now</button>
                             </div>
