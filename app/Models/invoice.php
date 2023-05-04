@@ -21,6 +21,8 @@ class invoice extends Model
         'payment_status',
         'note',
         'address_id',
+        'order_code',
+        'payment_method',
         'order_status',
         'invoice_code',
     ];

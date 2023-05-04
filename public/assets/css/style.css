@@ -195,6 +195,10 @@ body {
     overflow: hidden;
 }
 
+.payment_method_container .payment_method_details button.active {
+    border: 1px solid black !important;
+}
+
 .product-view-details li .info a {
     color: red;
     font-size: 14px;
