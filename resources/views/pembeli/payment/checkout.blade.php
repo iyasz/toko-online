@@ -69,22 +69,22 @@
                     <div class="card shadow-sm border-0 mb-3">
                         <div class="card-body">
                             <div class="row payment_method_container">
-                                <div class="col-12 col-lg-3 payment_method_details">
-                                    <button class="w-100 h-100 bg-transparent border-0 shadow-sm active">
+                                <div class="col-12 col-lg-3 payment_method_details ">
+                                    <button value="shopee" class="w-100 h-100 bg-transparent border-0 rounded-1 shadow-sm active">
                                         <img src="{{asset('assets/img/payment/shopee.png')}}" width="40" class="py-4" alt="">
-                                        <p class="fs-sm mt-2">Shopee</p>
+                                        <p class="fs-sm mt-auto">Shopee</p>
                                     </button>
                                 </div>
-                                <div class="col-12 col-lg-3 payment_method_details">
-                                    <button class="w-100 h-100 bg-transparent border-0 shadow-sm">
+                                <div class="col-12 col-lg-3 payment_method_details ">
+                                    <button value="ewallet" class="w-100 h-100 bg-transparent border-0 rounded-1 shadow-sm">
                                         <img src="{{asset('assets/img/payment/ewallet.png')}}" width="40" class="py-4" alt="">
-                                        <p class="fs-sm mt-2">E-wallet</p>
+                                        <p class="fs-sm mt-auto">E-wallet</p>
                                     </button>
                                 </div>
-                                <div class="col-12 col-lg-3 payment_method_details">
-                                    <button class="w-100 h-100 bg-transparent border-0 shadow-sm">
+                                <div class="col-12 col-lg-3 payment_method_details ">
+                                    <button value="tokopedia" class="w-100 h-100 bg-transparent border-0 rounded-1 shadow-sm">
                                         <img src="{{asset('assets/img/payment/todokete.svg')}}" width="40" class="py-4" alt="">
-                                        <p class="fs-sm mt-2">Tokopedia</p>
+                                        <p class="fs-sm mt-auto">Tokopedia</p>
                                     </button>
                                 </div>
                             </div>

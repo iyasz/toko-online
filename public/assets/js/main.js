@@ -106,46 +106,30 @@ $(".product-view-details li .info a").on("click", function (e) {
     window.location.href = this.href + "&category=makanan";
 });
 
-function reloadWishlist() {
-    return `<button id="wishlistRemove" class="btn btn-primary active text-black w-100 rounded-1 bg-transparent py-2 wishlist "><img src="/assets/img/maskot/wishlist_active.svg" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>`;
-}
-
-function reloadUnwishlist() {
-    return `  <button id="wishlistBtn" class="btn btn-danger text-black w-100 rounded-1 bg-transparent py-2 wishlist "><img src="/assets/img/maskot/wishlist.svg" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>`;
-}
-
 $("#wishlistBtn").on("click", function () {
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        type: "POST",
+    axios({
+        method: "post",
         url: "/wishlist/store",
         data: {
             id_barang: location.pathname.split("/")[2],
         },
-        success: function (e) {
-            console.log(e);
-            $("#containerWishlist").html(reloadWishlist());
-        },
-    });
-});
+    })
+        .then(function (response) {
+            console.log(response.data.type);
+            if(response.data.type == "ADD"){
+                var srcImage = '/assets/img/maskot/wishlist_active.svg'
+                $('#wishlistBtn').addClass('active')
+            }else{
+                var srcImage = '/assets/img/maskot/wishlist.svg'
+                $('#wishlistBtn').removeClass('active')
+            }
 
-$("#wishlistRemove").on("click", function () {
-    $.ajax({
-        headers: {
-            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-        },
-        type: "delete",                                                                
-        url: "/unwishlist/store",
-        data: {
-            id_barang: location.pathname.split("/")[2],
-        },
-        success: function (e) {
-            console.log(e);
-            $("#containerWishlist").html(reloadUnwishlist());
-        },
-    });
+            $('#imgWishlist').attr('src', srcImage)
+            // $("#containerWishlist").html(reloadWishlist());
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 });
 
 $("#cartAdd").on("click", function () {
@@ -364,6 +348,7 @@ $('#paymentButtonCheckout').on('click', function(){
             destination_id: $(this).data('destination'),
             courier_id: $('#select-courier').val(),
             layanan: $('#select-layanan').val(),
+            payment_method: $('.payment_method_container .payment_method_details button.active').val(),
             address_id: $(this).data('address'),
             total_price: $('#resultAllPaymentHidden').val(),
             note: $('#noteCheckout').val(),
@@ -377,6 +362,11 @@ $('#paymentButtonCheckout').on('click', function(){
         .catch(function (error) {
             console.log(error);
         });
+})
+
+$('.payment_method_container .payment_method_details button').on('click', function(){
+    $('.payment_method_container .payment_method_details button').removeClass('active')
+    $(this).addClass('active')
 })
 
 $("#deleteAllProductFromCart").on("click", function () {

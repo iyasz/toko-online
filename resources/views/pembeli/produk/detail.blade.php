@@ -26,7 +26,7 @@
                             <div class="row mt-5">
                                 <div class="col-4 px-2" id="containerWishlist">
                                     @if (Auth::user())
-                                        <button id="{{ $wishlist > 0 ? 'wishlistRemove' : 'wishlistBtn' }}" class="btn btn-danger text-black w-100 rounded-1 bg-transparent py-2 wishlist @if($wishlist > 0)active @endif "><img src="{{ asset('assets/img/maskot/'.($wishlist > 0 ? 'wishlist_active.svg' : 'wishlist.svg')) }}" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>
+                                        <button id="wishlistBtn" class="btn btn-danger text-black w-100 rounded-1 bg-transparent py-2 wishlist @if($wishlist > 0)active @endif "><img src="{{ asset('assets/img/maskot/'.($wishlist > 0 ? 'wishlist_active.svg' : 'wishlist.svg'))}}" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>
                                     @else <button id="productAuth" class="btn btn-danger text-black w-100 rounded-1 bg-transparent wishlist py-2"><img src="{{ asset('assets/img/maskot/wishlist.svg') }}" width="25px" class="me-1 " alt=""> Wishlist</button>
                                     @endif
                                 </div>

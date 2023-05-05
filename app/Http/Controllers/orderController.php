@@ -70,7 +70,7 @@ class orderController extends Controller
             'address_id' => $request->input('address_id'),
             'total_price' => $request->input('total_price'),
             'payment_status' => 1,
-            'payment_method' => 1,
+            'payment_method' => $request->input('payment_method'),
             'order_code' => random_int(000000, 1000000),
             'order_status' => 1,
             'note' => $request->input('note'),

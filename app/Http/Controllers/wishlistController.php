@@ -71,14 +71,22 @@ class wishlistController extends Controller
 
     public function storeAjax(Request $request)
     {
-        wishlist::create([
-            'user_id' => Auth::user()->id,
-            'barang_id' => $request->input('id_barang'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        $checkWishlist = wishlist::where('user_id', Auth::user()->id)->where('barang_id', $request->id_barang)->first();
+        if($checkWishlist){
+            $type = 'REMOVE';
+            $checkWishlist->delete();
+        }else{
+            $type = 'ADD';
+            wishlist::create([
+                'user_id' => Auth::user()->id,
+                'barang_id' => $request->input('id_barang'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
 
-        return "wishlist Berhasil";
+
+        return response()->json(['type' => $type]);
     }
 
     public function unwishlistDetail(Request $request)
