@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-12 col-lg-3 payment_method_details ">
                                     <button value="tokopedia" class="w-100 h-100 bg-transparent border-0 rounded-1 shadow-sm">
-                                        <img src="{{asset('assets/img/payment/todokete.svg')}}" width="40" class="py-4" alt="">
+                                        <img src="{{asset('assets/img/payment/tokopedia.svg')}}" width="40" class="py-4" alt="">
                                         <p class="fs-sm mt-auto">Tokopedia</p>
                                     </button>
                                 </div>

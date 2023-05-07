@@ -58,6 +58,10 @@
                                                                 <div class="col-lg-3 col-md-12 col-12">
                                                                     <div class="detail-transaksi dekstopOnly d-none d-lg-block">
                                                                         <div class="text-center">
+                                                                            <p class="fs-sm">Payment Method<br> <img src="{{asset('assets/img/payment/'.$data->payment_method.'.'.($data->payment_method != 'tokopedia' ? 'png' : 'svg'))}}" alt="paymentMethod" class="my-2" width="70">
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="text-center">
                                                                             <p class="fs-sm">Due Date: <br> <span class="n-semibold color-org fs-6">{{ date('d M Y H:i', strtotime($data->created_at->addDays(2))) }}</span>
                                                                             </p>
                                                                         </div>
