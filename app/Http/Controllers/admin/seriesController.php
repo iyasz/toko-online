@@ -34,6 +34,7 @@ class seriesController extends Controller
             'name' => 'required',
         ]);
 
+        $request['name'] = ucwords($request->name);
         series::create($request->except('_token'));
 
         return redirect('/series')->with('success', 'Data Berhasil Disimpan!');
@@ -67,6 +68,7 @@ class seriesController extends Controller
             'name' => 'required',
         ]);
 
+        $request['name'] = ucwords($request->name);
         $series->update($request->except('_token'));
 
         return redirect('/series')->with('success', 'Data Berhasil Diubah!');

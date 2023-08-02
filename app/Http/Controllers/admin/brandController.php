@@ -34,6 +34,7 @@ class brandController extends Controller
             'name' => 'required',
         ]);
 
+        $request['name'] = ucwords($request->name);
         brand::create($request->except('_token'));
 
         return redirect('/brand')->with('success', 'Data Berhasil Disimpan!');
@@ -67,6 +68,7 @@ class brandController extends Controller
             'name' => 'required',
         ]);
 
+        $request['name'] = ucwords($request->name);
         $brand->update($request->except('_token'));
 
         return redirect('/brand')->with('success', 'Data Berhasil Diubah!');

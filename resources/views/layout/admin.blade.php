@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg py-3 bg-white shadow-sm ">
         <div class="container">
-            <a href="" class="navbar-brand n-semibold">Tokyo<span style="color: #FC4C02;">Finds</span></a>
+            <a href="/app" class="navbar-brand n-semibold">Tokyo<span style="color: #FC4C02;">Finds</span></a>
             <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse">
                 <span class="navbar-toggler-icon"></span>
             </button>

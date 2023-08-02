@@ -41,6 +41,7 @@ class categoryController extends Controller
 
         $request->file('img')->storeAs('gambar', $name);
 
+        $request['name'] = ucwords($request->name);
         $request['icon']= $name;
         category::create($request->except('_token', 'img'));
 
@@ -83,6 +84,8 @@ class categoryController extends Controller
             
             $request['icon']= $name;
         }
+
+        $request['name'] = ucwords($request->name);
         $category->update($request->except('_token', 'img'));
 
         return redirect('/category')->with('success', 'Data Berhasil Diubah!');

@@ -34,6 +34,7 @@ class characterController extends Controller
             'name' => 'required',
         ]);
 
+        $request['name'] = ucwords($request->name);
         character::create($request->except('_token'));
 
         return redirect('/character')->with('success', 'Data Berhasil Disimpan!');
@@ -53,6 +54,7 @@ class characterController extends Controller
     public function edit(string $id)
     {
         $character = character::find($id);
+        
         return view('/admin.character.edit', compact('character'));
     }
 
@@ -67,6 +69,7 @@ class characterController extends Controller
             'name' => 'required',
         ]);
 
+        $request['name'] = ucwords($request->name);
         $character->update($request->except('_token'));
 
         return redirect('/character')->with('success', 'Data Berhasil Diubah!');

@@ -67,14 +67,14 @@
                                 @error('harga') <p class="text-danger">{{$message}}</p> @enderror
                             </div>
                             <div class="mt-3">
-                                <label class="mb-2 opacity-75">Produser</label>
-                                <input autocomplete="off" required type="text" name="produser" value="{{old('produser')}}" class="form-control rounded-1">
-                                @error('produser') <p class="text-danger">{{$message}}</p> @enderror
-                            </div>
-                            <div class="mt-3">
                                 <label class="mb-2 opacity-75">Stok</label>
                                 <input autocomplete="off" required type="number" name="stok" value="{{old('stok')}}" class="form-control rounded-1">
                                 @error('stok') <p class="text-danger">{{$message}}</p> @enderror
+                            </div>
+                            <div class="mt-3">
+                                <label class="mb-2 opacity-75">Berat</label>
+                                <input autocomplete="off" required type="number" name="weight" value="{{old('weight')}}" class="form-control rounded-1">
+                                @error('weight') <p class="text-danger">{{$message}}</p> @enderror
                             </div>
                             <div class="mt-3">
                                 <label class="mb-2 opacity-75">Deskripsi</label>

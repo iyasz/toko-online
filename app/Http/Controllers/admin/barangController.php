@@ -46,8 +46,8 @@ class barangController extends Controller
             'category_id' => 'required',
             'img' => 'required',
             'harga' => 'required',
-            'produser' => 'required',
             'stok' => 'required',
+            'weight' => 'required',
             'deskripsi' => 'required',
             'name' => 'required',
         ]);
@@ -59,6 +59,7 @@ class barangController extends Controller
         $request->file('img')->storeAs('gambar', $name);
 
         $request['image']= $name;
+        $request['name'] = ucwords($request->name);
         $validateSlug = preg_replace('/\[[^\]]*\]/', '', $request->name); 
         $request['slug'] = Str::slug($validateSlug); 
         produk::create($request->except('_token', 'img'));
@@ -96,11 +97,13 @@ class barangController extends Controller
         $validate = $request->validate([
             'category_id' => 'required',
             'harga' => 'required',
-            'produser' => 'required',
             'stok' => 'required',
+            'weight' => 'required',
             'deskripsi' => 'required',
             'name' => 'required',
         ]);
+
+        $request['name'] = ucwords($request->name);
 
         if($request->img){
             $original = $request->file('img')->getClientOriginalExtension();

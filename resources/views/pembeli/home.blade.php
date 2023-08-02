@@ -98,7 +98,7 @@
                         <h4 class="n-semibold">Categories</h4>
                         <hr style="color: #d4d4d4">
                     </div>
-                    <div class="card mt-3  border-0">
+                    <div class="card mt-3 border-0">
                         <div class="card-body pb-0">
                             <div class="row">
                                 @foreach ($category as $data)
