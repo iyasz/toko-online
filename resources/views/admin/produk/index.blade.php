@@ -32,9 +32,9 @@
                                 <td>{{$data->name}}</td>
                                 <td>{{number_format($data->harga)}}</td>
                                 <td>{{$data->stok}}</td>
-                                <td>
-                                    <a href="/produk/{{$data->id}}/edit" class="btn btn-primary border-0 btn-sm">Edit</a>
-                                    <form action="/produk/{{$data->id}}" method="post" class="d-inline">
+                                <td class="d-flex">
+                                    <a href="/produk/{{$data->id}}/edit" class="btn btn-primary border-0 btn-sm me-1">Edit</a>
+                                    <form action="/produk/{{$data->id}}" method="post">
                                     @csrf
                                     @method('delete')
                                         <button onclick="return confirm('Apakah Kamu Ingin Menghapus {{$data->name}}?')" class="btn btn-danger btn-sm">Delete</button>

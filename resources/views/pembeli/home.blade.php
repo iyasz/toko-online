@@ -100,7 +100,7 @@
                     </div>
                     <div class="card mt-3 border-0">
                         <div class="card-body pb-0">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 @foreach ($category as $data)
                                 <div class="col-lg-2 col-md-4 col-4 text-center">
                                     <a href="/c/{{$data->id}}" class="text-decoration-none text-black">

@@ -108,7 +108,7 @@ body {
 .wishlist {
     border-color: #cacaca !important;
 }
-.wishlist:hover, .btn.btn-primary:active {
+.wishlist:hover {
     background: var(--bs-color-dark-red) !important;
     border-color: var(--bs-color-dark-red) !important;
     color: white !important;

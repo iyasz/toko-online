@@ -12,7 +12,7 @@
                             <img width="100%" class="rounded-3" src="{{ asset('storage/gambar/' . $produk->image) }}" alt="">
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 ">
-                            <div class="py-1 @if ($produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 ">{{$produk->stok < 1 ? 'Tidak Tersedia' : 'Stock Ready'}}
+                            <div class="py-1 @if ($produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 n-semibold">{{$produk->stok < 1 ? 'Tidak Tersedia' : 'Stock Ready'}}
                             </div>
                             <h3 class="mt-2 n-semibold">{{ $produk->name }}</h3>
                             <p class="mt-2 opacity-50">By {{$produk->brand->name}}</p>

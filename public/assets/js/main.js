@@ -142,6 +142,7 @@ $("#cartAdd").on("click", function () {
         },
     })
         .then(function (response) {
+            console.log(response)
             window.location.href = "/cart";
         })
         .catch(function (error) {
