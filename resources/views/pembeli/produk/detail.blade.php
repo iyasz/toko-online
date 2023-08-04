@@ -1,7 +1,7 @@
 @extends('layout.mainlayout')
 
 @section('content')
-    <section id="category">
+    <section id="item-detail">
         <div class="container ">
             <div class="row">
                 <div class="col-12">
@@ -9,7 +9,7 @@
                 <div class="card-body">
                     <div class="row py-1">
                         <div class="col-lg-6 col-md-6 col-12 ">
-                            <img width="100%" class="rounded-3" src="{{ asset('storage/gambar/' . $produk->image) }}" alt="">
+                            <img width="100%" class="rounded-3" src="{{ asset('storage/gambar/'.$produk->image) }}" alt="">
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 ">
                             <div class="py-1 @if ($produk->stok < 1) p badge-danger @else badge-primary @endif text-white mt-2 px-3 rounded-4 n-semibold">{{$produk->stok < 1 ? 'Tidak Tersedia' : 'Stock Ready'}}
@@ -18,12 +18,13 @@
                             <p class="mt-2 opacity-50">By {{$produk->brand->name}}</p>
                             <hr>
                             <h4 class="n-semibold color-org">IDR {{ number_format($produk->harga) }}</h4>
-                            <div class="qty d-flex mt-3" id="wishlistQty">
-                                <a class="btn btn-primary border-0 rounded-1 me-1" onclick="decrementQtyProduct()">-</a>
-                                <input style="width: 60px" class="form-control" type="number" min="1" value="1" id="qtyProduct">
-                                <a class="btn btn-primary border-0 rounded-1 ms-1" onclick="incrementQtyProduct()">+</a>
+                            <div class="qty d-flex align-items-center mt-3" id="wishlistQty">
+                                <p class="mb-0 me-4">Qty : </p>
+                                <a class="text-decoration-none border-0 rounded-1 me-1 decrementCount" style="visibility: hidden"  @click="decrementCount" >-</a>
+                                <input class="fs-sm qtyProduct" type="number" min="1" max="{{$produk->stok}}" v-model="valueQty" id="qtyProduct">
+                                <a class="text-decoration-none border-0 rounded-1 ms-1 incrementCount" @click="incrementCount" >+</a>
                             </div>
-                            <div class="row mt-5">
+                            <div class="row mt-4">
                                 <div class="col-4 px-2" id="containerWishlist">
                                     @if (Auth::user())
                                         <button id="wishlistBtn" class="btn btn-danger text-black w-100 rounded-1 bg-transparent py-2 wishlist @if($wishlist > 0)active @endif "><img src="{{ asset('assets/img/maskot/'.($wishlist > 0 ? 'wishlist_active.svg' : 'wishlist.svg'))}}" id="imgWishlist" width="25px" class="me-1 " alt=""> Wishlist </button>
@@ -105,3 +106,101 @@
         </div>
     </section>
 @endsection
+
+@push('javascript')
+    <script>
+      
+
+         const app = Vue.createApp({
+            data() {
+                return {
+                    valueQty: 1,
+                };
+            },
+            methods: {
+                incrementCount() {
+                    this.valueQty++;
+                },
+                decrementCount() {
+                    this.valueQty--;
+                }
+            }
+        });
+
+
+        app.mount('#wishlistQty');
+
+        $(document).ready(function(){
+
+            // var inputValue = $('qtyProduct').val();
+
+            // var numericValue = parseInt(inputValue);
+
+            // if (numericValue < 10) {
+            //     $('qtyProduct').prop('disabled', true);
+            // } else {
+            //     $('qtyProduct').prop('disabled', false);
+            // }
+         
+        
+            $('.incrementCount').on('click', function(){
+                
+                if($('.qtyProduct').val() >= {{$produk->stok}}){
+                    $('.qtyProduct').val({{$produk->stok}})
+                    $('.incrementCount').css({
+                        'visibility': 'hidden'
+                    });
+
+                }
+
+                $('.decrementCount').removeAttr('style');
+
+            });
+
+            $('.decrementCount').on('click', function(){
+
+                if($('.qtyProduct').val() <= 1){
+                    $('.decrementCount').css({
+                        'visibility': 'hidden'
+                    });
+                }
+
+                $('.incrementCount').removeAttr('style');
+
+            });
+
+
+            if($('.qtyProduct').val() > {{$produk->stok}}){
+                $('.qtyProduct').val({{$produk->stok}})
+            }
+
+            $('.qtyProduct').on('keyup', function(){
+                if(this.value > {{$produk->stok}}){
+                    $('.qtyProduct').val({{$produk->stok}})
+                }
+                
+                if ($('.qtyProduct').val() >= {{$produk->stok}}) {
+                    $('.incrementCount').css({
+                        'visibility': 'hidden'
+                    });
+                }else{
+                    $('.incrementCount').removeAttr('style');
+                }
+
+                if ($('.qtyProduct').val() <= 1 ) {
+                    $('.decrementCount').css({
+                        'visibility': 'hidden'
+                    });
+                }else{
+                    $('.decrementCount').removeAttr('style');
+                }
+                
+
+              
+            })
+            
+        })
+
+
+    </script>
+@endpush

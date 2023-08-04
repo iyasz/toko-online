@@ -37,14 +37,6 @@ class cartController extends Controller
      */
     public function store(Request $request)
     {
-
-            // cart::create([
-            //     'user_id' => Auth::user()->id,
-            //     'barang_id' => $request->input('id_barang'),
-            //     'qty' => $request->input('qtyProduct'),
-            //     'created_at' => Carbon::now(),
-            //     'updated_at' => Carbon::now(),
-            // ]);
         
         $barang = cart::where('barang_id', $request->id_barang)->where('user_id', Auth::user()->id)->first();
 

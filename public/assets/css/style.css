@@ -236,7 +236,7 @@ body {
 }
 
 .select2-container--open .select2-dropdown--below{
-    border-top: 1px solid #aaa;
+    border-top: 1px solid #d1d3d4;
     border-radius: 5px;
 }
 
@@ -249,6 +249,27 @@ body {
 .qty_product input {
     width: 22px;
 }
+
+#wishlistQty a {
+    cursor: pointer;
+    color: #d1d3d4;
+}
+
+#qtyProduct {
+    padding: 6px 20px;
+    border-radius: 4px;
+    border: 1px solid #d1d3d4;
+    box-sizing: border-box;
+    width: 64px;
+    text-align: center;
+    outline: none;
+}
+
+#qtyProduct::-webkit-inner-spin-button, #qtyProduct::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 /* Transaksi  */
 .nav-tabs {

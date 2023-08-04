@@ -142,13 +142,47 @@ $("#cartAdd").on("click", function () {
         },
     })
         .then(function (response) {
-            console.log(response)
-            window.location.href = "/cart";
+            iziToast.show({
+                title: "💀",
+                message: "Berhasil Dimasukan ke cart!",
+                position: "topCenter",
+                drag: false,
+                pauseOnHover: false,
+                color: "green",
+                iconUrl: null,
+                timeout: 3000,
+            });
+
+            // window.location.href = "/cart";
         })
         .catch(function (error) {
             console.log(error);
         });
 });
+
+// if(response.data.type == "ADD"){
+//     iziToast.show({
+//       title: "💀",
+//       message: "Berhasil Dimasukan ke bookmark!",
+//       position: "topCenter",
+//       drag: false,
+//       pauseOnHover: false,
+//       color: "green",
+//       iconUrl: null,
+//       timeout: 3000,
+//     });
+//   }else{
+//     iziToast.show({
+//       title: "💀",
+//       message: "Item ini sudah ada di bookmark!",
+//       position: "topCenter",
+//       drag: false,
+//       pauseOnHover: false,
+//       color: "gray",
+//       iconUrl: null,
+//       timeout: 3000,
+//     });
+//   }
 
 $(".deleteUserAddress").on("click", function () {
     var idAddress = $(".deleteUserAddress").data("address");
