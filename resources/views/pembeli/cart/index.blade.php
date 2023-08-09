@@ -9,13 +9,14 @@
                     <div class="card border-0 shadow-sm mb-2">
                         <div class="card-body">
                             <div class="py-2">
-                                <h4 class="mb-0 n-semibold">Shopping Cart</h4>
+                                <h4 class="mb-0 n-semibold">Shopping Cart </h4>
                             </div>
                             @if($count > 0)
                             <input type="hidden" name="" value="{{$totalAll = 0}}">
                             @foreach ($cart as $data)
                                 <hr>
-                                <div class="row ">
+                                <p>{{$data->qty}}</p>
+                                <div class="row">
                                     <div class="col-12 col-md-3 col-lg-3">
                                         <td><img width="100%" height="100%" class="rounded-2" src="{{asset('storage/gambar/'.$data->produk->image)}}" alt=""></td>
                                     </div>
@@ -23,7 +24,9 @@
                                          <a class="text-decoration-none text-dark n-semibold">{{$data->produk->name}}</a>
                                          <br>
                                          <div class="d-flex qty_product">
-                                             <p class="mb-0">Jumlah : <button onclick="decrementQtyProduct()" class="btnQtyCart"><i class="bi bi-dash"></i></button> <input class="bg-transparent border-0" type="text" id="qtyProduct" disabled value="{{$data->qty}}"> <button onclick="incrementQtyProduct()" class="btnQtyCart"><i class="bi bi-plus"></i></button></p>
+                                             <p class="mb-0">Jumlah : <button @click="decrementCount" class="btnQtyCart"><i class="bi bi-dash"></i></button>
+                                                <input class="bg-transparent border-0 qtyProduct" name="qtyProduct" type="text" id="qtyProduct" value="{{$data->qty}}" disabled> 
+                                                <button  @click="incrementCount" class="btnQtyCart"><i class="bi bi-plus"></i></button></p>
                                             </div>
                                          <a class="text-decoration-none n-semibold color-org">IDR {{number_format($data->produk->harga)}}</a>
                                          <p class="n-semibold">Total : <span class="color-org">{{number_format($data->produk->harga * $data->qty)}}</span></p>
@@ -71,3 +74,55 @@
     </section>
 
 @endsection
+
+@push('javascript')
+    <script>
+            const app = Vue.createApp({
+            data() {
+                return {
+                    valueQty: 0,
+                };
+            },
+            methods: {
+                incrementCount() {
+                    const input = document.querySelector('.qtyProduct');
+                    const inputValue = document.querySelector('.qtyProduct').value;
+                    const numericValue = parseInt(inputValue);
+                    console.log(inputValue)
+                    if (!isNaN(numericValue)) {
+                        this.valueQty = numericValue + 1;
+                        input.value = this.valueQty;
+                    }
+
+                    // const elements = document.querySelectorAll('.qtyProduct');
+                    //     elements.forEach(element => {
+                    //     const numericValue = parseInt(element.value);
+                    //     if (!isNaN(numericValue)) {
+                    //         element.value = (numericValue + 1).toString();
+                    //     }
+                    // });
+
+                    
+                    // inputValue.valueQty++;
+                },
+                decrementCount() {
+                    const input = document.querySelector('.qtyProduct');
+                    const inputValue = document.querySelector('.qtyProduct').value;
+                    const numericValue = parseInt(inputValue);
+                    if (!isNaN(numericValue)) {
+                        this.valueQty = numericValue - 1;
+                        input.value = this.valueQty;
+                    }
+                },
+                // getElement() {
+                //     const inputValue = this.$refs.myInput.value;
+                //     alert("Input Value: " + inputValue);
+                // },
+            }
+        });
+
+        app.mount('.qty_product');
+
+
+    </script>
+@endpush
