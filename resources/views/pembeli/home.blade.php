@@ -2,47 +2,40 @@
 
 @section('content')
     <div id="carouselHero" class="carousel slide mt-5" data-bs-ride="carousel">
-        {{-- <ol class="carousel-indicators">
-            <li data-bs-target="#carouselHero" data-bs-slide-to="0" class="active" aria-current="true" ></li>
-            <li data-bs-target="#carouselHero" data-bs-slide-to="1" ></li>
-            <li data-bs-target="#carouselHero" data-bs-slide-to="2" ></li>
-            <li data-bs-target="#carouselHero" data-bs-slide-to="3" ></li>
-            <li data-bs-target="#carouselHero" data-bs-slide-to="4" ></li>
-        </ol> --}}
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
                 <img src="{{asset('assets/img/banner/banner4.webp')}}" class="w-100 d-block" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Title</h3>
-                    <p>Description</p>
+                    <h3>NEW UPDATE</h3>
+                    <p>Event Terbaru dengan diskon meriah!</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{asset('assets/img/banner/banner5.webp')}}" class="w-100 d-block" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Title</h3>
-                    <p>Description</p>
+                    <h3>NEW UPDATE</h3>
+                    <p>Event Terbaru dengan diskon meriah!</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{asset('assets/img/banner/banner1.webp')}}" class="w-100 d-block" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Title</h3>
-                    <p>Description</p>
+                    <h3>NEW UPDATE</h3>
+                    <p>Event Terbaru dengan diskon meriah!</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{asset('assets/img/banner/banner2.webp')}}" class="w-100 d-block" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Title</h3>
-                    <p>Description</p>
+                    <h3>NEW UPDATE</h3>
+                    <p>Event Terbaru dengan diskon meriah!</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{asset('assets/img/banner/banner3.webp')}}" class="w-100 d-block" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>Title</h3>
-                    <p>Description</p>
+                    <h3>NEW UPDATE</h3>
+                    <p>Event Terbaru dengan diskon meriah!</p>
                 </div>
             </div>
         </div>
@@ -100,12 +93,12 @@
                     </div>
                     <div class="card mt-3 border-0">
                         <div class="card-body pb-0">
-                            <div class="row justify-content-center">
+                            <div class="row ">
                                 @foreach ($category as $data)
-                                <div class="col-lg-2 col-md-4 col-4 text-center">
+                                <div class="col text-center mx-md-2 mx-0">
                                     <a href="/c/{{$data->id}}" class="text-decoration-none text-black">
-                                        <img src="{{asset('/storage/gambar/'.$data->icon)}}" width="100%" alt="">
-                                        <p class="mt-2">{{$data->name}}</p>
+                                        <img src="{{asset('/storage/gambar/'.$data->icon)}}" width="80px" alt="">
+                                        <p class="mt-2 fs-s-sm opacity-75">{{$data->name}}</p>
                                     </a>
                                 </div>
                                 @endforeach

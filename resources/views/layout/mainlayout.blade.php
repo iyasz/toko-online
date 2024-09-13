@@ -56,7 +56,7 @@
                             <hr class="my-2">
                             <li><a href="/wishlist" class="dropdown-item py-2 opacity-75"><i class="bi bi-heart mx-3"></i> My Wishlist</a></li>
                             <li><a href="/cart" class="dropdown-item py-2 opacity-75"><i class="bi bi-cart mx-3"></i> My Cart</a></li>
-                            <li><a href="/order" class="dropdown-item py-2 opacity-75"><i class="bi bi-clock-history mx-3"></i> Order History</a></li>
+                            <li><a href="/transaksi" class="dropdown-item py-2 opacity-75"><i class="bi bi-clock-history mx-3"></i> Order History</a></li>
                             <hr class="my-2">
                             <li><a href="/logout" class="dropdown-item py-2 opacity-75"><i class="bi bi-box-arrow-right mx-3"></i> Logout</a></li>
                         </ul>

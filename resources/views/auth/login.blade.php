@@ -20,7 +20,7 @@
                 </div>
                 <div class="card border-0 shadow-sm mt-3">
                     <div class="card-body mx-2">
-                        <form action="/login" method="get">
+                        <form action="/login" method="post">
                             @csrf
                             <div class="mt-3">
                                 <label class="mb-2 opacity-75">Email</label>

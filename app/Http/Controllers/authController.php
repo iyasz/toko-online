@@ -39,7 +39,7 @@ class authController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'error',
+            'email' => 'Email Anda Salah',
         ])->onlyInput('email');
 
     }

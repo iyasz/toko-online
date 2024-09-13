@@ -15,7 +15,7 @@
                             <input type="hidden" name="" value="{{$totalAll = 0}}">
                             @foreach ($cart as $data)
                                 <hr>
-                                <p>{{$data->qty}}</p>
+                                {{-- <p>{{$data->qty}}</p> --}}
                                 <div class="row">
                                     <div class="col-12 col-md-3 col-lg-3">
                                         <td><img width="100%" height="100%" class="rounded-2" src="{{asset('storage/gambar/'.$data->produk->image)}}" alt=""></td>
@@ -24,7 +24,8 @@
                                          <a class="text-decoration-none text-dark n-semibold">{{$data->produk->name}}</a>
                                          <br>
                                          <div class="d-flex qty_product">
-                                             <p class="mb-0">Jumlah : <button @click="decrementCount" class="btnQtyCart"><i class="bi bi-dash"></i></button>
+                                             <p class="mb-0">Jumlah : 
+                                                <button @click="decrementCount" class="btnQtyCart"><i class="bi bi-dash"></i></button>
                                                 <input class="bg-transparent border-0 qtyProduct" name="qtyProduct" type="text" id="qtyProduct" value="{{$data->qty}}" disabled> 
                                                 <button  @click="incrementCount" class="btnQtyCart"><i class="bi bi-plus"></i></button></p>
                                             </div>
@@ -84,13 +85,14 @@
                 };
             },
             methods: {
+
                 incrementCount() {
                     const input = document.querySelector('.qtyProduct');
                     const inputValue = document.querySelector('.qtyProduct').value;
                     const numericValue = parseInt(inputValue);
                     console.log(inputValue)
                     if (!isNaN(numericValue)) {
-                        this.valueQty = numericValue + 1;
+                        this.valueQty = numericValue + 1;   
                         input.value = this.valueQty;
                     }
 
